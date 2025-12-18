@@ -1,0 +1,116 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>next</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>this</mi><mo>&#160;</mo><mi>sequence</mi><mo>&#160;</mo><mi>if</mi><mo>&#160;</mo><mi>you</mi><mo>&#160;</mo><mi>are</mi><mo>&#160;</mo><mi>counting</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>multiples</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mn>8</mn><mo>?</mo><mspace linebreak=\"newline\"></mspace><mn>32</mn><mo>,</mo><mo>&#160;</mo><mn>40</mn><mo>,</mo><mo>&#160;</mo><mn>48</mn><mo>,</mo><mo>&#160;</mo><mo>&#8230;</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Identify</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>pattern</mi><mo>.</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>numbers</mi><mo>&#160;</mo><mi>are</mi><mo>&#160;</mo><mi>increasing</mi><mo>&#160;</mo><mi>by</mi><mo>&#160;</mo><mn>8</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>last</mi><mo>&#160;</mo><mi>number</mi><mo>.</mo><mo>&#160;</mo><mn>48</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>56</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>56</mn></math></p>",
+    "question_text": "What is the next number in this sequence if you are counting in multiples of 8? 32, 40, 48, ...",
+    "solution_text": "Step 1: Identify the pattern. The numbers are increasing by 8. Step 2: Add 8 to the last number. 48 + 8 = 56. Answer: 56.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>52</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>54</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>56</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>60</mn></math></p>"
+    ],
+    "options_text_1": "52",
+    "options_text_2": "54",
+    "options_text_3": "56",
+    "options_text_4": "60",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:32:29.503605"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mo>&#160;</mo><mi>baker</mi><mo>&#160;</mo><mi>made</mi><mo>&#160;</mo><mn>675</mn><mo>&#160;</mo><mi>muffins</mi><mo>.</mo><mo>&#160;</mo><mi>He</mi><mo>&#160;</mo><mi>then</mi><mo>&#160;</mo><mi>made</mi><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>muffins</mi><mo>.</mo><mo>&#160;</mo><mi>How</mi><mo>&#160;</mo><mi>many</mi><mo>&#160;</mo><mi>muffins</mi><mo>&#160;</mo><mi>did</mi><mo>&#160;</mo><mi>he</mi><mo>&#160;</mo><mi>make</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>total</mi><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Identify</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>starting</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>muffins</mi><mo>:</mo><mo>&#160;</mo><mn>675</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>total</mi><mo>:</mo><mo>&#160;</mo><mn>675</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>685</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>685</mn></math></p>",
+    "question_text": "A baker made 675 muffins. He then made 10 more muffins. How many muffins did he make in total?",
+    "solution_text": "Step 1: Identify the starting number of muffins: 675. Step 2: Add 10 to find the total: 675 + 10 = 685. Answer: 685.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>665</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>685</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>775</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>676</mn></math></p>"
+    ],
+    "options_text_1": "665",
+    "options_text_2": "685",
+    "options_text_3": "775",
+    "options_text_4": "676",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:32:29.503605"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>There</mi><mo>&#160;</mo><mi>were</mi><mo>&#160;</mo><mn>1830</mn><mo>&#160;</mo><mi>spectators</mi><mo>&#160;</mo><mi>at</mi><mo>&#160;</mo><mi>a</mi><mo>&#160;</mo><mi>football</mi><mo>&#160;</mo><mi>match</mi><mo>.</mo><mo>&#160;</mo><mi>If</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>spectators</mi><mo>&#160;</mo><mi>left</mi><mo>&#160;</mo><mi>before</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>end</mi><mo>,</mo><mo>&#160;</mo><mi>how</mi><mo>&#160;</mo><mi>many</mi><mo>&#160;</mo><mi>were</mi><mo>&#160;</mo><mi>still</mi><mo>&#160;</mo><mi>there</mi><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Identify</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>starting</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>spectators</mi><mo>:</mo><mo>&#160;</mo><mn>1830</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Subtract</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>remaining</mi><mo>&#160;</mo><mi>spectators</mi><mo>:</mo><mo>&#160;</mo><mn>1830</mn><mo>&#160;</mo><mo>-</mo><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>1730</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>1730</mn></math></p>",
+    "question_text": "There were 1830 spectators at a football match. If 100 spectators left before the end, how many were still there?",
+    "solution_text": "Step 1: Identify the starting number of spectators: 1830. Step 2: Subtract 100 to find the remaining spectators: 1830 - 100 = 1730. Answer: 1730.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1930</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1820</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1730</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1720</mn></math></p>"
+    ],
+    "options_text_1": "1930",
+    "options_text_2": "1820",
+    "options_text_3": "1730",
+    "options_text_4": "1720",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:32:29.503605"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>7</mn><mtext> in the number </mtext><mn>729</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of each digit in 729.</mtext></mrow><mrow><mtext>Step 2: The digit 7 is in the hundreds place.</mtext></mrow><mrow><mtext>Step 3: Therefore, its value is 7 x 100 = 700.</mtext></mrow><mrow><mtext>Answer: 700</mtext></mrow></math>",
+    "question_text": "What is the value of the digit 7 in the number 729?",
+    "solution_text": "Step 1: Identify the place value of each digit in 729. Step 2: The digit 7 is in the hundreds place. Step 3: Therefore, its value is 7 x 100 = 700. Answer: 700.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>70</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>700</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7000</mn></math>"
+    ],
+    "options_text_1": "7",
+    "options_text_2": "70",
+    "options_text_3": "700",
+    "options_text_4": "7000",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which number represents 'five hundred and sixteen'?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: 'Five hundred' means 5 in the hundreds place.</mtext></mrow><mrow><mtext>Step 2: 'Sixteen' means 1 in the tens place and 6 in the units place.</mtext></mrow><mrow><mtext>Step 3: Combine these to form the number 516.</mtext></mrow><mrow><mtext>Answer: 516</mtext></mrow></math>",
+    "question_text": "Which number represents 'five hundred and sixteen'?",
+    "solution_text": "Step 1: 'Five hundred' means 5 in the hundreds place. Step 2: 'Sixteen' means 1 in the tens place and 6 in the units place. Step 3: Combine these to form the number 516. Answer: 516.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>561</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>516</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>156</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>615</mn></math>"
+    ],
+    "options_text_1": "561",
+    "options_text_2": "516",
+    "options_text_3": "156",
+    "options_text_4": "615",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What number comes just before </mtext><mn>400</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: To find the number just before, subtract 1 from the given number.</mtext></mrow><mrow><mtext>Step 2: Calculate 400 - 1.</mtext></mrow><mrow><mtext>Step 3: 400 - 1 = 399.</mtext></mrow><mrow><mtext>Answer: 399</mtext></mrow></math>",
+    "question_text": "What number comes just before 400?",
+    "solution_text": "Step 1: To find the number just before, subtract 1 from the given number. Step 2: Calculate 400 - 1. Step 3: 400 - 1 = 399. Answer: 399.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>401</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>390</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>399</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>300</mn></math>"
+    ],
+    "options_text_1": "401",
+    "options_text_2": "390",
+    "options_text_3": "399",
+    "options_text_4": "300",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-1.5-flash"
+    }
+  }
+]

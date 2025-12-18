@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "Number – number and place value",
+    "topic": "identify, represent and estimate numbers using different representations",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>represented</mi><mo>&#160;</mo><mi>by</mi><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mi>hundreds</mi><mo>,</mo><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mi>tens</mi><mo>,</mo><mo>&#160;</mo><mi>and</mi><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mi>ones</mi><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mi>hundreds</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>200</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mi>tens</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>40</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mi>ones</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>7</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>4</mn><mo>:</mo><mo>&#160;</mo><mi>Combine</mi><mo>&#160;</mo><mi>them</mi><mo>:</mo><mo>&#160;</mo><mn>200</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>40</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>247</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>247</mn></math></p>",
+    "question_text": "What number is represented by 2 hundreds, 4 tens, and 7 ones?",
+    "solution_text": "Step 1: 2 hundreds is 200. Step 2: 4 tens is 40. Step 3: 7 ones is 7. Step 4: Combine them: 200 + 40 + 7 = 247. Answer: 247.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>247</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>274</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>427</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>2407</mn></math></p>"
+    ],
+    "options_text_1": "247",
+    "options_text_2": "274",
+    "options_text_3": "427",
+    "options_text_4": "2407",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "5",
+    "chapter": "",
+    "topic": "Geometry – properties of shapes",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which of these quadrilaterals always has four equal sides and four right angles?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall the properties of a square. A square has four equal sides and four right angles.</mtext></mrow><mrow><mtext>Step 2: Compare with other quadrilaterals. A rectangle has four right angles but not always four equal sides. A rhombus has four equal sides but not always four right angles. A parallelogram does not always have equal sides or right angles.</mtext></mrow><mrow><mtext>Answer: Square</mtext></mrow></math>",
+    "question_text": "Which of these quadrilaterals always has four equal sides and four right angles?",
+    "solution_text": "Step 1: Recall the properties of a square. A square has four equal sides and four right angles. Step 2: Compare with other quadrilaterals. Answer: Square.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Rectangle</mtext></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Rhombus</mtext></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Square</mtext></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Parallelogram</mtext></math>"
+    ],
+    "options_text_1": "Rectangle",
+    "options_text_2": "Rhombus",
+    "options_text_3": "Square",
+    "options_text_4": "Parallelogram",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "5",
+    "chapter": "",
+    "topic": "Geometry – properties of shapes",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>How many vertices does a cuboid have?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: A cuboid is a 3D shape with rectangular faces.</mtext></mrow><mrow><mtext>Step 2: Vertices are the corners of the shape.</mtext></mrow><mrow><mtext>Step 3: Count the corners of a cuboid. There are 4 corners on the top face and 4 corners on the bottom face.</mtext></mrow><mrow><mtext>Step 4: Total vertices = 4 + 4 = 8.</mtext></mrow><mrow><mtext>Answer: 8</mtext></mrow></math>",
+    "question_text": "How many vertices does a cuboid have?",
+    "solution_text": "Step 1: A cuboid is a 3D shape. Step 2: Vertices are the corners. Step 3: Count the corners: 4 on top, 4 on bottom. Step 4: Total vertices = 8. Answer: 8.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>8</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>12</mn></math>"
+    ],
+    "options_text_1": "4",
+    "options_text_2": "6",
+    "options_text_3": "8",
+    "options_text_4": "12",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "5",
+    "chapter": "",
+    "topic": "Geometry – properties of shapes",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What type of angle is greater than </mtext><mn>90</mn><mtext> degrees but less than </mtext><mn>180</mn><mtext> degrees?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall the definitions of different angle types.</mtext></mrow><mrow><mtext>Step 2: An acute angle is less than 90 degrees. A right angle is exactly 90 degrees. A reflex angle is greater than 180 degrees.</mtext></mrow><mrow><mtext>Step 3: An obtuse angle is greater than 90 degrees but less than 180 degrees.</mtext></mrow><mrow><mtext>Answer: Obtuse angle</mtext></mrow></math>",
+    "question_text": "What type of angle is greater than 90 degrees but less than 180 degrees?",
+    "solution_text": "Step 1: Recall angle definitions. Step 2: An acute angle is < 90°, a right angle is = 90°, a reflex angle is > 180°. Step 3: An obtuse angle is > 90° and < 180°. Answer: Obtuse angle.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Acute angle</mtext></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Right angle</mtext></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Obtuse angle</mtext></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Reflex angle</mtext></math>"
+    ],
+    "options_text_1": "Acute angle",
+    "options_text_2": "Right angle",
+    "options_text_3": "Obtuse angle",
+    "options_text_4": "Reflex angle",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

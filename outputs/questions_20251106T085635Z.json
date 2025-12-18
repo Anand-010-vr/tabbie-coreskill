@@ -1,0 +1,95 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Ratio and proportion",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>In a fruit basket, there are </mtext><mn>4</mn><mtext> apples and </mtext><mn>7</mn><mtext> bananas. What is the ratio of apples to bananas?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the number of apples (4) and bananas (7).</mtext></mrow><mrow><mtext>Step 2: A ratio of apples to bananas is written as apples : bananas.</mtext></mrow><mrow><mtext>Step 3: So, the ratio is 4 : 7.</mtext></mrow></math>",
+    "question_text": "In a fruit basket, there are 4 apples and 7 bananas. What is the ratio of apples to bananas?",
+    "solution_text": "Step 1: Identify the number of apples (4) and bananas (7). Step 2: A ratio of apples to bananas is written as apples : bananas. Step 3: So, the ratio is 4 : 7.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4</mn><mo>:</mo><mn>7</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7</mn><mo>:</mo><mn>4</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4</mn><mo>+</mo><mn>7</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7</mn><mo>-</mo><mn>4</mn></math>"
+    ],
+    "options_text_1": "4:7",
+    "options_text_2": "7:4",
+    "options_text_3": "4+7",
+    "options_text_4": "7-4",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Ratio and proportion",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which of the following ratios is equivalent to </mtext><mn>3</mn><mo>:</mo><mn>5</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: To find an equivalent ratio, multiply or divide both parts of the ratio by the same non-zero number.</mtext></mrow><mrow><mtext>Step 2: For 3:5, if we multiply both parts by 2, we get </mtext><mn>3</mn><mo>×</mo><mn>2</mn><mo>:</mo><mn>5</mn><mo>×</mo><mn>2</mn><mtext>, which is 6:10.</mtext></mrow><mrow><mtext>Step 3: Check the options. 6:10 is an equivalent ratio.</mtext></mrow></math>",
+    "question_text": "Which of the following ratios is equivalent to 3:5?",
+    "solution_text": "Step 1: To find an equivalent ratio, multiply or divide both parts of the ratio by the same non-zero number. Step 2: For 3:5, if we multiply both parts by 2, we get 3x2 : 5x2, which is 6:10. Step 3: Check the options. 6:10 is an equivalent ratio.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6</mn><mo>:</mo><mn>10</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>5</mn><mo>:</mo><mn>3</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3</mn><mo>:</mo><mn>10</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>9</mn><mo>:</mo><mn>12</mn></math>"
+    ],
+    "options_text_1": "6:10",
+    "options_text_2": "5:3",
+    "options_text_3": "3:10",
+    "options_text_4": "9:12",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Ratio and proportion",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>If </mtext><mn>2</mn><mtext> apples cost </mtext><mtext>&#xA3;</mtext><mn>1.00</mn><mtext>, how much would </mtext><mn>6</mn><mtext> apples cost?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Find the relationship between the number of apples: </mtext><mn>6</mn><mtext> apples is </mtext><mn>3</mn><mtext> times </mtext><mn>2</mn><mtext> apples (</mtext><mn>6</mn><mo>&#xF7;</mo><mn>2</mn><mo>=</mo><mn>3</mn><mtext>).</mtext></mrow><mrow><mtext>Step 2: Multiply the cost of 2 apples by 3 to find the cost of 6 apples.</mtext></mrow><mrow><mtext>Step 3: </mtext><mtext>&#xA3;</mtext><mn>1.00</mn><mo>×</mo><mn>3</mn><mo>=</mo><mtext>&#xA3;</mtext><mn>3.00</mn><mtext>.</mtext></mrow></math>",
+    "question_text": "If 2 apples cost £1.00, how much would 6 apples cost?",
+    "solution_text": "Step 1: Find the relationship between the number of apples: 6 apples is 3 times 2 apples (6 ÷ 2 = 3). Step 2: Multiply the cost of 2 apples by 3 to find the cost of 6 apples. Step 3: £1.00 x 3 = £3.00.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>&#xA3;</mtext><mn>2.00</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>&#xA3;</mtext><mn>3.00</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>&#xA3;</mtext><mn>4.00</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>&#xA3;</mtext><mn>6.00</mn></math>"
+    ],
+    "options_text_1": "£2.00",
+    "options_text_2": "£3.00",
+    "options_text_3": "£4.00",
+    "options_text_4": "£6.00",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

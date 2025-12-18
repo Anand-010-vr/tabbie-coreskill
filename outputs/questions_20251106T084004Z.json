@@ -1,0 +1,44 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Statistics",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>A chart that uses pictures to represent data is called a </mtext><mtext>|#|TEXT:1|#|</mtext><mtext>.</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall the definition of different types of charts.</mtext></mrow><mrow><mtext>Step 2: A pictogram uses pictures to show data.</mtext></mrow><mrow><mtext>Answer: pictogram</mtext></mrow></math>",
+    "question_text": "A chart that uses pictures to represent data is called a |#|TEXT:1|#|.",
+    "solution_text": "Step 1: Recall the definition of different types of charts. Step 2: A pictogram uses pictures to show data. Answer: pictogram.",
+    "accepted_answers": "pictogram;pictograph",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Statistics",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>If a tally mark looks like </mtext><mtext>||||</mtext><mtext>, it represents the number </mtext><mtext>|#|TEXT:1|#|</mtext><mtext>.</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Understand how tally marks work.</mtext></mrow><mrow><mtext>Step 2: Each vertical line represents one unit.</mtext></mrow><mrow><mtext>Step 3: Four vertical lines represent the number 4.</mtext></mrow><mrow><mtext>Answer: 4</mtext></mrow></math>",
+    "question_text": "If a tally mark looks like ||||, it represents the number |#|TEXT:1|#|.",
+    "solution_text": "Step 1: Understand how tally marks work. Step 2: Each vertical line represents one unit. Step 3: Four vertical lines represent the number 4. Answer: 4.",
+    "accepted_answers": "4",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

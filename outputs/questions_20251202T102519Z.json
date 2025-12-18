@@ -1,0 +1,107 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>next</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>this</mi><mo>&#160;</mo><mi>sequence</mi><mo>&#160;</mo><mi>when</mi><mo>&#160;</mo><mi>counting</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>multiples</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mn>4</mn><mo>:</mo><mo>&#160;</mo><mn>36</mn><mo>,</mo><mo>&#160;</mo><mn>40</mn><mo>,</mo><mo>&#160;</mo><mn>44</mn><mo>,</mo><mo>&#160;</mo><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>sequence</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>counting</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>multiples</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mn>4</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>To</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>next</mi><mo>&#160;</mo><mi>number</mi><mo>,</mo><mo>&#160;</mo><mi>add</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>last</mi><mo>&#160;</mo><mi>number</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mn>44</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>48</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>48</mn></math></p>",
+    "question_text": "What is the next number in this sequence when counting in multiples of 4: 36, 40, 44, ?",
+    "solution_text": "Step 1: The sequence is counting in multiples of 4. Step 2: To find the next number, add 4 to the last number. Step 3: 44 + 4 = 48. Answer: 48.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>46</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>42</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>48</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>52</mn></math></p>"
+    ],
+    "options_text_1": "46",
+    "options_text_2": "42",
+    "options_text_3": "48",
+    "options_text_4": "52",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:25:19.778002"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mo>&#160;</mo><mi>school</mi><mo>&#160;</mo><mi>had</mi><mo>&#160;</mo><mn>1675</mn><mo>&#160;</mo><mi>pencils</mi><mo>&#160;</mo><mi>at</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>start</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>year</mi><mo>.</mo><mo>&#160;</mo><mi>They</mi><mo>&#160;</mo><mi>used</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>pencils</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>first</mi><mo>&#160;</mo><mi>term</mi><mo>.</mo><mo>&#160;</mo><mi>How</mi><mo>&#160;</mo><mi>many</mi><mo>&#160;</mo><mi>pencils</mi><mo>&#160;</mo><mi>do</mi><mo>&#160;</mo><mi>they</mi><mo>&#160;</mo><mi>have</mi><mo>&#160;</mo><mi>left</mi><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>problem</mi><mo>&#160;</mo><mi>asks</mi><mo>&#160;</mo><mi>for</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>less</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>given</mi><mo>&#160;</mo><mi>number</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Subtract</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>from</mi><mo>&#160;</mo><mn>1675</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mn>1675</mn><mo>&#160;</mo><mo>-</mo><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>1575</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>1575</mn></math></p>",
+    "question_text": "A school had 1675 pencils at the start of the year. They used 100 pencils in the first term. How many pencils do they have left?",
+    "solution_text": "Step 1: The problem asks for 100 less than the given number. Step 2: Subtract 100 from 1675. Step 3: 1675 - 100 = 1575. Answer: 1575.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1775</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1665</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1575</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>1475</mn></math></p>"
+    ],
+    "options_text_1": "1775",
+    "options_text_2": "1665",
+    "options_text_3": "1575",
+    "options_text_4": "1475",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:25:19.778002"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>563</mn><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>question</mi><mo>&#160;</mo><mi>asks</mi><mo>&#160;</mo><mi>for</mi><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>563</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mn>563</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mn>563</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>573</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>573</mn></math></p>",
+    "question_text": "What is 10 more than 563?",
+    "solution_text": "Step 1: The question asks for 10 more than 563. Step 2: Add 10 to 563. Step 3: 563 + 10 = 573. Answer: 573.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>564</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>573</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>663</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>553</mn></math></p>"
+    ],
+    "options_text_1": "564",
+    "options_text_2": "573",
+    "options_text_3": "663",
+    "options_text_4": "553",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:25:19.779547"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+  }
+]

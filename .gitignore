@@ -1,0 +1,88 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environments
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+# Flask/Django
+instance/
+.webassets-cache
+*.log
+local_settings.py
+db.sqlite3
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# AWS Lambda
+.aws-sam/
+samconfig.toml
+*.zip
+lambda-package/
+layer/
+
+# Specific application files
+app.py
+#api_app.py
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Terraform (if used)
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Node modules (if using any Node.js tools)
+node_modules/

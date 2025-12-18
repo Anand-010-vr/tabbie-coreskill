@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>7</mn><mtext> in the number </mtext><mn>8,734,501</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of each digit in 8,734,501.</mtext></mrow><mrow><mtext>Step 2: The digit 7 is in the hundred thousands place.</mtext></mrow><mrow><mtext>Step 3: Therefore, its value is 7 &#xD7; 100,000 = 700,000.</mtext></mrow><mrow><mtext>Answer: 700,000.</mtext></mrow></math>",
+    "question_text": "What is the value of the digit 7 in the number 8,734,501?",
+    "solution_text": "Step 1: Identify the place value of each digit in 8,734,501. Step 2: The digit 7 is in the hundred thousands place. Step 3: Therefore, its value is 7 × 100,000 = 700,000. Answer: 700,000.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>70,000</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>700,000</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7,000,000</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7,000</mn></math>"
+    ],
+    "options_text_1": "70,000",
+    "options_text_2": "700,000",
+    "options_text_3": "7,000,000",
+    "options_text_4": "7,000",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

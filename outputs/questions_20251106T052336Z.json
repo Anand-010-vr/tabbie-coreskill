@@ -1,0 +1,77 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>4</mn><mtext> in the number </mtext><mn>345</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of the digit 4.</mtext></mrow><mrow><mtext>Step 2: In 345, the digit 4 is in the tens place.</mtext></mrow><mrow><mtext>Step 3: The value of 4 tens is 40.</mtext></mrow><mrow><mtext>Answer: 40</mtext></mrow></math>",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>40</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>400</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4000</mn></math>"
+    ],
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.2",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which number has </mtext><mn>2</mn><mtext> hundreds, </mtext><mn>7</mn><mtext> tens, and </mtext><mn>1</mn><mtext> one?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the value for hundreds: 2 hundreds = 200.</mtext></mrow><mrow><mtext>Step 2: Identify the value for tens: 7 tens = 70.</mtext></mrow><mrow><mtext>Step 3: Identify the value for ones: 1 one = 1.</mtext></mrow><mrow><mtext>Step 4: Combine the values: 200 + 70 + 1 = 271.</mtext></mrow><mrow><mtext>Answer: 271</mtext></mrow></math>",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>271</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>172</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>721</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>217</mn></math>"
+    ],
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.2",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which number is greater than </mtext><mn>567</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Compare the hundreds digit. All options have 5 hundreds.</mtext></mrow><mrow><mtext>Step 2: Compare the tens digit. 567 has 6 tens.</mtext></mrow><mrow><mtext>Step 3: Option 1 (560) has 6 tens, but 0 ones is less than 7 ones.</mtext></mrow><mrow><mtext>Step 4: Option 2 (565) has 6 tens, but 5 ones is less than 7 ones.</mtext></mrow><mrow><mtext>Step 5: Option 3 (570) has 7 tens, which is greater than 6 tens.</mtext></mrow><mrow><mtext>Step 6: Option 4 (550) has 5 tens, which is less than 6 tens.</mtext></mrow><mrow><mtext>Answer: 570</mtext></mrow></math>",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>560</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>565</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>570</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>550</mn></math>"
+    ],
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.2",
+      "model": "gemini-1.5-flash"
+    }
+  }
+]

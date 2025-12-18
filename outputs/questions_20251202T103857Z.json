@@ -1,0 +1,86 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>2478</mn><mo>?</mo><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>To</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>more</mi><mo>,</mo><mo>&#160;</mo><mi>add</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>given</mi><mo>&#160;</mo><mi>number</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mn>2478</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>2578</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>2578</mn></math></p>",
+    "question_text": "What is 100 more than 2478?",
+    "solution_text": "Step 1: To find 100 more, add 100 to the given number. Step 2: 2478 + 100 = 2578. Answer: 2578.",
+    "accepted_answers": "2578",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:38:57.606363"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Complete</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>sequence</mi><mo>&#160;</mo><mi>by</mi><mo>&#160;</mo><mi>counting</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>multiples</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mn>8</mn><mo>:</mo><mo>&#160;</mo><mn>64</mn><mo>,</mo><mo>&#160;</mo><mn>72</mn><mo>,</mo><mo>&#160;</mo><mn>80</mn><mo>,</mo><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>sequence</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>counting</mi><mo>&#160;</mo><mi>up</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>multiples</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mn>8</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>last</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>sequence</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mn>80</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>88</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>88</mn></math></p>",
+    "question_text": "Complete the sequence by counting in multiples of 8: 64, 72, 80, ?",
+    "solution_text": "Step 1: The sequence is counting up in multiples of 8. Step 2: Add 8 to the last number in the sequence. Step 3: 80 + 8 = 88. Answer: 88.",
+    "accepted_answers": "88",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:38:57.606363"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>A</mi><mo>&#160;</mo><mi>box</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>pencils</mi><mo>&#160;</mo><mi>contains</mi><mo>&#160;</mo><mn>50</mn><mo>&#160;</mo><mi>pencils</mi><mo>.</mo><mo>&#160;</mo><mi>If</mi><mo>&#160;</mo><mi>a</mi><mo>&#160;</mo><mi>school</mi><mo>&#160;</mo><mi>already</mi><mo>&#160;</mo><mi>has</mi><mo>&#160;</mo><mn>450</mn><mo>&#160;</mo><mi>pencils</mi><mo>,</mo><mo>&#160;</mo><mi>how</mi><mo>&#160;</mo><mi>many</mi><mo>&#160;</mo><mi>pencils</mi><mo>&#160;</mo><mi>will</mi><mo>&#160;</mo><mi>they</mi><mo>&#160;</mo><mi>have</mi><mo>&#160;</mo><mi>if</mi><mo>&#160;</mo><mi>they</mi><mo>&#160;</mo><mi>buy</mi><mo>&#160;</mo><mi>one</mi><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>box</mi><mo>?</mo><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>school</mi><mo>&#160;</mo><mi>starts</mi><mo>&#160;</mo><mi>with</mi><mo>&#160;</mo><mn>450</mn><mo>&#160;</mo><mi>pencils</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>One</mi><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>box</mi><mo>&#160;</mo><mi>adds</mi><mo>&#160;</mo><mn>50</mn><mo>&#160;</mo><mi>pencils</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mn>50</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>current</mi><mo>&#160;</mo><mi>total</mi><mo>:</mo><mo>&#160;</mo><mn>450</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>50</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>500</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>500</mn></math></p>",
+    "question_text": "A box of pencils contains 50 pencils. If a school already has 450 pencils, how many pencils will they have if they buy one more box?",
+    "solution_text": "Step 1: The school starts with 450 pencils. Step 2: One more box adds 50 pencils. Step 3: Add 50 to the current total: 450 + 50 = 500. Answer: 500.",
+    "accepted_answers": "500",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-02T10:38:57.606363"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  }
+]

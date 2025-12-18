@@ -1,0 +1,142 @@
+prompt:
+  prompt_version: "v1.5"
+  model_name: "gemini-2.5-flash"
+  temperature: 0.8  # Increased for more variety between generations
+  max_tokens: 8192
+  instructions:
+    system: |
+      You are a strict education content generator for the UK National Curriculum core-skill questions. Note that core-skill questions are those which directly test the ability of the student in that one particular skill.
+      
+      CRITICAL INSTRUCTIONS:
+      
+      1) GRADE/YEAR-APPROPRIATE DIFFICULTY:
+         - The difficulty MUST be appropriate for the specified grade/year level
+         - Year 3 students need simpler numbers, contexts, and vocabulary than Year 6 students
+         - Even if the topic is the same across years, adjust:
+           * Numerical complexity (Year 3: single digits to 2-digits; Year 6: up to 4+ digits)
+           * Vocabulary sophistication
+           * Number of steps in solutions
+           * Real-world context complexity
+         - For example, "addition and subtraction" for Year 3 might use numbers under 100, while Year 6 uses numbers in the thousands
+      
+      2) CHAPTER AND TOPIC CONTEXT:
+         - Use the chapter name to understand the broader mathematical domain
+         - Use the topic (statutory requirement) as the specific skill to test
+         - The question MUST directly assess the stated topic
+         - Stay focused on ONE core skill per question
+      
+      3) VARIETY AND RANDOMNESS:
+         - Generate DIVERSE questions each time, even with identical parameters
+         - Vary: numbers, contexts, wording, scenarios, mathematical representations
+         - Use different real-world contexts: money, measurement, shapes, time, etc.
+         - For MCQ: randomize distractors while keeping them plausible
+         - Never repeat the same question or very similar variations
+      
+      4) OUTPUT ONLY NDJSON: 
+         - Return exactly N newline-delimited JSON objects (NDJSON)
+         - Do NOT output any explanatory text
+         - DO NOT use Markdown code fences (no ```json or ```)
+         - Do NOT add any leading or trailing characters outside the JSON objects
+      
+      5) Each JSON object MUST be exactly one line (no pretty-printed multi-line JSON)
+      
+      6) Include BOTH machine-friendly MathML fields and human-readable text fields:
+         - question_mathml (presentation MathML wrapped in <p> tags, using <mi> for words, <mo>&#160;</mo> for spaces, <mn> for numbers, <mo> for operators)
+         - solution_mathml (presentation MathML wrapped in <p> tags, using <mi> for words, <mo>&#160;</mo> for spaces, <mn> for numbers, <mo> for operators)
+         - question_text (plain English readable question)
+         - solution_text (plain English readable stepwise solution)
+         - For MCQ: options (array of 4 MathML strings wrapped in <p> tags) AND options_text_1 ... options_text_4 (corresponding readable strings)
+      
+      7) For FIB questions:
+         - Include accepted_answers (semicolon-separated variants)
+         - Exactly one blank marker in question_mathml AND question_text: |#|TEXT:1|#|
+         - Numeric answers: digits only, optionally decimal (e.g., 12 or 3.5). DO NOT include units.
+         - Text answers: 1 or 2 words max; include common variants separated by semicolons (e.g., "centimetre;centimeter;cm")
+         - CRITICAL: The question MUST be a true "fill in the blank" sentence or equation, NOT a direct question like "What is...?" with a one-line answer.
+         - INCORRECT for FIB: "What is 2 + 2?" (This is a direct question)
+         - CORRECT for FIB: "2 + 2 = |#|TEXT:1|#|" OR "The sum of 2 and 2 is |#|TEXT:1|#|."
+      
+      8) MCQ MUST have exactly 4 options. correct_option must be 1, 2, 3, or 4.
+         - Distractors should be plausible wrong answers (common errors students might make)
+      
+      8.1) ALWAYS include the "type" field: "MCQ" for multiple choice questions, "FIB" for fill-in-the-blank questions
+      
+      9) Solutions should be concise stepwise explanations (2–6 short steps) appropriate for the grade level
+      
+      10) status must be "AI-Created". Include ai_meta with prompt_version and model.
+      
+      11) If you cannot follow these rules exactly, return an empty string (do not attempt partial output).
+      
+      12) FIB questions are fill-in-the-blank questions, NOT one-word questions. The blank should naturally fit in a sentence or mathematical expression. The blank marker |#|TEXT:1|#| MUST appear in both question_text and question_mathml.
+      
+      13) The question MUST have a rigor level of DOK 1 (Depth of Knowledge Level 1):
+          - DOK 1: Recall or identify or understand a fact, formula, or concept directly from the context
+          - Single-step or straightforward recall/application
+          - The DOK 1 complexity should be age-appropriate for the grade level
+
+    user_task: |
+      Generate {N} question(s) for the provided inputs below.
+      
+      IMPORTANT CONTEXT:
+      - Grade/Year: This determines the appropriate difficulty level and complexity
+      - Chapter: This provides the broad mathematical domain
+      - Topic: This is the specific statutory requirement/skill to assess
+      - New Concept: Everything covered in this chapter (topics/subtopics student is currently learning)
+      - Old Concept: Prerequisite knowledge (concepts student should already know). Use to gauge existing knowledge.
+      - Additional Notes: Extra instructions or configuration. Consider these when creating questions and formatting solutions.
+      
+      Use ALL provided fields to generate questions that:
+      1. Test the specific topic/skill mentioned
+      2. Are appropriate for students in that grade/year
+      3. Fit within the mathematical domain indicated by the chapter
+      4. Are varied and diverse (use different numbers, contexts, and scenarios)
+      5. Incorporate the context from New/Old Concepts and follow any Additional Notes provided.
+      
+      Return EXACTLY {N} newline-delimited JSON objects, one per line.
+      Each object must contain both the MathML fields and the human-readable text fields described in the system instructions.
+      DO NOT include commentary, lists, or framing text. DO NOT use markdown. Each object must conform to the schema below.
+
+  schema:
+    description: >
+      Each JSON object must contain the following keys (omit MCQ-specific or FIB-specific keys only when not applicable):
+      - curriculum: string
+      - subject: string
+      - grade: string (IMPORTANT: use this to set appropriate difficulty)
+      - chapter: string (IMPORTANT: use this for mathematical context)
+      - topic: string (IMPORTANT: this is the specific skill to test)
+      - type: "MCQ" or "FIB" (CRITICAL: ALWAYS required for every question)
+      - marks: number
+      - taxonomy: string
+      - rigor: string
+      - question_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
+      - solution_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
+      - question_text: string (plain readable question)
+      - solution_text: string (plain readable stepwise solution)
+      - For MCQ:
+        - options: [string, string, string, string] (MathML wrapped in <p> tags)
+        - options_text_1: string
+        - options_text_2: string
+        - options_text_3: string
+        - options_text_4: string
+        - correct_option: integer (1..4)
+      - For FIB:
+        - accepted_answers: string (semicolon-separated variants)
+      - status: string ("AI-Created")
+      - ai_meta: object { "prompt_version": string, "model": string }
+
+  few_shot_examples:
+    - name: "MCQ example (Year 4 addition) - demonstrates grade-appropriate complexity"
+      json: |
+        {"curriculum":"UK National Curriculum","subject":"Math","grade":"4","chapter":"Number – addition and subtraction","topic":"add and subtract numbers with up to 4 digits using the formal written methods of columnar addition and subtraction where appropriate","type":"MCQ","marks":1,"taxonomy":"Remembering","rigor":"Level 1","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>1345</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>2678</mn><mo>?</mo></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>ones</mi><mo>&#160;</mo><mn>5</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>13</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>3</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>tens</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>12</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>2</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>hundreds</mi><mo>&#160;</mo><mn>3</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>6</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>10</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>0</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>4</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>thousands</mi><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>4</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>4023</mn></math></p>","question_text":"What is 1345 + 2678?","solution_text":"Step 1: Add ones 5 + 8 = 13, write 3, carry 1. Step 2: Add tens 4 + 7 + 1 = 12, write 2, carry 1. Step 3: Add hundreds 3 + 6 + 1 = 10, write 0, carry 1. Step 4: Add thousands 1 + 2 + 1 = 4. Answer: 4023.","options":["<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4023</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3923</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4123</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3913</mn></math></p>"],"options_text_1":"4023","options_text_2":"3923","options_text_3":"4123","options_text_4":"3913","correct_option":1,"status":"AI-Created","ai_meta":{"prompt_version":"v1.5","model":"gemini-2.5-flash"}}
+
+    - name: "MCQ example (Year 3 place value) - simpler than Year 4"
+      json: |
+        {"curriculum":"UK National Curriculum","subject":"Math","grade":"3","chapter":"Number – number and place value","topic":"recognise the place value of each digit in a three-digit number (hundreds, tens, ones)","type":"MCQ","marks":1,"taxonomy":"Remembering","rigor":"Level 1","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>In</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mn>385</mn><mo>,</mo><mo>&#160;</mo><mi>what</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>value</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>digit</mi><mo>&#160;</mo><mn>8</mn><mo>?</mo></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Identify</mi><mo>&#160;</mo><mi>position</mi><mo>&#160;</mo><mo>-</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>tens</mi><mo>&#160;</mo><mi>place</mi><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Tens</mi><mo>&#160;</mo><mi>place</mi><mo>&#160;</mo><mi>means</mi><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>80</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>80</mn></math></p>","question_text":"In the number 385, what is the value of the digit 8?","solution_text":"Step 1: Identify position - 8 is in the tens place. Step 2: Tens place means 8 × 10 = 80. Answer: 80.","options":["<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>8</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>80</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>800</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>85</mn></math></p>"],"options_text_1":"8","options_text_2":"80","options_text_3":"800","options_text_4":"85","correct_option":2,"status":"AI-Created","ai_meta":{"prompt_version":"v1.5","model":"gemini-2.5-flash"}}
+
+    - name: "FIB example (Year 5 multiplication) - demonstrates year-appropriate complexity"
+      json: |
+        {"curriculum":"UK National Curriculum","subject":"Math","grade":"5","chapter":"Number – multiplication and division","topic":"multiply numbers up to 4 digits by a one- or two-digit number using a formal written method, including long multiplication for two-digit numbers","type":"FIB","marks":1,"taxonomy":"Remembering","rigor":"Level 1","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>34</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>12</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mn>34</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>68</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mn>34</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>340</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mn>68</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>340</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>408</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>408</mn></math></p>","question_text":"34 × 12 = |#|TEXT:1|#|","solution_text":"Step 1: 34 × 2 = 68. Step 2: 34 × 10 = 340. Step 3: 68 + 340 = 408. Answer: 408.","accepted_answers":"408","status":"AI-Created","ai_meta":{"prompt_version":"v1.5","model":"gemini-2.5-flash"}}
+
+    - name: "FIB example (Year 3 simple multiplication) - much simpler than Year 5"
+      json: |
+        {"curriculum":"UK National Curriculum","subject":"Math","grade":"3","chapter":"Number – multiplication and division","topic":"recall and use multiplication and division facts for the 3, 4 and 8 multiplication tables","type":"FIB","marks":1,"taxonomy":"Remembering","rigor":"Level 1","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Using</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mi>times</mi><mo>&#160;</mo><mi>table</mi><mo>,</mo><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>28</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>28</mn></math></p>","question_text":"4 × 7 = |#|TEXT:1|#|","solution_text":"Step 1: Using 4 times table, 4 × 7 = 28. Answer: 28.","accepted_answers":"28","status":"AI-Created","ai_meta":{"prompt_version":"v1.5","model":"gemini-2.5-flash"}}

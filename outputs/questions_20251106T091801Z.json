@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "4",
+    "chapter": "",
+    "topic": "Number – multiplication and division",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is </mtext><mn>12</mn><mtext> multiplied by </mtext><mn>6</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall the multiplication fact for 12 &#xD7; 6.</mtext></mrow><mrow><mtext>Step 2: 12 &#xD7; 6 = 72.</mtext></mrow><mrow><mtext>Answer: 72.</mtext></mrow></math>",
+    "question_text": "What is 12 multiplied by 6?",
+    "solution_text": "Step 1: Recall the multiplication fact for 12 x 6. Step 2: 12 x 6 = 72. Answer: 72.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>60</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>72</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>78</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>66</mn></math>"
+    ],
+    "options_text_1": "60",
+    "options_text_2": "72",
+    "options_text_3": "78",
+    "options_text_4": "66",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

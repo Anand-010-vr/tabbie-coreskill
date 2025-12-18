@@ -1,0 +1,67 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "Number – number and place value",
+    "topic": "Place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>6</mn><mtext> in the number </mtext><mn>863</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of each digit in 863.</mtext></mrow><mrow><mtext>Step 2: The digit 8 is in the hundreds place, 6 is in the tens place, and 3 is in the units place.</mtext></mrow><mrow><mtext>Step 3: Since 6 is in the tens place, its value is 6 tens, which is 60.</mtext></mrow><mrow><mtext>Answer: 60</mtext></mrow></math>",
+    "question_text": "What is the value of the digit 6 in the number 863?",
+    "solution_text": "Step 1: Identify the place value of each digit in 863. Step 2: The digit 8 is in the hundreds place, 6 is in the tens place, and 3 is in the units place. Step 3: Since 6 is in the tens place, its value is 6 tens, which is 60. Answer: 60.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>60</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>600</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6000</mn></math>"
+    ],
+    "options_text_1": "6",
+    "options_text_2": "60",
+    "options_text_3": "600",
+    "options_text_4": "6000",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "Number – number and place value",
+    "topic": "Find 10 or 100 more or less",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is </mtext><mn>100</mn><mtext> more than </mtext><mn>452</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: To find 100 more than a number, add 1 to the hundreds digit.</mtext></mrow><mrow><mtext>Step 2: The hundreds digit in 452 is 4.</mtext></mrow><mrow><mtext>Step 3: Adding 1 to 4 gives 5.</mtext></mrow><mrow><mtext>Step 4: So, 100 more than 452 is 552.</mtext></mrow><mrow><mtext>Answer: 552</mtext></mrow></math>",
+    "question_text": "What is 100 more than 452?",
+    "solution_text": "Step 1: To find 100 more than a number, add 1 to the hundreds digit. Step 2: The hundreds digit in 452 is 4. Step 3: Adding 1 to 4 gives 5. Step 4: So, 100 more than 452 is 552. Answer: 552.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>352</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>462</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>552</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>453</mn></math>"
+    ],
+    "options_text_1": "352",
+    "options_text_2": "462",
+    "options_text_3": "552",
+    "options_text_4": "453",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "_parsing_error": "{\"curriculum\":\"UK National Curriculum\",\"subject\":\"Math\",\"grade\":\"3\",\"chapter\":\"Number – number and place value\",\"topic\":\"Compare and order numbers\",\"type\":\"MCQ\",\"marks\":1,\"taxonomy\":\"Understanding\",\"rigor\":\"Level 1\",\"question_mathml\":\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which of these numbers is the smallest: </mtext><mn>781</mn><mtext>, </mtext><mn>718</mn><mtext>, </mtext><mn>871</mn><mtext>, </mtext><mn>817</mn><mtext>?</mtext></math>\",\"solution_mathml\":\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Compare the hundreds digits. 781 and 718 both have 7 hundreds. 871 and 817 both have 8 hundreds.</mtext></mrow><mrow><mtext>Step 2: The numbers with 7 hundreds are smaller than those with 8 hundreds.</mtext></mrow><mrow><mtext>Step 3: Compare 781 and 718. Look at the tens digits: 8 in 781 and 1 in 718.</mtext></mrow><mrow><mtext>Step 4: Since 1 is smaller than 8, 718 is the smallest number.</mtext></mrow><mrow><mtext>Answer: 718</mtext></mrow></math>\",\"question_text\":\"Which of these numbers is the smallest: 781, 718, 871, 817?\",\"solution_text\":\"Step 1: Compare the hundreds digits. 781 and 718 both have 7 hundreds. 871 and 817 both have 8 hundreds. Step 2: The numbers with 7 hundreds are smaller than those with 8 hundreds. Step 3: Compare 781 and 718. Look at the tens digits: 8 in 781 and 1 in 718. Step 4: Since 1 is smaller than 8, 718 is the smallest number. Answer: 718.\",\"options\":[\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>781</mn></math>\",\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>718</mn></math>\",\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>871</mn></math>\",\"<math xmlns='http://www.w3.org/1"
+  }
+]

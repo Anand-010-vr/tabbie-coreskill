@@ -1,0 +1,67 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "5",
+    "chapter": "",
+    "topic": "Number – addition and subtraction",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the sum of </mtext><mn>4,587</mn><mtext> and </mtext><mn>2,345</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Add the units digits: 7 + 5 = 12. Write down 2, carry over 1.</mtext></mrow><mrow><mtext>Step 2: Add the tens digits: 8 + 4 + 1 (carry) = 13. Write down 3, carry over 1.</mtext></mrow><mrow><mtext>Step 3: Add the hundreds digits: 5 + 3 + 1 (carry) = 9. Write down 9.</mtext></mrow><mrow><mtext>Step 4: Add the thousands digits: 4 + 2 = 6. Write down 6.</mtext></mrow><mrow><mtext>Answer: 6,932</mtext></mrow></math>",
+    "question_text": "What is the sum of 4,587 and 2,345?",
+    "solution_text": "Step 1: Add the units digits: 7 + 5 = 12. Write down 2, carry over 1. Step 2: Add the tens digits: 8 + 4 + 1 (carry) = 13. Write down 3, carry over 1. Step 3: Add the hundreds digits: 5 + 3 + 1 (carry) = 9. Write down 9. Step 4: Add the thousands digits: 4 + 2 = 6. Write down 6. Answer: 6,932.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6,932</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6,832</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>6,922</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7,032</mn></math>"
+    ],
+    "options_text_1": "6,932",
+    "options_text_2": "6,832",
+    "options_text_3": "6,922",
+    "options_text_4": "7,032",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "5",
+    "chapter": "",
+    "topic": "Number – addition and subtraction",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Calculate </mtext><mn>7,321</mn><mtext> - </mtext><mn>4,185</mn><mtext>.</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Subtract units: 1 - 5. Borrow from tens. 11 - 5 = 6. (Tens becomes 1)</mtext></mrow><mrow><mtext>Step 2: Subtract tens: 1 - 8. Borrow from hundreds. 11 - 8 = 3. (Hundreds becomes 2)</mtext></mrow><mrow><mtext>Step 3: Subtract hundreds: 2 - 1 = 1.</mtext></mrow><mrow><mtext>Step 4: Subtract thousands: 7 - 4 = 3.</mtext></mrow><mrow><mtext>Answer: 3,136</mtext></mrow></math>",
+    "question_text": "Calculate 7,321 - 4,185.",
+    "solution_text": "Step 1: Subtract units: 1 - 5. Borrow from tens. 11 - 5 = 6. (Tens becomes 1). Step 2: Subtract tens: 1 - 8. Borrow from hundreds. 11 - 8 = 3. (Hundreds becomes 2). Step 3: Subtract hundreds: 2 - 1 = 1. Step 4: Subtract thousands: 7 - 4 = 3. Answer: 3,136.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3,136</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3,236</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3,146</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3,036</mn></math>"
+    ],
+    "options_text_1": "3,136",
+    "options_text_2": "3,236",
+    "options_text_3": "3,146",
+    "options_text_4": "3,036",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "_parsing_error": "{\"curriculum\":\"UK National Curriculum\",\"subject\":\"Math\",\"grade\":\"5\",\"chapter\":\"\",\"topic\":\"Number – addition and subtraction\",\"type\":\"MCQ\",\"marks\":1,\"taxonomy\":\"Understanding\",\"rigor\":\"Level 1\",\"question_mathml\":\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>A library has </mtext><mn>3,875</mn><mtext> fiction books and </mtext><mn>2,148</mn><mtext> non-fiction books. How many books are there in total?</mtext></math>\",\"solution_mathml\":\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the operation needed: \"in total\" means addition.</mtext></mrow><mrow><mtext>Step 2: Add the number of fiction and non-fiction books:"
+  }
+]

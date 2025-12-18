@@ -1,0 +1,55 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>5</mn><mtext> in the number </mtext><mn>357</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of each digit in 357.</mtext></mrow><mrow><mtext>Step 2: 3 is in the hundreds place, 5 is in the tens place, 7 is in the ones place.</mtext></mrow><mrow><mtext>Step 3: The digit 5 is in the tens place, so its value is 5 tens.</mtext></mrow><mrow><mtext>Answer: 50</mtext></mrow></math>",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>5</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>50</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>500</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>5000</mn></math>"
+    ],
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.2",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which number is greater than </mtext><mn>482</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Compare the hundreds digits. All options have 4 in the hundreds place.</mtext></mrow><mrow><mtext>Step 2: Compare the tens digits. 482 has 8 tens.</mtext></mrow><mrow><mtext>Step 3: Look for an option with more than 8 tens or the same tens but more ones.</mtext></mrow><mrow><mtext>Step 4: 490 has 9 tens, which is greater than 8 tens.</mtext></mrow><mrow><mtext>Answer: 490</mtext></mrow></math>",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>428</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>480</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>490</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>479</mn></math>"
+    ],
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.2",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "_parsing_error": "{\"curriculum\":\"UK National Curriculum\",\"subject\":\"Math\",\"grade\":\"3\",\"chapter\":\"\",\"topic\":\"Number – number and place value\",\"type\":\"MCQ\",\"marks\":1,\"taxonomy\":\"Remembering\",\"rigor\":\"Level 1\",\"question_mathml\":\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>How do you write the number </mtext><mn>603</mn><mtext> in words?</mtext></math>\",\"solution_mathml\":\"<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the hundreds digit: 6, so 'Six hundred'.</mtext></mrow><mrow><mtext>Step 2: Identify the tens digit: 0, so no 'tens' word.</mtext></mrow><mrow><mtext>Step 3: Identify the ones digit: 3, so 'three'.</mtext></mrow><mrow><mtext>Step 4: Combine them, using 'and' between hundreds and the rest of the number.</mtext></mrow><mrow><"
+  }
+]

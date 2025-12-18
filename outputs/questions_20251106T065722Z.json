@@ -1,0 +1,65 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "FIB",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the hundreds digit in the number </mtext><mn>452</mn><mtext>? </mtext><mtext>|#|TEXT:1|#|</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place values in 452.</mtext></mrow><mrow><mtext>Step 2: The digit in the hundreds place is 4.</mtext></mrow><mrow><mtext>Answer: 4</mtext></mrow></math>",
+    "question_text": "What is the hundreds digit in the number 452?",
+    "solution_text": "Step 1: Identify the place values in 452. Step 2: The digit in the hundreds place is 4. Answer: 4.",
+    "accepted_answers": "4",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "FIB",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the tens digit in the number </mtext><mn>781</mn><mtext>? </mtext><mtext>|#|TEXT:1|#|</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place values in 781.</mtext></mrow><mrow><mtext>Step 2: The digit in the tens place is 8.</mtext></mrow><mrow><mtext>Answer: 8</mtext></mrow></math>",
+    "question_text": "What is the tens digit in the number 781?",
+    "solution_text": "Step 1: Identify the place values in 781. Step 2: The digit in the tens place is 8. Answer: 8.",
+    "accepted_answers": "8",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-1.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "FIB",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the ones digit in the number </mtext><mn>903</mn><mtext>? </mtext><mtext>|#|TEXT:1|#|</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place values in 903.</mtext></mrow><mrow><mtext>Step 2: The digit in the ones place is 3.</mtext></mrow><mrow><mtext>Answer: 3</mtext></mrow></math>",
+    "question_text": "What is the ones digit in the number 903?",
+    "solution_text": "Step 1: Identify the place values in 903. Step 2: The digit in the ones place is 3. Answer: 3.",
+    "accepted_answers": "3",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-1.5-flash"
+    }
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>less</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>835</mn><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>To</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>less</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mi>a</mi><mo>&#160;</mo><mi>number</mi><mo>,</mo><mo>&#160;</mo><mi>subtract</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>from</mi><mo>&#160;</mo><mi>it</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mn>835</mn><mo>&#160;</mo><mo>-</mo><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>735</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>735</mn></math></p>",
+    "question_text": "What number is 100 less than 835?",
+    "solution_text": "Step 1: To find 100 less than a number, subtract 100 from it. Step 2: 835 - 100 = 735. Answer: 735.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>825</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>735</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>935</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>725</mn></math></p>"
+    ],
+    "options_text_1": "825",
+    "options_text_2": "735",
+    "options_text_3": "935",
+    "options_text_4": "725",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

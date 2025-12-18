@@ -1,0 +1,8 @@
+app:
+  name: "Core Skills QGen (no-db)"
+  env: "dev"
+  mock_mode: false                # set to false when GEMINI_API_KEY is configured
+  max_questions_per_request: 20
+  outputs_dir: "outputs"
+  topics_dir: "config/topics"
+  saved_topics_json: "config/topics.json"

@@ -1,0 +1,95 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – addition and subtraction",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is </mtext><mn>34</mn><mtext> + </mtext><mn>23</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Add the units digits: </mtext><mn>4</mn><mtext> + </mtext><mn>3</mn><mtext> = </mtext><mn>7</mn><mtext>.</mtext></mrow><mrow><mtext>Step 2: Add the tens digits: </mtext><mn>3</mn><mtext> + </mtext><mn>2</mn><mtext> = </mtext><mn>5</mn><mtext>.</mtext></mrow><mrow><mtext>Answer: </mtext><mn>57</mn><mtext>.</mtext></mrow></math>",
+    "question_text": "What is 34 + 23?",
+    "solution_text": "Step 1: Add the units digits: 4 + 3 = 7. Step 2: Add the tens digits: 3 + 2 = 5. Answer: 57.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>57</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>56</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>67</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>66</mn></math>"
+    ],
+    "options_text_1": "57",
+    "options_text_2": "56",
+    "options_text_3": "67",
+    "options_text_4": "66",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – addition and subtraction",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Calculate </mtext><mn>58</mn><mtext> - </mtext><mn>25</mn><mtext>.</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Subtract the units digits: </mtext><mn>8</mn><mtext> - </mtext><mn>5</mn><mtext> = </mtext><mn>3</mn><mtext>.</mtext></mrow><mrow><mtext>Step 2: Subtract the tens digits: </mtext><mn>5</mn><mtext> - </mtext><mn>2</mn><mtext> = </mtext><mn>3</mn><mtext>.</mtext></mrow><mrow><mtext>Answer: </mtext><mn>33</mn><mtext>.</mtext></mrow></math>",
+    "question_text": "Calculate 58 - 25.",
+    "solution_text": "Step 1: Subtract the units digits: 8 - 5 = 3. Step 2: Subtract the tens digits: 5 - 2 = 3. Answer: 33.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>33</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>32</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>23</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>22</mn></math>"
+    ],
+    "options_text_1": "33",
+    "options_text_2": "32",
+    "options_text_3": "23",
+    "options_text_4": "22",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – addition and subtraction",
+    "marks": 1,
+    "taxonomy": "Understanding",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>A baker made </mtext><mn>45</mn><mtext> cookies. He sold </mtext><mn>20</mn><mtext> of them. How many cookies are left?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: To find out how many cookies are left, subtract the number sold from the number made: </mtext><mn>45</mn><mtext> - </mtext><mn>20</mn><mtext>.</mtext></mrow><mrow><mtext>Step 2: Subtract the units: </mtext><mn>5</mn><mtext> - </mtext><mn>0</mn><mtext> = </mtext><mn>5</mn><mtext>.</mtext></mrow><mrow><mtext>Step 3: Subtract the tens: </mtext><mn>4</mn><mtext> - </mtext><mn>2</mn><mtext> = </mtext><mn>2</mn><mtext>.</mtext></mrow><mrow><mtext>Answer: </mtext><mn>25</mn><mtext>.</mtext></mrow></math>",
+    "question_text": "A baker made 45 cookies. He sold 20 of them. How many cookies are left?",
+    "solution_text": "Step 1: To find out how many cookies are left, subtract the number sold from the number made: 45 - 20. Step 2: Subtract the units: 5 - 0 = 5. Step 3: Subtract the tens: 4 - 2 = 2. Answer: 25.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>25</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>35</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>15</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>65</mn></math>"
+    ],
+    "options_text_1": "25",
+    "options_text_2": "35",
+    "options_text_3": "15",
+    "options_text_4": "65",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

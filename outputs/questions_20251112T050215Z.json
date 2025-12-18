@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "MCQ",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>625</mn><mo>?</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>To</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>more</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>625</mn><mo>,</mo><mo>&#160;</mo><mi>we</mi><mo>&#160;</mo><mi>add</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mn>625</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mn>625</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>725</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>725</mn></math></p>",
+    "question_text": "What number is 100 more than 625?",
+    "solution_text": "Step 1: To find 100 more than 625, we add 100 to 625. Step 2: 625 + 100 = 725. Answer: 725.",
+    "options": [
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>725</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>525</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>635</mn></math></p>",
+      "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>735</mn></math></p>"
+    ],
+    "options_text_1": "725",
+    "options_text_2": "525",
+    "options_text_3": "635",
+    "options_text_4": "735",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

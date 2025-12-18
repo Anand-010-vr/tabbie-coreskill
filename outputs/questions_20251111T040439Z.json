@@ -1,0 +1,23 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Ratio and proportion",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>If</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>ratio</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>flour</mi><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>sugar</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>a</mi><mo>&#160;</mo><mi>recipe</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mn>1</mn><mo>,</mo><mo>&#160;</mo><mi>and</mi><mo>&#160;</mo><mi>you</mi><mo>&#160;</mo><mi>use</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mi>cups</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>flour</mi><mo>,</mo><mo>&#160;</mo><mi>you</mi><mo>&#160;</mo><mi>should</mi><mo>&#160;</mo><mi>use</mi><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi><mo>&#160;</mo><mi>cups</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>sugar</mi><mo>.</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>ratio</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>flour</mi><mo>&#160;</mo><mi>to</mi><mo>&#160;</mo><mi>sugar</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mn>1</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>You</mi><mo>&#160;</mo><mi>use</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mi>cups</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>flour</mi><mo>,</mo><mo>&#160;</mo><mi>which</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mi>times</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>ratio</mi><mo>&#160;</mo><mi>amount</mi><mo>&#160;</mo><mo>(</mo><mn>2</mn><mo>&#160;</mo><mo>×</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>4</mn><mo>)</mo><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mi>Multiply</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>sugar</mi><mo>&#160;</mo><mi>part</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>ratio</mi><mo>&#160;</mo><mi>by</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>same</mi><mo>&#160;</mo><mi>factor</mi><mo>:</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>×</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>2</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>2</mn></math></p>",
+    "question_text": "If the ratio of flour to sugar in a recipe is 2:1, and you use 4 cups of flour, you should use ? cups of sugar.",
+    "solution_text": "Step 1: The ratio of flour to sugar is 2:1. Step 2: You use 4 cups of flour, which is 2 times the ratio amount (2 x 2 = 4). Step 3: Multiply the sugar part of the ratio by the same factor: 1 x 2 = 2. Answer: 2.",
+    "accepted_answers": "2",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.4",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

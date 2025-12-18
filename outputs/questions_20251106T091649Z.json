@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>3</mn><mtext> in the number </mtext><mn>7,345,901</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of the digit 3 in 7,345,901.</mtext></mrow><mrow><mtext>Step 2: The digit 3 is in the hundred thousands place.</mtext></mrow><mrow><mtext>Step 3: Therefore, its value is 3 multiplied by 100,000.</mtext></mrow><mrow><mtext>Answer: 300,000.</mtext></mrow></math>",
+    "question_text": "What is the value of the digit 3 in the number 7,345,901?",
+    "solution_text": "Step 1: Identify the place value of the digit 3 in 7,345,901. Step 2: The digit 3 is in the hundred thousands place. Step 3: Therefore, its value is 3 multiplied by 100,000, which is 300,000.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3,000</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>30,000</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>300,000</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3,000,000</mn></math>"
+    ],
+    "options_text_1": "3,000",
+    "options_text_2": "30,000",
+    "options_text_3": "300,000",
+    "options_text_4": "3,000,000",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

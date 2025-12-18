@@ -1,0 +1,95 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "algebraic expressions",
+    "topic": "Algebra",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>In the expression </mtext><mn>3</mn><mi>x</mi><mtext> + </mtext><mn>5</mn><mtext>, which letter represents a variable?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall that a variable is a letter or symbol that represents an unknown value.</mtext></mrow><mrow><mtext>Step 2: In the expression </mtext><mn>3</mn><mi>x</mi><mtext> + </mtext><mn>5</mn><mtext>, the letter 'x' represents an unknown value.</mtext></mrow><mrow><mtext>Answer: x</mtext></mrow></math>",
+    "question_text": "In the expression 3x + 5, which letter represents a variable?",
+    "solution_text": "Step 1: Recall that a variable is a letter or symbol that represents an unknown value. Step 2: In the expression 3x + 5, the letter 'x' represents an unknown value. Answer: x.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>x</mi></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>3</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>5</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mo>+</mo></math>"
+    ],
+    "options_text_1": "x",
+    "options_text_2": "3",
+    "options_text_3": "5",
+    "options_text_4": "+",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "algebraic expressions",
+    "topic": "Algebra",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the constant term in the expression </mtext><mn>2</mn><mi>y</mi><mtext> - </mtext><mn>7</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall that a constant term is a term in an algebraic expression that has a fixed value and does not contain a variable.</mtext></mrow><mrow><mtext>Step 2: In the expression </mtext><mn>2</mn><mi>y</mi><mtext> - </mtext><mn>7</mn><mtext>, the term without a variable is </mtext><mo>-</mo><mn>7</mn><mtext>.</mtext></mrow><mrow><mtext>Answer: -7</mtext></mrow></math>",
+    "question_text": "What is the constant term in the expression 2y - 7?",
+    "solution_text": "Step 1: Recall that a constant term is a term in an algebraic expression that has a fixed value and does not contain a variable. Step 2: In the expression 2y - 7, the term without a variable is -7. Answer: -7.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>2</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>y</mi></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mo>-</mo><mn>7</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>2</mn><mi>y</mi></math>"
+    ],
+    "options_text_1": "2",
+    "options_text_2": "y",
+    "options_text_3": "-7",
+    "options_text_4": "2y",
+    "correct_option": 3,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "algebraic expressions",
+    "topic": "Algebra",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the coefficient of 'a' in the expression </mtext><mn>4</mn><mi>a</mi><mtext> + </mtext><mn>9</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Recall that a coefficient is the numerical factor that multiplies a variable in an algebraic term.</mtext></mrow><mrow><mtext>Step 2: In the term </mtext><mn>4</mn><mi>a</mi><mtext>, the number </mtext><mn>4</mn><mtext> is multiplying the variable 'a'.</mtext></mrow><mrow><mtext>Answer: 4</mtext></mrow></math>",
+    "question_text": "What is the coefficient of 'a' in the expression 4a + 9?",
+    "solution_text": "Step 1: Recall that a coefficient is the numerical factor that multiplies a variable in an algebraic term. Step 2: In the term 4a, the number 4 is multiplying the variable 'a'. Answer: 4.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>a</mi></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>9</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>4</mn><mi>a</mi></math>"
+    ],
+    "options_text_1": "4",
+    "options_text_2": "a",
+    "options_text_3": "9",
+    "options_text_4": "4a",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

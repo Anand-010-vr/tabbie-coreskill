@@ -1,0 +1,33 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "6",
+    "chapter": "",
+    "topic": "Number – addition, subtraction, multiplication and division",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the product of </mtext><mn>345</mn><mtext> and </mtext><mn>23</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Multiply 345 by 3: </mtext><mn>345</mn><mo>&#xD7;</mo><mn>3</mn><mo>=</mo><mn>1035</mn><mtext>.</mtext></mrow><mrow><mtext>Step 2: Multiply 345 by 20: </mtext><mn>345</mn><mo>&#xD7;</mo><mn>20</mn><mo>=</mo><mn>6900</mn><mtext>.</mtext></mrow><mrow><mtext>Step 3: Add the results: </mtext><mn>1035</mn><mo>+</mo><mn>6900</mn><mo>=</mo><mn>7935</mn><mtext>.</mtext></mrow><mrow><mtext>Answer: 7935.</mtext></mrow></math>",
+    "question_text": "What is the product of 345 and 23?",
+    "solution_text": "Step 1: Multiply 345 by 3, which is 1035. Step 2: Multiply 345 by 20, which is 6900. Step 3: Add the results: 1035 + 6900 = 7935. Answer: 7935.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7935</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7835</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7945</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7845</mn></math>"
+    ],
+    "options_text_1": "7935",
+    "options_text_2": "7835",
+    "options_text_3": "7945",
+    "options_text_4": "7845",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

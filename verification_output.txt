@@ -1,0 +1,8 @@
+Sending request...
+Status Code: 200
+Number of questions: 1
+Question Text: Complete the sequence: 150, 200, 250, |#|TEXT:1|#|, 350.
+Question MathML: <p><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Complete</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>sequence</mi><mo>:</mo><mo>&#160;</mo><mn>150</mn><mo>,</mo><mo>&#160;</mo><mn>200</mn><mo>,</mo><mo>&#160;</mo><mn>250</mn><mo>,</mo><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi><mo>,</mo><mo>&#160;</mo><mn>350</mn><mo>.</mo></math></p>
+Marker in Text: True
+Marker in MathML: True
+SUCCESS: format verified.

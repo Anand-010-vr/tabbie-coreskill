@@ -1,0 +1,30 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Maths",
+    "grade": "4",
+    "chapter": "Number – number and place value",
+    "topic": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number",
+    "type": "FIB",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>100</mn><mo>&#160;</mo><mi>less</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>6720</mn><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>To</mi><mo>&#160;</mo><mi>find</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>less</mi><mo>&#160;</mo><mi>than</mi><mo>&#160;</mo><mn>6720</mn><mo>,</mo><mo>&#160;</mo><mi>subtract</mi><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mi>from</mi><mo>&#160;</mo><mn>6720</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mn>6720</mn><mo>&#160;</mo><mo>-</mo><mo>&#160;</mo><mn>100</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>6620</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>6620</mn></math></p>",
+    "question_text": "100 less than 6720 is ?",
+    "solution_text": "Step 1: To find 100 less than 6720, subtract 100 from 6720. Step 2: 6720 - 100 = 6620. Answer: 6620.",
+    "accepted_answers": "6620",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.5",
+      "model": "gemini-2.5-flash",
+      "generated_at": "2025-12-03T08:53:11.148582"
+    },
+    "syllabus": "UK National Curriculum",
+    "standard": "UK-4",
+    "section": {
+      "id": 3281,
+      "name": "count from 0 in multiples of 4, 8, 50 and 100; find 10 or 100 more or less than a given number"
+    }
+  }
+]

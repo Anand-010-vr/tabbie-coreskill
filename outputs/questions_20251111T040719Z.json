@@ -1,0 +1,23 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "5",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "type": "FIB",
+    "question_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>In</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mn>345.67</mn><mo>,</mo><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>digit</mi><mo>&#160;</mo><mn>6</mn><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>|#|TEXT:1|#|</mi><mo>&#160;</mo><mi>place</mi><mo>.</mo></math></p>",
+    "solution_mathml": "<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Identify</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>place</mi><mo>&#160;</mo><mi>value</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>each</mi><mo>&#160;</mo><mi>digit</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mn>345.67</mn><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>The</mi><mo>&#160;</mo><mi>digit</mi><mo>&#160;</mo><mn>6</mn><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>immediately</mi><mo>&#160;</mo><mi>after</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>decimal</mi><mo>&#160;</mo><mi>point</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mi>This</mi><mo>&#160;</mo><mi>position</mi><mo>&#160;</mo><mi>represents</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>tenths</mi><mo>&#160;</mo><mi>place</mi><mo>.</mo><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mi>tenths</mi></math></p>",
+    "question_text": "In the number 345.67, the digit 6 is in the ______ place.",
+    "solution_text": "Step 1: Identify the place value of each digit in 345.67. Step 2: The digit 6 is immediately after the decimal point. Step 3: This position represents the tenths place. Answer: tenths.",
+    "accepted_answers": "tenths",
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.4",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is the value of the digit </mtext><mn>7</mn><mtext> in the number </mtext><mn>472</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place value of the digit 7. It is in the tens place.</mtext></mrow><mrow><mtext>Step 2: The value of 7 in the tens place is 70.</mtext></mrow><mrow><mtext>Answer: 70</mtext></mrow></math>",
+    "question_text": "What is the value of the digit 7 in the number 472?",
+    "solution_text": "Step 1: Identify the place value of the digit 7. It is in the tens place. Step 2: The value of 7 in the tens place is 70. Answer: 70.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>70</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>700</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>7000</mn></math>"
+    ],
+    "options_text_1": "7",
+    "options_text_2": "70",
+    "options_text_3": "700",
+    "options_text_4": "7000",
+    "correct_option": 2,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>Which digit is in the hundreds place in the number </mtext><mn>819</mn><mtext>?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: Identify the place values in the number 819.</mtext></mrow><mrow><mtext>Step 2: 8 is in the hundreds place, 1 is in the tens place, and 9 is in the units place.</mtext></mrow><mrow><mtext>Answer: 8</mtext></mrow></math>",
+    "question_text": "Which digit is in the hundreds place in the number 819?",
+    "solution_text": "Step 1: Identify the place values in the number 819. Step 2: 8 is in the hundreds place, 1 is in the tens place, and 9 is in the units place. Answer: 8.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>8</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>1</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>9</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>0</mn></math>"
+    ],
+    "options_text_1": "8",
+    "options_text_2": "1",
+    "options_text_3": "9",
+    "options_text_4": "0",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  },
+  {
+    "curriculum": "UK National Curriculum",
+    "subject": "Math",
+    "grade": "3",
+    "chapter": "",
+    "topic": "Number – number and place value",
+    "type": "MCQ",
+    "marks": 1,
+    "taxonomy": "Remembering",
+    "rigor": "Level 1",
+    "question_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>What is 'three hundred and forty-five' written as a number?</mtext></math>",
+    "solution_mathml": "<math xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mtext>Step 1: 'Three hundred' means 300.</mtext></mrow><mrow><mtext>Step 2: 'Forty-five' means 45.</mtext></mrow><mrow><mtext>Step 3: Combine these values: 300 + 45 = 345.</mtext></mrow><mrow><mtext>Answer: 345</mtext></mrow></math>",
+    "question_text": "What is 'three hundred and forty-five' written as a number?",
+    "solution_text": "Step 1: 'Three hundred' means 300. Step 2: 'Forty-five' means 45. Step 3: Combine these values: 300 + 45 = 345. Answer: 345.",
+    "options": [
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>345</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>354</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>435</mn></math>",
+      "<math xmlns='http://www.w3.org/1998/Math/MathML'><mn>543</mn></math>"
+    ],
+    "options_text_1": "345",
+    "options_text_2": "354",
+    "options_text_3": "435",
+    "options_text_4": "543",
+    "correct_option": 1,
+    "status": "AI-Created",
+    "ai_meta": {
+      "prompt_version": "v1.3",
+      "model": "gemini-2.5-flash"
+    }
+  }
+]
