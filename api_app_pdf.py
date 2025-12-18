@@ -77,6 +77,7 @@ class MCQQuestionResponse(BaseModel):
     question_type: str
     marks: int
     taxonomy: str
+    taxonomy_id: int
     rigor_level: str
     
     question_text: str
@@ -104,6 +105,7 @@ class FIBQuestionResponse(BaseModel):
     question_type: str
     marks: int
     taxonomy: str
+    taxonomy_id: int
     rigor_level: str
     
     question_text: str
@@ -155,6 +157,7 @@ async def generate_questions_pdf(
     question_type: str = Form(..., description="MCQ or FIB"),
     marks: int = Form(..., ge=1, le=10),
     taxonomy: str = Form(...),
+    taxonomy_id: int = Form(...),
     rigor_level: str = Form(...),
     number_of_questions: int = Form(default=1, ge=1, le=10),
     mathml: bool = Form(default=True),
@@ -241,6 +244,7 @@ async def generate_questions_pdf(
                 "question_type": question_type,
                 "marks": marks,
                 "taxonomy": taxonomy,
+                "taxonomy_id": taxonomy_id,
                 "rigor_level": rigor_level,
                 "status": result.get("status", "Unknown"),
                 "ai_meta": result.get("ai_meta", {

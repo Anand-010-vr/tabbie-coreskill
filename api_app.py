@@ -75,6 +75,7 @@ class QuestionGenerationRequest(BaseModel):
     taxonomy: Literal["Remembering", "Understanding", "Applying", "Analyzing", "Evaluating", "Creating"] = Field(
         ..., description="Bloom's Taxonomy level"
     )
+    taxonomy_id: int = Field(..., description="Bloom's Taxonomy ID")
     rigor_level: Literal["Level 1", "Level 2", "Level 3"] = Field(..., description="Rigor level")
     number_of_questions: int = Field(default=1, ge=1, le=10, description="Number of questions to generate")
     mathml: bool = Field(default=True, description="Include MathML in response (True/False)")
@@ -98,6 +99,7 @@ class QuestionGenerationRequest(BaseModel):
                 "question_type": "FIB",
                 "marks": 1,
                 "taxonomy": "Remembering",
+                "taxonomy_id": 1,
                 "rigor_level": "Level 1",
                 "number_of_questions": 2,
                 "mathml": True,
@@ -131,6 +133,7 @@ class MCQQuestionResponse(BaseModel):
     question_type: str
     marks: int
     taxonomy: str
+    taxonomy_id: int
     rigor_level: str
     
     # Generated content
@@ -161,6 +164,7 @@ class FIBQuestionResponse(BaseModel):
     question_type: str
     marks: int
     taxonomy: str
+    taxonomy_id: int
     rigor_level: str
     
     # Generated content
@@ -280,6 +284,7 @@ async def generate_questions(request: QuestionGenerationRequest):
                 "question_type": request.question_type,
                 "marks": request.marks,
                 "taxonomy": request.taxonomy,
+                "taxonomy_id": request.taxonomy_id,
                 "rigor_level": request.rigor_level,
                 "status": result.get("status", "Unknown"),
                 "ai_meta": result.get("ai_meta", {
@@ -373,6 +378,7 @@ async def generate_questions_pdf(
     question_type: str = Form(..., description="MCQ or FIB"),
     marks: int = Form(..., ge=1, le=10),
     taxonomy: str = Form(...),
+    taxonomy_id: int = Form(...),
     rigor_level: str = Form(...),
     number_of_questions: int = Form(default=1, ge=1, le=10),
     mathml: bool = Form(default=True),
@@ -459,6 +465,7 @@ async def generate_questions_pdf(
                 "question_type": question_type,
                 "marks": marks,
                 "taxonomy": taxonomy,
+                "taxonomy_id": taxonomy_id,
                 "rigor_level": rigor_level,
                 "status": result.get("status", "Unknown"),
                 "ai_meta": result.get("ai_meta", {
