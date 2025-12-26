@@ -74,11 +74,24 @@ class MCQQuestionResponse(BaseModel):
     chapter_id: int
     topic: str
     topic_id: int
+    domain: str
+    domain_id: int
     question_type: str
     marks: int
     taxonomy: str
     taxonomy_id: int
     rigor_level: str
+    
+    # Context fields echoed back
+    standard: Optional[str] = None
+    cognitive_skill: Optional[str] = None
+    performance_expectation: Optional[str] = None
+    context_setting: Optional[str] = None
+    level_of_mastery: Optional[str] = None
+    actionable_skill_description: Optional[str] = None
+    
+    # Key takeaway - core learning point
+    key_takeaway: Optional[str] = None
     
     question_text: str
     solution_text: str
@@ -102,11 +115,24 @@ class FIBQuestionResponse(BaseModel):
     chapter_id: int
     topic: str
     topic_id: int
+    domain: str
+    domain_id: int
     question_type: str
     marks: int
     taxonomy: str
     taxonomy_id: int
     rigor_level: str
+    
+    # Context fields echoed back
+    standard: Optional[str] = None
+    cognitive_skill: Optional[str] = None
+    performance_expectation: Optional[str] = None
+    context_setting: Optional[str] = None
+    level_of_mastery: Optional[str] = None
+    actionable_skill_description: Optional[str] = None
+    
+    # Key takeaway - core learning point
+    key_takeaway: Optional[str] = None
     
     question_text: str
     solution_text: str
@@ -152,22 +178,37 @@ async def generate_questions_pdf(
     subject_id: int = Form(...),
     chapter: str = Form(...),
     chapter_id: int = Form(...),
-    topic: str = Form(...),
+    topic: str = Form(..., description="Topic/Core Skill - the specific skill to be tested"),
     topic_id: int = Form(...),
+    domain: str = Form(..., description="Domain name"),
+    domain_id: int = Form(...),
     question_type: str = Form(..., description="MCQ or FIB"),
     marks: int = Form(..., ge=1, le=10),
-    taxonomy: str = Form(...),
+    taxonomy: str = Form(..., description="Comma-separated taxonomy levels: 'Remembering,Understanding' or 'Remembering,Understanding,Applying'"),
     taxonomy_id: int = Form(...),
     rigor_level: str = Form(...),
-    number_of_questions: int = Form(default=1, ge=1, le=10),
+    number_of_questions: int = Form(default=1, ge=1, le=20),
     mathml: bool = Form(default=True),
     old_concept: Optional[str] = Form(default=None),
-    additional_notes: Optional[str] = Form(default=None)
+    additional_notes: Optional[str] = Form(default=None),
+    # New context fields
+    standard: Optional[str] = Form(default=None, description="Primary curriculum standard"),
+    cognitive_skill: Optional[str] = Form(default=None, description="Required thinking skill"),
+    performance_expectation: Optional[str] = Form(default=None, description="What the student must demonstrate"),
+    context_setting: Optional[str] = Form(default=None, description="Setting/tool the skill is applied within"),
+    level_of_mastery: Optional[str] = Form(default=None, description="Expected speed and accuracy"),
+    actionable_skill_description: Optional[str] = Form(default=None, description="Detailed skill description")
 ):
     """
     Generate educational questions based on PDF content and parameters.
+    
+    Taxonomy Distribution (based on selected levels):
+    - R+U (Remembering + Understanding): 50-50 split
+    - R/U + A (single + Applying): 2:1 ratio
+    - R+U+A (all three): 2:2:1 ratio
     """
     logger.info(f"PDF Question generation request received: {question_type} x{number_of_questions}")
+    logger.info(f"Taxonomy: {taxonomy}")
     logger.debug(f"Request details: curriculum={curriculum}, grade={grade}, subject={subject}")
     
     try:
@@ -175,60 +216,143 @@ async def generate_questions_pdf(
         pdf_bytes = await file.read()
         if not pdf_bytes:
             raise HTTPException(status_code=400, detail="Empty PDF file uploaded")
+        
+        # Parse taxonomy from comma-separated string
+        selected_taxonomies = [t.strip() for t in taxonomy.split(",") if t.strip()]
+        
+        # Calculate taxonomy distribution based on selected levels
+        total_questions = number_of_questions
+        taxonomy_distribution = {}
+        
+        if len(selected_taxonomies) == 1:
+            # Only one taxonomy selected - all questions get that taxonomy
+            taxonomy_distribution = {selected_taxonomies[0]: total_questions}
+        
+        elif len(selected_taxonomies) == 2:
+            has_applying = "Applying" in selected_taxonomies
             
-        # Prepare inputs for the generator service
-        inputs = {
-            "syllabus": curriculum,
-            "standard": grade,
-            "subject": subject,
-            "topic": chapter,
-            "section": topic,
-            "marks": marks,
-            "taxonomy": taxonomy,
-            "rigor": rigor_level,
-            "type": question_type,
-            "new_concept": "See attached PDF content",
-            "old_concept": old_concept,
-            "additional_notes": additional_notes,
-        }
+            if has_applying:
+                # One of R/U + Applying: 2:1 ratio
+                other_taxonomy = [t for t in selected_taxonomies if t != "Applying"][0]
+                applying_count = max(1, total_questions // 3)
+                other_count = total_questions - applying_count
+                taxonomy_distribution = {
+                    other_taxonomy: other_count,
+                    "Applying": applying_count
+                }
+            else:
+                # Remembering + Understanding: 50-50 split
+                remembering_count = (total_questions + 1) // 2
+                understanding_count = total_questions - remembering_count
+                taxonomy_distribution = {
+                    "Remembering": remembering_count,
+                    "Understanding": understanding_count
+                }
         
-        logger.info(f"Calling PDF generator service for {number_of_questions} {question_type} question(s)")
+        else:  # len >= 3, all three selected
+            # R+U+A: 2:2:1 ratio
+            applying_count = max(1, total_questions // 5)
+            remaining = total_questions - applying_count
+            remembering_count = (remaining + 1) // 2
+            understanding_count = remaining - remembering_count
+            taxonomy_distribution = {
+                "Remembering": remembering_count,
+                "Understanding": understanding_count,
+                "Applying": applying_count
+            }
         
-        # Call the new PDF generator service
-        results, raw_response = generate_and_validate_with_pdf(
-            str(PROMPT_CFG_PATH),
-            APP_CFG['app'],
-            inputs,
-            number_of_questions,
-            pdf_bytes
-        )
+        logger.info(f"Taxonomy distribution: {taxonomy_distribution}")
         
-        logger.info(f"Generator returned {len(results)} result(s)")
+        all_valid_results = []
+        taxonomy_assignments = []
+        
+        MAX_RETRIES = 3  # Maximum retry attempts per taxonomy level
+        
+        # Generate questions for each taxonomy level with retry logic
+        for taxonomy_level, target_count in taxonomy_distribution.items():
+            if target_count <= 0:
+                continue
+            
+            valid_results_for_level = []
+            remaining_count = target_count
+            retry_count = 0
+            
+            while remaining_count > 0 and retry_count < MAX_RETRIES:
+                if retry_count > 0:
+                    logger.info(f"Retry {retry_count}/{MAX_RETRIES} for {taxonomy_level}: need {remaining_count} more question(s)")
+                
+                # Prepare inputs for the generator service
+                inputs = {
+                    "syllabus": curriculum,
+                    "standard": grade,
+                    "subject": subject,
+                    "topic": chapter,
+                    "section": topic,
+                    "marks": marks,
+                    "taxonomy": taxonomy_level,
+                    "rigor": rigor_level,
+                    "type": question_type,
+                    "new_concept": "See attached PDF content",
+                    "old_concept": old_concept,
+                    "additional_notes": additional_notes,
+                    # New context fields
+                    "standard_desc": standard,
+                    "cognitive_skill": cognitive_skill,
+                    "performance_expectation": performance_expectation,
+                    "context_setting": context_setting,
+                    "level_of_mastery": level_of_mastery,
+                    "actionable_skill_description": actionable_skill_description,
+                }
+                
+                logger.info(f"Calling PDF generator service for {remaining_count} {question_type} question(s) at {taxonomy_level} level")
+                
+                # Call the PDF generator service
+                results, raw_response = generate_and_validate_with_pdf(
+                    str(PROMPT_CFG_PATH),
+                    APP_CFG['app'],
+                    inputs,
+                    remaining_count,
+                    pdf_bytes
+                )
+                
+                logger.info(f"Generator returned {len(results)} result(s) for {taxonomy_level}")
+                
+                # Filter valid results from this batch
+                for result in results:
+                    if result.get("_error") or result.get("_parsing_error") or result.get("_validation_error"):
+                        error_msg = result.get('_error') or result.get('_parsing_error') or result.get('_validation_error')
+                        logger.warning(f"Invalid result for {taxonomy_level}: {error_msg}")
+                        continue
+                    valid_results_for_level.append(result)
+                
+                # Update remaining count
+                remaining_count = target_count - len(valid_results_for_level)
+                retry_count += 1
+            
+            logger.info(f"Final count for {taxonomy_level}: {len(valid_results_for_level)}/{target_count} valid question(s)")
+            
+            # Add valid results to the overall list
+            for result in valid_results_for_level:
+                all_valid_results.append(result)
+                taxonomy_assignments.append(taxonomy_level)
+        
+        logger.info(f"Total valid results from all taxonomy levels: {len(all_valid_results)}")
         
         # Check if generation failed
-        if not results:
-            logger.error("Question generation failed - no results returned")
+        if not all_valid_results:
+            logger.error("Question generation failed - no valid results returned after retries")
             raise HTTPException(
                 status_code=500,
-                detail="Question generation failed - no results returned"
+                detail="Question generation failed - no valid results returned after retries"
             )
         
         # Transform results to match API response format
         response_questions = []
         include_mathml = mathml
         
-        for idx, result in enumerate(results, 1):
-            # Skip error entries
-            if result.get("_error") or result.get("_parsing_error"):
-                logger.warning(f"Skipping result {idx} due to error: {result.get('_error') or result.get('_parsing_error')}")
-                continue
-            
-            # Skip validation errors
-            if result.get("_validation_error"):
-                logger.warning(f"Skipping result {idx} due to validation error: {result.get('_validation_error')}")
-                continue
-            
-            logger.debug(f"Processing result {idx}: {result.get('type', 'unknown')} question")
+        # All results in all_valid_results are already validated, no need to check for errors
+        for idx, (result, assigned_taxonomy) in enumerate(zip(all_valid_results, taxonomy_assignments), 1):
+            logger.debug(f"Processing result {idx}: {result.get('type', 'unknown')} question with taxonomy {assigned_taxonomy}")
             
             base_fields = {
                 "curriculum": curriculum,
@@ -241,11 +365,21 @@ async def generate_questions_pdf(
                 "chapter_id": chapter_id,
                 "topic": topic,
                 "topic_id": topic_id,
+                "domain": domain,
+                "domain_id": domain_id,
                 "question_type": question_type,
                 "marks": marks,
-                "taxonomy": taxonomy,
+                "taxonomy": assigned_taxonomy,  # Use the assigned taxonomy from distribution
                 "taxonomy_id": taxonomy_id,
                 "rigor_level": rigor_level,
+                # Context fields echoed back
+                "standard": standard,
+                "cognitive_skill": cognitive_skill,
+                "performance_expectation": performance_expectation,
+                "context_setting": context_setting,
+                "level_of_mastery": level_of_mastery,
+                "actionable_skill_description": actionable_skill_description,
+                "key_takeaway": result.get("key_takeaway"),  # New field from LLM
                 "status": result.get("status", "Unknown"),
                 "ai_meta": result.get("ai_meta", {
                     "prompt_version": "unknown",

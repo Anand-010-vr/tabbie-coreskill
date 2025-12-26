@@ -1,5 +1,5 @@
 prompt:
-  prompt_version: "v1.5-pdf"
+  prompt_version: "v1.6-pdf"
   model_name: "gemini-2.5-flash"  # Using 2.5-pro as requested in the example code
   temperature: 0.8
   max_tokens: 8192
@@ -62,7 +62,7 @@ prompt:
          - CORRECT for FIB: "2 + 2 = |#|TEXT:1|#|" OR "The sum of 2 and 2 is |#|TEXT:1|#|."
       
       8) MCQ MUST have exactly 4 options. correct_option must be 1, 2, 3, or 4.
-         - Distractors should be plausible wrong answers (common errors students might make)
+         - Distractors MUST follow the DISTRACTOR ANALYSIS GUIDELINES below
       
       8.1) ALWAYS include the "type" field: "MCQ" for multiple choice questions, "FIB" for fill-in-the-blank questions
       
@@ -78,6 +78,79 @@ prompt:
           - DOK 1: Recall or identify or understand a fact, formula, or concept directly from the context
           - Single-step or straightforward recall/application
           - The DOK 1 complexity should be age-appropriate for the grade level
+      
+      14) KEY TAKEAWAY: Every question MUST include a "key_takeaway" field containing a concise, one-sentence statement summarizing the core learning point assessed by the item.
+      
+      ================================================================================
+      ITEM GENERATION CONSTRAINTS (MANDATORY)
+      ================================================================================
+      
+      A) REAL-LIFE RELEVANCE (CRITICAL):
+         - The scenario MUST use an authentic, relatable daily experience appropriate for the student's year level
+         - The number must emerge NATURALLY from this context, not just be a name dropped in
+         - AVOID generic classroom phrases or simple adult scenarios
+         
+         Grade-specific examples:
+         * Year 3: Counting toys/stickers, tracking game scores, sharing sweets equally, pocket money
+         * Year 4: Measuring classroom objects, reading prices at a shop, planning party supplies
+         * Year 5: Calculating distances on a map, budgeting for a school trip, cooking ingredient quantities
+         * Year 6: Comparing data from surveys, calculating discounts, understanding sport statistics
+         * Year 7: Mobile phone plans, travel timetables, recipe scaling for different group sizes
+         * Year 8: Currency exchange for holidays, fuel consumption, building project measurements
+         * Year 9: Interest rates on savings, statistical analysis of real data, engineering scale models
+         * Year 10: Mortgage/loan calculations, scientific data interpretation, business profit margins
+      
+      B) CONTEXTUALIZATION FOCUS:
+         - Item stems MUST anchor the number to a specific, countable object or measure
+         - Ensure variety across all questions (do NOT use "stickers" or any single context repeatedly)
+         - The Context field from the input is MANDATORY guidance - use it to design the scenario
+      
+      C) DIFFICULTY BALANCE:
+         - Ensure a balance of complexity across all items
+         - Aim for items that assess the core skill directly
+         - Avoid relying on complex language comprehension that may obscure the mathematical concept
+      
+      ================================================================================
+      DISTRACTOR ANALYSIS GUIDELINES (MANDATORY FOR MCQ)
+      ================================================================================
+      
+      For MCQ questions, all three incorrect options (distractors) MUST be plausible and based on common student errors. Each distractor must represent one of these error types:
+      
+      DISTRACTOR 1 - CONCEPTUAL ERROR:
+      Demonstrates a failure to grasp the core concept or misuse of fundamental convention.
+      Examples by year:
+      * Year 3: Confusing the value of a digit (80 vs 8), misunderstanding "equal parts"
+      * Year 4: Confusing perimeter and area, misunderstanding fraction equivalence
+      * Year 5: Confusing factors and multiples, misusing order of operations
+      * Year 6: Confusing ratio and fraction, misunderstanding percentage as "per 100"
+      * Year 7: Confusing positive and negative operations, misunderstanding algebraic terms
+      * Year 8: Confusing area and volume formulas, misinterpreting graph scales
+      * Year 9: Confusing correlation and causation, misunderstanding probability concepts
+      * Year 10: Confusing exponential and linear growth, misinterpreting statistical measures
+      
+      DISTRACTOR 2 - COMPUTATIONAL/PLACE VALUE ERROR:
+      Errors in calculation, transposition of digits, incorrect operation, or zero placeholder errors.
+      Examples by year:
+      * Year 3: Writing 471 as 417, forgetting to carry in addition
+      * Year 4: Misaligning decimal points, errors in multiplication tables
+      * Year 5: Errors in long division, decimal place errors
+      * Year 6: Percentage calculation errors, fraction arithmetic mistakes
+      * Year 7: Sign errors with integers, simplification errors
+      * Year 8: Algebraic manipulation errors, rounding errors
+      * Year 9: Formula substitution errors, unit conversion mistakes
+      * Year 10: Significant figure errors, complex calculation mistakes
+      
+      DISTRACTOR 3 - READING/COMPREHENSION ERROR:
+      Misinterpreting the question, context, or confusing similar terms.
+      Examples by year:
+      * Year 3: Confusing "sixty" and "sixteen", selecting wrong number near target
+      * Year 4: Misreading "more than" as "less than", confusing "altogether" with "difference"
+      * Year 5: Misinterpreting "each" vs "in total", confusing "increase" with "decrease"
+      * Year 6: Misreading scales on graphs, confusing "of" in percentage problems
+      * Year 7: Misinterpreting algebraic word problems, confusing variable meanings
+      * Year 8: Misreading compound measure units, confusing similar geometric terms
+      * Year 9: Misinterpreting statistical terminology, confusing hypothesis wording
+      * Year 10: Misreading complex problem structures, confusing domain-specific vocabulary
 
     user_task: |
       Generate {N} question(s) for the provided inputs below.
@@ -85,21 +158,31 @@ prompt:
       IMPORTANT CONTEXT:
       - Grade/Year: This determines the appropriate difficulty level and complexity
       - Chapter: This provides the broad mathematical domain
-      - Topic: This is the specific statutory requirement/skill to assess
+      - Topic (Core Skill): {section} - This is the specific core skill to be tested
+      - Standard: {standard_desc} - The primary curriculum standard
+      - Cognitive Skill: {cognitive_skill} - The required thinking skill for this item
+      - Performance Expectation: {performance_expectation} - What the student must demonstrate for mastery
+      - Context: {context_setting} - CRITICAL for item design. The setting/tool the skill is applied within.
+      - Level of Mastery: {level_of_mastery} - Expected speed and accuracy (e.g., Fluently)
+      - Actionable Skill Description: {actionable_skill_description} - Detailed description of targeted skill
       - New Concept: REFER TO THE ATTACHED PDF. The PDF contains the concept, text, or material that specifically needs to be tested or used as the source for the question.
       - Old Concept: Prerequisite knowledge (concepts student should already know). Use to gauge existing knowledge.
       - Additional Notes: Extra instructions or configuration. Consider these when creating questions and formatting solutions.
       
       Use ALL provided fields to generate questions that:
-      1. Test the specific topic/skill mentioned
+      1. Test the specific core skill/topic mentioned
       2. Are appropriate for students in that grade/year
       3. Fit within the mathematical domain indicated by the chapter
       4. Are varied and diverse (use different numbers, contexts, and scenarios)
-      5. Incorporate the context from the ATTACHED PDF (New Concept) and follow any Additional Notes provided.
+      5. Incorporate the Context field to design questions within the appropriate setting/tool
+      6. Align with the Cognitive Skill and Performance Expectation requirements
+      7. Consider the Level of Mastery when setting difficulty
+      8. Incorporate the context from the ATTACHED PDF (New Concept) and follow any Additional Notes provided.
       
       Return EXACTLY {N} newline-delimited JSON objects, one per line.
       Each object must contain both the MathML fields and the human-readable text fields described in the system instructions.
       DO NOT include commentary, lists, or framing text. DO NOT use markdown. Each object must conform to the schema below.
+
 
   schema:
     description: >
@@ -117,6 +200,7 @@ prompt:
       - solution_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
       - question_text: string (plain readable question)
       - solution_text: string (plain readable stepwise solution)
+      - key_takeaway: string (REQUIRED - a concise, one-sentence statement summarizing the core learning point assessed by this item)
       - For MCQ:
         - options: [string, string, string, string] (MathML wrapped in <p> tags)
         - options_text_1: string
