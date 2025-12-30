@@ -148,6 +148,15 @@ st.markdown("Generate high-quality educational questions using AI.")
 with st.sidebar:
     st.header("Configuration")
     
+    # API Key Provision
+    st.subheader("Authentication")
+    api_key_input = st.text_input("Gemini API Key", value=os.environ.get("GEMINI_API_KEY", ""), type="password", help="Enter your Gemini API key here. It will be used for the current session.")
+    
+    if api_key_input:
+        os.environ["GEMINI_API_KEY"] = api_key_input
+    
+    st.divider()
+    
     mode = st.radio("Generation Mode", ["Standard", "PDF-based"])
     
     if mode == "Standard":
