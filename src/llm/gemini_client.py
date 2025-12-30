@@ -18,9 +18,9 @@ def call_gemini(prompt: str, cfg: Dict[str, Any], n: int) -> str:
     if cfg.get("app", {}).get("mock_mode", True):
         return _mock_output(prompt, cfg, n)
 
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = cfg.get("app", {}).get("gemini_api_key") or os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        raise RuntimeError("GEMINI_API_KEY not set in environment")
+        raise RuntimeError("GEMINI_API_KEY not set in config or environment")
 
     client = genai.Client(api_key=api_key)
 

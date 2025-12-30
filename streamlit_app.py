@@ -150,10 +150,19 @@ with st.sidebar:
     
     # API Key Provision
     st.subheader("Authentication")
-    api_key_input = st.text_input("Gemini API Key", value=os.environ.get("GEMINI_API_KEY", ""), type="password", help="Enter your Gemini API key here. It will be used for the current session.")
+    if "api_key" not in st.session_state:
+        # Default to environment variable if set (e.g. via Streamlit Secrets), but don't persist back to it
+        st.session_state.api_key = os.environ.get("GEMINI_API_KEY", "")
+        
+    api_key_input = st.text_input(
+        "Gemini API Key", 
+        value=st.session_state.api_key, 
+        type="password", 
+        help="Enter your Gemini API key here. It will be used ONLY for your current session and will not be shared with other users."
+    )
     
-    if api_key_input:
-        os.environ["GEMINI_API_KEY"] = api_key_input
+    # Update session state with manual input
+    st.session_state.api_key = api_key_input
     
     st.divider()
     
@@ -211,6 +220,11 @@ if generate_btn:
         st.error("Please upload a PDF file.")
     else:
         with st.spinner("Generating questions..."):
+            # Create a session-safe app config copy
+            call_app_cfg = APP_CFG['app'].copy()
+            if st.session_state.get("api_key"):
+                call_app_cfg['gemini_api_key'] = st.session_state.api_key
+
             dist = calculate_taxonomy_distribution(num_questions, selected_taxonomies)
             all_results = []
             
@@ -248,7 +262,7 @@ if generate_btn:
                     if mode == "Standard":
                         results, raw = generate_and_validate(
                             str(PROMPT_CFG_PATH),
-                            APP_CFG['app'],
+                            call_app_cfg,
                             level_inputs,
                             count
                         )
@@ -257,7 +271,7 @@ if generate_btn:
                         level_inputs["new_concept"] = "See attached PDF content"
                         results, raw = generate_and_validate_with_pdf(
                             str(PROMPT_CFG_PATH_PDF),
-                            APP_CFG['app'],
+                            call_app_cfg,
                             level_inputs,
                             count,
                             pdf_bytes
