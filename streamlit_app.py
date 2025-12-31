@@ -176,6 +176,7 @@ with st.sidebar:
         chapter = st.text_input("Chapter", "Number – number and place value")
         topic = st.text_input("Topic/Core Skill", "count from 0 in multiples of 4, 8, 50 and 100")
         domain = st.text_input("Domain", "Number")
+        new_concept = st.text_input("New Concept (Current Topic)")
     else:
         # PDF upload
         uploaded_file = st.file_uploader("Upload PDF Reference", type="pdf")
@@ -202,12 +203,12 @@ with st.sidebar:
     
     # Context fields (showing directly now)
     st.subheader("Advanced Context")
-    standard_desc = st.text_area("Standard Description")
+    old_concept = st.text_input("Old Concept (Prerequisite Knowledge)")
+    standard_desc = st.text_area("Standard")
     cognitive_skill = st.text_input("Cognitive Skill")
     performance_expectation = st.text_area("Performance Expectation")
     context_setting = st.text_input("Context Setting")
     level_of_mastery = st.text_input("Level of Mastery")
-    actionable_skill = st.text_area("Actionable Skill Description")
     additional_notes = st.text_area("Additional Notes")
 
     generate_btn = st.button("Generate Questions", type="primary", use_container_width=True)
@@ -237,13 +238,16 @@ if generate_btn:
                 "marks": int(marks),
                 "rigor": rigor,
                 "type": q_type,
+                "type": q_type,
+                "new_concept": new_concept if mode == "Standard" else None,
+                "old_concept": old_concept,
                 "additional_notes": additional_notes,
                 "standard_desc": standard_desc,
                 "cognitive_skill": cognitive_skill,
                 "performance_expectation": performance_expectation,
                 "context_setting": context_setting,
                 "level_of_mastery": level_of_mastery,
-                "actionable_skill_description": actionable_skill,
+                "actionable_skill_description": "",
             }
 
             try:

@@ -47,14 +47,18 @@ prompt:
          - solution_text (plain English readable stepwise solution)
          - For MCQ: options (array of 4 MathML strings wrapped in <p> tags) AND options_text_1 ... options_text_4 (corresponding readable strings)
       
-      7) For FIB questions:
+      7) For FIB questions (STRICT FORMATTING):
+         - CRITICAL: The question MUST be a complete sentence or mathematical statement with a missing part, NOT a direct question.
+         - The blank marker |#|TEXT:1|#| represents the missing value.
+         - NEVER end with a question mark "?" unless it's part of a quote, but the structure must be "The value is ...".
+         - INCORRECT (Direct Question): "A piggy bank contains 7 coins, each worth 50 pence. What is the total value of the coins?"
+         - CORRECT (Sentence Completion): "A piggy bank contains 7 coins, each worth 50 pence. The total value of the coins is |#|TEXT:1|#| pence."
+         - INCORRECT (Direct Question): "What is the missing number in 8, 16, 24, __, 40?"
+         - CORRECT (Sentence Completion): "The missing number in this sequence of multiples of 8 is: 8, 16, 24, |#|TEXT:1|#|, 40."
          - Include accepted_answers (semicolon-separated variants)
          - Exactly one blank marker in question_mathml AND question_text: |#|TEXT:1|#|
          - Numeric answers: digits only, optionally decimal (e.g., 12 or 3.5). DO NOT include units.
          - Text answers: 1 or 2 words max; include common variants separated by semicolons (e.g., "centimetre;centimeter;cm")
-         - CRITICAL: The question MUST be a true "fill in the blank" sentence or equation, NOT a direct question like "What is...?" with a one-line answer.
-         - INCORRECT for FIB: "What is 2 + 2?" (This is a direct question)
-         - CORRECT for FIB: "2 + 2 = |#|TEXT:1|#|" OR "The sum of 2 and 2 is |#|TEXT:1|#|."
       
       8) MCQ MUST have exactly 4 options. correct_option must be 1, 2, 3, or 4.
          - Distractors MUST follow the DISTRACTOR ANALYSIS GUIDELINES below
@@ -75,6 +79,140 @@ prompt:
           - The DOK 1 complexity should be age-appropriate for the grade level
       
       14) KEY TAKEAWAY: Every question MUST include a "key_takeaway" field containing a concise, one-sentence statement summarizing the core learning point assessed by the item.
+      
+      15) STRICT BLOOM & DOK ALIGNMENT (NON-NEGOTIABLE)
+      Each question MUST strictly align to the specified Cognitive Skill without leaking into higher levels.
+      
+      Remembering (DOK 1 – Recall):
+      
+      No decision-making
+      
+      No interpretation of context
+      
+      No multi-step reasoning
+      
+      Examples allowed:
+      
+      Direct fact recall
+      
+      Single-operation calculation
+      
+      Identifying a value, name, or result already implied
+      
+      NOT allowed: word problems requiring choice of operation
+      
+      Understanding (DOK 1 – Comprehension)
+      
+      One-step explanation, recognition, or interpretation
+      
+      The operation or method is obvious and stated
+      
+      May include very light context, but no inference
+      
+      NOT allowed: converting context into a mathematical model
+      
+      Applying (LOW DOK 1 ONLY)
+      
+      Exactly ONE obvious operation
+      
+      The required operation must be explicitly cued
+      
+      NOT allowed: multi-condition scenarios, hidden steps, comparisons, or optimisation
+      
+      If a question requires the student to decide what to do, it is NOT DOK 1 and MUST NOT be generated.
+      
+      16) EACH SET MUST CONTAIN A DIFFICULTY SPREAD
+      When generating multiple questions ({N} ≥ 3), you MUST internally distribute them as follows:
+      
+      Tier A – Very Basic (≈30–40%)
+      
+      Pure recall or direct calculation
+      
+      Minimal or no context
+      
+      Smallest numbers for the grade
+      
+      Tier B – Standard (≈30–40%)
+      
+      Simple context
+      
+      Single-step, clearly guided
+      
+      Typical exam-style DOK-1 questions
+      
+      Tier C – Upper DOK-1 (≈20–30%)
+      
+      Short scenario
+      
+      Still single-step
+      
+      No hidden decisions
+      
+      This is the maximum difficulty allowed
+      
+      You MUST NOT generate all questions at the same difficulty tier.
+      
+      17)MANDATORY QUESTION VARIETY ACROSS THE SET
+      
+      Across the {N} questions, you MUST include a mix of:
+      
+      Bare numeric calculation
+      
+      Light real-life context
+      
+      Short scenario-based (still one-step)
+      
+      Both MCQ and FIB (unless explicitly restricted)
+      
+      It is FORBIDDEN for all questions to:
+      
+      Use the same structure
+      
+      Use the same context type
+      
+      Feel interchangeable in difficulty
+      
+      18) ANTI-REPETITION CHECK
+      
+      Before outputting, you MUST internally verify that:
+      
+      No two questions use the same structure
+      
+      No two questions differ only by numbers
+      
+      No repeated sentence patterns
+      
+      No repeated context themes
+      
+      If similarity is detected, REWRITE until distinct.
+      
+      19)CONTEXT MUST NOT INCREASE COGNITIVE LOAD
+      
+      Real-life context is ONLY decorative support for the number
+      
+      Context must NOT require:
+      
+      Interpreting intent
+      
+      Choosing an operation
+      
+      Comparing quantities
+      
+      If removing the story changes the difficulty, the item is TOO HARD and must be simplified
+      
+      20)PRE-OUTPUT VALIDATION
+      
+      Before returning NDJSON, silently verify:
+      
+      Every question is solvable in one obvious step
+      
+      A Year-level student can answer in under 30 seconds
+      
+      The easiest and hardest questions are clearly distinguishable
+      
+      Remembering ≠ Applying in disguise
+      
+      If ANY check fails, regenerate internally.
       
       ================================================================================
       ITEM GENERATION CONSTRAINTS (MANDATORY)
@@ -113,39 +251,24 @@ prompt:
       
       DISTRACTOR 1 - CONCEPTUAL ERROR:
       Demonstrates a failure to grasp the core concept or misuse of fundamental convention.
-      Examples by year:
-      * Year 3: Confusing the value of a digit (80 vs 8), misunderstanding "equal parts"
-      * Year 4: Confusing perimeter and area, misunderstanding fraction equivalence
-      * Year 5: Confusing factors and multiples, misusing order of operations
-      * Year 6: Confusing ratio and fraction, misunderstanding percentage as "per 100"
-      * Year 7: Confusing positive and negative operations, misunderstanding algebraic terms
-      * Year 8: Confusing area and volume formulas, misinterpreting graph scales
-      * Year 9: Confusing correlation and causation, misunderstanding probability concepts
-      * Year 10: Confusing exponential and linear growth, misinterpreting statistical measures
+      Examples:
+      * Confusing the value of a digit (80 vs 8), misunderstanding "equal parts"
+      * Confusing perimeter and area, misunderstanding fraction equivalence
+      * Misusing 'and'/'hyphens'
       
       DISTRACTOR 2 - COMPUTATIONAL/PLACE VALUE ERROR:
       Errors in calculation, transposition of digits, incorrect operation, or zero placeholder errors.
-      Examples by year:
-      * Year 3: Writing 471 as 417, forgetting to carry in addition
-      * Year 4: Misaligning decimal points, errors in multiplication tables
-      * Year 5: Errors in long division, decimal place errors
-      * Year 6: Percentage calculation errors, fraction arithmetic mistakes
-      * Year 7: Sign errors with integers, simplification errors
-      * Year 8: Algebraic manipulation errors, rounding errors
-      * Year 9: Formula substitution errors, unit conversion mistakes
-      * Year 10: Significant figure errors, complex calculation mistakes
+      Examples:
+      * Writing 471 as 417, forgetting to carry in addition.
+      * Incorrect application of an operation.
+      * Incorrect use of a zero placeholder (eg: 506 to 560)
+      
       
       DISTRACTOR 3 - READING/COMPREHENSION ERROR:
       Misinterpreting the question, context, or confusing similar terms.
-      Examples by year:
-      * Year 3: Confusing "sixty" and "sixteen", selecting wrong number near target
-      * Year 4: Misreading "more than" as "less than", confusing "altogether" with "difference"
-      * Year 5: Misinterpreting "each" vs "in total", confusing "increase" with "decrease"
-      * Year 6: Misreading scales on graphs, confusing "of" in percentage problems
-      * Year 7: Misinterpreting algebraic word problems, confusing variable meanings
-      * Year 8: Misreading compound measure units, confusing similar geometric terms
-      * Year 9: Misinterpreting statistical terminology, confusing hypothesis wording
-      * Year 10: Misreading complex problem structures, confusing domain-specific vocabulary
+      Examples:
+      * Confusing "sixty" and "sixteen". 
+      * Selecting wrong number near target
 
     user_task: |
       Generate {N} question(s) for the provided inputs below.
