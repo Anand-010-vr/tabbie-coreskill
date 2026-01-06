@@ -152,32 +152,135 @@ prompt:
       * Year 9: Misinterpreting statistical terminology, confusing hypothesis wording
       * Year 10: Misreading complex problem structures, confusing domain-specific vocabulary
 
+      ================================================================================
+      QUESTION CLASSIFICATION SYSTEM (MANDATORY)
+      ================================================================================
+      
+      Each question MUST belong to exactly ONE of the following 8 classifications.
+      The classification determines the question format, presentation style, and cognitive level.
+      
+      CLASSIFICATION 1: NUMBER-BASED SIMPLE REMEMBERING
+      - Pure numerical recall or direct calculation
+      - NO word problems or real-life context
+      - Examples: "What is 24 + 37?", "5 × 8 = ?", "Which number is 100 more than 456?", "Compare 345 and 356", "Which of the following statements are true?"
+      - Taxonomy: Remembering
+      - Format: Bare numeric expressions or simple numerical questions
+      
+      CLASSIFICATION 2: NUMBER-BASED UNDERSTANDING
+      - Numerical comprehension requiring interpretation
+      - May include light context but focus is on number understanding
+      - Examples: "In 385, what is the value of digit 8?", "Which is greater: 0.5 or 0.05?", "Missing Digits"
+      - Taxonomy: Understanding
+      - Format: Questions testing number sense, place value understanding, comparisons
+      
+      CLASSIFICATION 3: IMAGE-BASED REMEMBERING
+      - Questions that reference or describe visual elements
+      - Direct recall from described images/diagrams
+      - Examples: "Look at the picture showing 3 rows of 5 apples. How many apples are there?"
+      - Taxonomy: Remembering
+      - Format: Must include "[IMAGE DESCRIPTION: ...]" in question stem describing what the student sees
+      
+      CLASSIFICATION 4: REAL-LIFE IMAGE-BASED
+      - Questions using real-world visual scenarios
+      - Authentic contexts with visual support described
+      - Examples: "[IMAGE DESCRIPTION: A price tag showing £4.50] How much would 3 of these cost?"
+      - Taxonomy: Understanding/Applying
+      - Format: Must include realistic [IMAGE DESCRIPTION: ...] elements
+      
+      CLASSIFICATION 5: SIMPLE WORD PROBLEMS (UNDERSTANDING)
+      - Text-based problems requiring comprehension
+      - One-step problems with clear operation implied
+      - Examples: "Tom has 8 marbles. He gets 5 more. How many does he have now?"
+      - Taxonomy: Understanding
+      - Format: Short word problem (2-3 sentences max)
+      
+      CLASSIFICATION 6: SIMPLE WORD PROBLEMS (APPLYING)
+      - Text-based problems requiring application
+      - Real-world application with one clear step
+      - Examples: "A bus has 45 passengers. 18 get off at the first stop. How many remain?"
+      - Taxonomy: Applying
+      - Format: Real-life context word problem (2-3 sentences max)
+      
+      CLASSIFICATION 7: SIMPLE WORD PROBLEMS WITH IMAGES (UNDERSTANDING)
+      - Combined text and visual elements for understanding
+      - Image described as support for comprehension
+      - Examples: "[IMAGE DESCRIPTION: Bar chart showing favourite fruits] How many children chose apples?"
+      - Taxonomy: Understanding
+      - Format: Word problem with [IMAGE DESCRIPTION: ...] element
+      
+      CLASSIFICATION 8: SIMPLE WORD PROBLEMS WITH IMAGES (APPLYING)
+      - Combined text and visual elements for application
+      - Real-world scenario with visual support
+      - Examples: "[IMAGE DESCRIPTION: A map with distances marked] What is the total distance from A to C via B?"
+      - Taxonomy: Applying
+      - Format: Application problem with [IMAGE DESCRIPTION: ...] element
+      
+      ================================================================================
+      MCQ/FIB DISTRIBUTION RULE (GLOBAL RANDOM MIX)
+      ================================================================================
+      
+      Across ALL generated questions in this response, you must maintain an approximately:
+      - 75% MCQ (Multiple Choice Questions)
+      - 25% FIB (Fill-in-the-Blank Questions)
+      
+      CRITICAL RANDOMIZATION INSTRUCTION:
+      - The split should be RANDOM across the entire set.
+      - DO NOT just make the first 75% MCQ and the last 25% FIB.
+      - DO NOT force a specific split for each individual classification count if N is small.
+      - Instead, treat the question type assignment as a random draw with 75% probability for MCQ and 25% for FIB for EACH question.
+      - For very small N (e.g., N=1 or N=2), you may generate all MCQ or mixed, but over many generations it should average out.
+      - Ensure a mix of types if N >= 4.
+      
+      ================================================================================
+      DIVERSITY WITHIN CLASSIFICATION (MANDATORY)
+      ================================================================================
+      
+      When generating multiple questions of the SAME classification:
+      - Each question MUST use DIFFERENT numbers
+      - Each question MUST use DIFFERENT contexts/scenarios
+      - Each question MUST use DIFFERENT wording patterns
+      - NO two questions should feel interchangeable
+      - Vary the specific skill aspect being tested within the topic
+      
+      ================================================================================
+      TOPIC/CORE SKILL PRIORITY (CRITICAL)
+      ================================================================================
+      
+      The "Topic (Core Skill)" input is the PRIMARY CONTEXT for all question generation.
+      - EVERY question MUST directly test this specific core skill
+      - All other inputs (chapter, new concept, old concept, etc.) are SECONDARY
+      - The core skill from the topic determines what mathematical operation/concept is tested
+      - Do NOT stray from the core skill regardless of classification type
+
     user_task: |
       Generate {N} question(s) for the provided inputs below.
       
-      IMPORTANT CONTEXT:
+      CLASSIFICATION: {classification}
+      This is the MANDATORY question classification. Follow the classification rules from the system instructions exactly.
+      
+      TOPIC/CORE SKILL (PRIMARY CONTEXT): {section}
+      This is the MOST IMPORTANT input. Every question MUST directly test this specific core skill.
+      
+      PDF REFERENCE: REFER TO THE ATTACHED PDF. The PDF contains the concept, text, or material that specifically needs to be tested or used as the source for the question.
+      
+      ADDITIONAL CONTEXT:
       - Grade/Year: This determines the appropriate difficulty level and complexity
       - Chapter: This provides the broad mathematical domain
-      - Topic (Core Skill): {section} - This is the specific core skill to be tested
       - Standard: {standard_desc} - The primary curriculum standard
-      - Cognitive Skill: {cognitive_skill} - The required thinking skill for this item
+      - Cognitive Skill: Determined by classification (see system instructions)
       - Performance Expectation: {performance_expectation} - What the student must demonstrate for mastery
-      - Context: {context_setting} - CRITICAL for item design. The setting/tool the skill is applied within.
-      - Level of Mastery: {level_of_mastery} - Expected speed and accuracy (e.g., Fluently)
-      - Actionable Skill Description: {actionable_skill_description} - Detailed description of targeted skill
-      - New Concept: REFER TO THE ATTACHED PDF. The PDF contains the concept, text, or material that specifically needs to be tested or used as the source for the question.
-      - Old Concept: Prerequisite knowledge (concepts student should already know). Use to gauge existing knowledge.
-      - Additional Notes: Extra instructions or configuration. Consider these when creating questions and formatting solutions.
+      - Context: {context_setting} - Setting/tool the skill is applied within
+      - Level of Mastery: {level_of_mastery} - Expected speed and accuracy
+      - Old Concept: Prerequisite knowledge (concepts student should already know)
+      - Additional Notes: Extra instructions or configuration
       
-      Use ALL provided fields to generate questions that:
-      1. Test the specific core skill/topic mentioned
-      2. Are appropriate for students in that grade/year
-      3. Fit within the mathematical domain indicated by the chapter
-      4. Are varied and diverse (use different numbers, contexts, and scenarios)
-      5. Incorporate the Context field to design questions within the appropriate setting/tool
-      6. Align with the Cognitive Skill and Performance Expectation requirements
-      7. Consider the Level of Mastery when setting difficulty
-      8. Incorporate the context from the ATTACHED PDF (New Concept) and follow any Additional Notes provided.
+      GENERATION REQUIREMENTS:
+      1. ALL questions MUST test the Topic/Core Skill: {section}
+      2. ALL questions MUST follow the {classification} format and style
+      3. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
+      4. Ensure maximum diversity across all {N} questions
+      5. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
+      6. Incorporate context from the ATTACHED PDF where appropriate
       
       Return EXACTLY {N} newline-delimited JSON objects, one per line.
       Each object must contain both the MathML fields and the human-readable text fields described in the system instructions.
@@ -192,9 +295,10 @@ prompt:
       - grade: string (IMPORTANT: use this to set appropriate difficulty)
       - chapter: string (IMPORTANT: use this for mathematical context)
       - topic: string (IMPORTANT: this is the specific skill to test)
+      - classification: string (REQUIRED: one of the 8 classification types from system instructions)
       - type: "MCQ" or "FIB" (CRITICAL: ALWAYS required for every question)
       - marks: number
-      - taxonomy: string
+      - taxonomy: string (derived from classification)
       - rigor: string
       - question_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
       - solution_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
@@ -207,6 +311,10 @@ prompt:
         - options_text_2: string
         - options_text_3: string
         - options_text_4: string
+        - distractor_analysis_1: string (Analysis for option 1)
+        - distractor_analysis_2: string (Analysis for option 2)
+        - distractor_analysis_3: string (Analysis for option 3)
+        - distractor_analysis_4: string (Analysis for option 4)
         - correct_option: integer (1..4)
       - For FIB:
         - accepted_answers: string (semicolon-separated variants)

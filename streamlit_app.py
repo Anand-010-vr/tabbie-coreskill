@@ -49,52 +49,59 @@ APP_CFG = load_config()
 PROMPT_CFG_PATH = CONFIG_DIR / "prompt.yaml"
 PROMPT_CFG_PATH_PDF = CONFIG_DIR / "prompt_pdf.yaml"
 
-def calculate_taxonomy_distribution(total_questions: int, selected_taxonomies: List[str]):
-    taxonomy_distribution = {}
-    
-    if not selected_taxonomies:
-        return {}
+# Question classification definitions
+QUESTION_CLASSIFICATIONS = {
+    "Number-Based Remembering": {
+        "key": "number_remembering",
+        "taxonomy": "Remembering",
+        "description": "Pure numerical recall or direct calculation"
+    },
+    "Number-Based Understanding": {
+        "key": "number_understanding",
+        "taxonomy": "Understanding",
+        "description": "Numerical comprehension requiring interpretation"
+    },
+    "Image-Based Remembering": {
+        "key": "image_remembering",
+        "taxonomy": "Remembering",
+        "description": "Questions referencing visual elements with direct recall"
+    },
+    "Real-Life Image Based": {
+        "key": "real_life_image",
+        "taxonomy": "Understanding",
+        "description": "Real-world visual scenarios"
+    },
+    "Word Problems (Understanding)": {
+        "key": "word_understanding",
+        "taxonomy": "Understanding",
+        "description": "Text-based problems requiring comprehension"
+    },
+    "Word Problems (Applying)": {
+        "key": "word_applying",
+        "taxonomy": "Applying",
+        "description": "Text-based problems requiring application"
+    },
+    "Word Problems + Images (Understanding)": {
+        "key": "word_image_understanding",
+        "taxonomy": "Understanding",
+        "description": "Combined text and visual elements for understanding"
+    },
+    "Word Problems + Images (Applying)": {
+        "key": "word_image_applying",
+        "taxonomy": "Applying",
+        "description": "Combined text and visual elements for application"
+    }
+}
 
-    if len(selected_taxonomies) == 1:
-        taxonomy_distribution = {selected_taxonomies[0]: total_questions}
-    
-    elif len(selected_taxonomies) == 2:
-        has_applying = "Applying" in selected_taxonomies
-        
-        if has_applying:
-            # One of R/U + Applying: 2:1 ratio
-            other_taxonomy = [t for t in selected_taxonomies if t != "Applying"][0]
-            applying_count = max(1, total_questions // 3)
-            other_count = total_questions - applying_count
-            taxonomy_distribution = {
-                other_taxonomy: other_count,
-                "Applying": applying_count
-            }
-        else:
-            # Remembering + Understanding: 50-50 split
-            remembering_count = (total_questions + 1) // 2
-            understanding_count = total_questions - remembering_count
-            taxonomy_distribution = {
-                "Remembering": remembering_count,
-                "Understanding": understanding_count
-            }
-    
-    else:  # len >= 3, all three selected
-        # R+U+A: 2:2:1 ratio
-        applying_count = max(1, total_questions // 5)
-        remaining = total_questions - applying_count
-        remembering_count = (remaining + 1) // 2
-        understanding_count = remaining - remembering_count
-        taxonomy_distribution = {
-            "Remembering": remembering_count,
-            "Understanding": understanding_count,
-            "Applying": applying_count
-        }
-    
-    return taxonomy_distribution
+def get_classification_distribution(classification_counts: Dict[str, int]) -> Dict[str, int]:
+    """Return only classifications with count > 0."""
+    return {k: v for k, v in classification_counts.items() if v > 0}
 
 def display_question_card(result: Dict[str, Any], idx: int, include_mathml: bool):
-    st.markdown(f"### Question {idx} ({result.get('taxonomy', 'N/A')})")
+    classification = result.get('classification', 'N/A')
+    taxonomy = result.get('taxonomy', 'N/A')
+    q_type = result.get("type", "MCQ")
+    st.markdown(f"### Question {idx}: {classification} ({q_type} - {taxonomy})")
     
     col1, col2 = st.columns([2, 1])
     
@@ -116,18 +123,41 @@ def display_question_card(result: Dict[str, Any], idx: int, include_mathml: bool
             st.code(result.get("solution_mathml"), language="xml")
 
     with col2:
-        if result.get("type", "MCQ") == "MCQ" or "options" in result:
+        if q_type == "MCQ" or "options" in result:
             st.warning("**Options**")
-            options = result.get("options", [])
+            
+            # Show readable options
+            options_text = []
+            for i in range(1, 5):
+                opt_key = f"options_text_{i}"
+                if opt_key in result:
+                    options_text.append(result[opt_key])
+            
+            # Fallback to MathML list if text fields missing (shouldn't happen with new schema)
+            if not options_text and "options" in result:
+                 options_text = result["options"]
+
             correct_idx = result.get("correct_option", 1)
             
-            for i, opt in enumerate(options, 1):
+            for i, opt in enumerate(options_text, 1):
                 is_correct = " (Correct ✅)" if i == correct_idx else ""
-                st.write(f"**{i}.** {opt}{is_correct}")
+                
+                # Distractor Analysis
+                dist_key = f"distractor_analysis_{i}"
+                dist_analysis = result.get(dist_key, "")
+                dist_display = f"\n*Analysis: {dist_analysis}*" if dist_analysis else ""
+                
+                st.write(f"**{i}.** {opt}{is_correct}{dist_display}")
             
-            if include_mathml and result.get("options_mathml"):
+            # Only show MathML options if enabled
+            if include_mathml and "options" in result:
                 st.markdown("**Raw Options MathML:**")
-                st.code("\n".join(result.get("options_mathml", [])), language="xml")
+                # Ensure options is a list before joining
+                opts = result.get("options", [])
+                if isinstance(opts, list):
+                    st.code("\n".join(opts), language="xml")
+                else:
+                    st.code(str(opts), language="xml")
         else:
             st.warning("**Accepted Answers**")
             st.write(result.get("accepted_answers", "N/A"))
@@ -170,13 +200,13 @@ with st.sidebar:
     
     if mode == "Standard":
         # Standard input fields
+        new_concept = st.text_area("New Concept (Current Topic)")
         curriculum = st.text_input("Curriculum", "UK National Curriculum")
         grade = st.selectbox("Grade", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], index=3)
         subject = st.text_input("Subject", "Maths")
         chapter = st.text_input("Chapter", "Number – number and place value")
         topic = st.text_input("Topic/Core Skill", "count from 0 in multiples of 4, 8, 50 and 100")
         domain = st.text_input("Domain", "Number")
-        new_concept = st.text_input("New Concept (Current Topic)")
     else:
         # PDF upload
         uploaded_file = st.file_uploader("Upload PDF Reference", type="pdf")
@@ -189,13 +219,22 @@ with st.sidebar:
 
     st.divider()
     
-    q_type = st.selectbox("Question Type", ["MCQ", "FIB"])
-    num_questions = st.slider("Number of Questions", 1, 10, 1)
-    marks = st.number_input("Marks", 1, 10, 1)
+    # Question Classifications - users select how many of each type
+    st.subheader("Question Classifications")
+    st.caption("Enter the number of questions for each classification (75% MCQ / 25% FIB auto-applied)")
     
-    taxonomy_options = ["Remembering", "Understanding", "Applying"]
-    selected_taxonomies = st.multiselect("Taxonomy Levels", taxonomy_options, default=["Remembering", "Understanding"])
+    classification_counts = {}
+    for class_name, class_info in QUESTION_CLASSIFICATIONS.items():
+        classification_counts[class_name] = st.number_input(
+            f"{class_name}",
+            min_value=0, max_value=20, value=0,
+            help=class_info["description"],
+            key=class_info["key"]
+        )
     
+    st.divider()
+    
+    marks = st.number_input("Marks (per question)", 1, 10, 1)
     rigor = st.selectbox("Rigor Level", ["Level 1", "Level 2", "Level 3"])
     include_mathml = st.checkbox("Enable MathML Output (Raw Display)", value=True)
     
@@ -203,9 +242,8 @@ with st.sidebar:
     
     # Context fields (showing directly now)
     st.subheader("Advanced Context")
-    old_concept = st.text_input("Old Concept (Prerequisite Knowledge)")
+    old_concept = st.text_area("Old Concept (Prerequisite Knowledge)")
     standard_desc = st.text_area("Standard")
-    cognitive_skill = st.text_input("Cognitive Skill")
     performance_expectation = st.text_area("Performance Expectation")
     context_setting = st.text_input("Context Setting")
     level_of_mastery = st.text_input("Level of Mastery")
@@ -215,8 +253,12 @@ with st.sidebar:
 
 # Main Area
 if generate_btn:
-    if not selected_taxonomies:
-        st.error("Please select at least one taxonomy level.")
+    # Get classifications with count > 0
+    active_classifications = get_classification_distribution(classification_counts)
+    total_questions = sum(active_classifications.values())
+    
+    if total_questions == 0:
+        st.error("Please select at least one question classification with a count greater than 0.")
     elif mode == "PDF-based" and not uploaded_file:
         st.error("Please upload a PDF file.")
     else:
@@ -226,68 +268,91 @@ if generate_btn:
             if st.session_state.get("api_key"):
                 call_app_cfg['gemini_api_key'] = st.session_state.api_key
 
-            dist = calculate_taxonomy_distribution(num_questions, selected_taxonomies)
             all_results = []
             
-            inputs = {
+            # Base inputs (without classification-specific fields)
+            base_inputs = {
                 "syllabus": curriculum,
                 "standard": grade,
                 "subject": subject,
                 "topic": chapter,
-                "section": topic,
+                "section": topic,  # This is the Topic/Core Skill - PRIMARY CONTEXT
                 "marks": int(marks),
                 "rigor": rigor,
-                "type": q_type,
-                "type": q_type,
                 "new_concept": new_concept if mode == "Standard" else None,
                 "old_concept": old_concept,
                 "additional_notes": additional_notes,
                 "standard_desc": standard_desc,
-                "cognitive_skill": cognitive_skill,
                 "performance_expectation": performance_expectation,
                 "context_setting": context_setting,
                 "level_of_mastery": level_of_mastery,
-                "actionable_skill_description": "",
             }
 
             try:
                 placeholder = st.empty()
                 progress_bar = st.progress(0)
-                total_taxonomies = len(dist)
+                total_classifications = len(active_classifications)
                 
-                for i, (tax_level, count) in enumerate(dist.items()):
-                    if count <= 0: continue
+                # Read PDF once if in PDF mode
+                pdf_bytes = None
+                if mode == "PDF-based" and uploaded_file:
+                    pdf_bytes = uploaded_file.read()
+                
+                for i, (classification_name, count) in enumerate(active_classifications.items()):
+                    if count <= 0: 
+                        continue
                     
-                    placeholder.text(f"Generating {count} questions for {tax_level}...")
+                    class_info = QUESTION_CLASSIFICATIONS[classification_name]
+                    placeholder.text(f"Generating {count} questions for {classification_name}...")
                     
-                    level_inputs = inputs.copy()
-                    level_inputs["taxonomy"] = tax_level
+                    # Build inputs for this classification
+                    classification_inputs = base_inputs.copy()
+                    classification_inputs["classification"] = classification_name
+                    classification_inputs["taxonomy"] = class_info["taxonomy"]
                     
-                    if mode == "Standard":
-                        results, raw = generate_and_validate(
-                            str(PROMPT_CFG_PATH),
-                            call_app_cfg,
-                            level_inputs,
-                            count
-                        )
-                    else:
-                        pdf_bytes = uploaded_file.read()
-                        level_inputs["new_concept"] = "See attached PDF content"
-                        results, raw = generate_and_validate_with_pdf(
-                            str(PROMPT_CFG_PATH_PDF),
-                            call_app_cfg,
-                            level_inputs,
-                            count,
-                            pdf_bytes
-                        )
+                    # Collection for this classification
+                    classification_results = []
+                    attempts = 0
+                    max_attempts = 5  # Safety break
                     
-                    # Filter and add tax level info
-                    for r in results:
-                        if not any(k in r for k in ["_error", "_parsing_error", "_validation_error"]):
-                            r["taxonomy"] = tax_level
-                            all_results.append(r)
+                    while len(classification_results) < count and attempts < max_attempts:
+                        needed = count - len(classification_results)
+                        attempts += 1
+                        
+                        if attempts > 1:
+                            placeholder.text(f"Retry {attempts-1}: Generating {needed} more questions for {classification_name}...")
+                        
+                        if mode == "Standard":
+                            results, raw = generate_and_validate(
+                                str(PROMPT_CFG_PATH),
+                                call_app_cfg,
+                                classification_inputs,
+                                needed
+                            )
+                        else:
+                            classification_inputs["new_concept"] = "See attached PDF content"
+                            results, raw = generate_and_validate_with_pdf(
+                                str(PROMPT_CFG_PATH_PDF),
+                                call_app_cfg,
+                                classification_inputs,
+                                needed,
+                                pdf_bytes
+                            )
+                        
+                        # Filter valid results and add to collection
+                        for r in results:
+                            if not any(k in r for k in ["_error", "_parsing_error", "_validation_error"]):
+                                r["classification"] = classification_name
+                                r["taxonomy"] = class_info["taxonomy"]
+                                classification_results.append(r)
                     
-                    progress_bar.progress((i + 1) / total_taxonomies)
+                    # Add collected valid results to main list
+                    all_results.extend(classification_results)
+                    
+                    if len(classification_results) < count:
+                        st.warning(f"Could only generate {len(classification_results)}/{count} valid questions for {classification_name} after {attempts} attempts.")
+                    
+                    progress_bar.progress((i + 1) / total_classifications)
                 
                 placeholder.empty()
                 progress_bar.empty()
