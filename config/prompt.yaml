@@ -276,60 +276,84 @@ prompt:
       
       Each question MUST belong to exactly ONE of the following 8 classifications.
       The classification determines the question format, presentation style, and cognitive level.
+      NOTE : The examples only cover some grades, but the logic of nature of questions is the same for all grades.
       
       CLASSIFICATION 1: NUMBER-BASED SIMPLE REMEMBERING
       - Pure numerical recall or direct calculation
       - NO word problems or real-life context
-      - Examples: "What is 24 + 37?", "5 × 8 = ___", "Which number is 100 more than 456?"
+      - Examples: 
+          * "Compare 345 and 456"
+          * "Find 345 + 221"
+          * "Which among the following shows the correct representation of a line segment?"
       - Taxonomy: Remembering
       - Format: Bare numeric expressions or simple numerical questions
       
       CLASSIFICATION 2: NUMBER-BASED UNDERSTANDING
       - Numerical comprehension requiring interpretation
       - May include light context but focus is on number understanding
-      - Examples: "In 385, what is the value of digit 8?", "Which is greater: 0.5 or 0.05?"
+      - Examples: 
+          * "From the options given below, choose the correct digit to fill in the blank space. 58 > 5__"
+          * "Which among the following comes at the units place of 14^2?"
+          * "Which among the following statement is true regarding the number 351 (options: 1 is at the hundreds place...)?"
       - Taxonomy: Understanding
       - Format: Questions testing number sense, place value understanding, comparisons
       
       CLASSIFICATION 3: IMAGE-BASED REMEMBERING
       - Questions that reference or describe visual elements
       - Direct recall from described images/diagrams
-      - Examples: "Look at the picture showing 3 rows of 5 apples. How many apples are there?"
+      - Examples: 
+          * "Name the shape shown in the figure [IMAGE DESCRIPTION: A sphere]"
+          * "Identify the number of vertices of the shape given in the image [IMAGE DESCRIPTION: A cube]"
+          * "Locate the number marked on the number line."
       - Taxonomy: Remembering
       - Format: Must include "[IMAGE DESCRIPTION: ...]" in question stem describing what the student sees
       
       CLASSIFICATION 4: REAL-LIFE IMAGE-BASED
       - Questions using real-world visual scenarios
       - Authentic contexts with visual support described
-      - Examples: "[IMAGE DESCRIPTION: A price tag showing £4.50] How much would 3 of these cost?"
+      - Examples: 
+          * "The image shows a tower. Which 3D shapes make up the tower? [IMAGE DESCRIPTION: A tower made of cylinder and cone]"
+          * "Identify the line of symmetry of the given image. [IMAGE DESCRIPTION: Taj Mahal with different lines of symmetry]"
+          * "Identify the diameter of the given circular park [IMAGE DESCRIPTION: A circular park with different coloured lines]"
       - Taxonomy: Understanding/Applying
       - Format: Must include realistic [IMAGE DESCRIPTION: ...] elements
       
       CLASSIFICATION 5: SIMPLE WORD PROBLEMS (UNDERSTANDING)
       - Text-based problems requiring comprehension
       - One-step problems with clear operation implied
-      - Examples: "Tom has 8 marbles. He gets 5 more. How many does he have now?"
+      - Examples: 
+          * "Rohan has a collection of 325 stamps. His sister has 352 stamps. Who has more stamps?"
+          * "Lena has 7 red balloons and 5 blue balloons. How many balloons does she have in total?"
+          * "Sarah has 5 baskets. Each basket contains 4 apples. How many apples does Sarah have in total?"
       - Taxonomy: Understanding
       - Format: Short word problem (2-3 sentences max)
       
       CLASSIFICATION 6: SIMPLE WORD PROBLEMS (APPLYING)
       - Text-based problems requiring application
       - Real-world application with one clear step
-      - Examples: "A bus has 45 passengers. 18 get off at the first stop. How many remain?"
+      - Examples: 
+          * "In the student council election, Alex got 540 votes and Priya got 520 votes. Who will become the student council president?"
+          * "Maya has 12 cookies. She bakes 8 more cookies. How many cookies does she have now?"
+          * "Sarah is arranging chairs in rows for an event. She needs 6 chairs for each row. If she sets up 4 rows, how many chairs does she need in total?"
       - Taxonomy: Applying
       - Format: Real-life context word problem (2-3 sentences max)
       
       CLASSIFICATION 7: SIMPLE WORD PROBLEMS WITH IMAGES (UNDERSTANDING)
       - Combined text and visual elements for understanding
       - Image described as support for comprehension
-      - Examples: "[IMAGE DESCRIPTION: Bar chart showing favourite fruits] How many children chose apples?"
+      - Examples: 
+          * "The image shows a pizza left over after a party. What fraction of the pizza is left? [IMAGE DESCRIPTION: Image of 1/2 pizza left]"
+          * "The image shows a cheque showing an amount Rohan donated to a charity. Express the amount in words."
+          * "Find the perimeter of the rectangular field shown in the figure."
       - Taxonomy: Understanding
       - Format: Word problem with [IMAGE DESCRIPTION: ...] element
       
       CLASSIFICATION 8: SIMPLE WORD PROBLEMS WITH IMAGES (APPLYING)
       - Combined text and visual elements for application
       - Real-world scenario with visual support
-      - Examples: "[IMAGE DESCRIPTION: A map with distances marked] What is the total distance from A to C via B?"
+      - Examples: 
+          * "Mary had few coins in her piggy bank as shown in the image. Her father gave her five more coins of ₹5. What will the new total? [IMAGE DESCRIPTION: Four ₹5 coins and two ₹10 coins]"
+          * "The image of a rectangular plot owned by a farmer is given in the figure. What is the total length of the fencing required to enclose the field?"
       - Taxonomy: Applying
       - Format: Application problem with [IMAGE DESCRIPTION: ...] element
       
