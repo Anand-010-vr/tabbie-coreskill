@@ -176,7 +176,7 @@ prompt:
       - May include light context but focus is on number understanding
       - Examples: 
           * "From the options given below, choose the correct digit to fill in the blank space. 58 > 5__"
-          * "Which among the following comes at the units place of 14^2?"
+          * "Find the digit at the units place of 14^2"
           * "Which among the following statement is true regarding the number 351 (options: 1 is at the hundreds place...)?"
       - Taxonomy: Understanding
       - Format: Questions testing number sense, place value understanding, comparisons
