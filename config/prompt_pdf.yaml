@@ -1,6 +1,6 @@
 prompt:
   prompt_version: "v1.6-pdf"
-  model_name: "gemini-2.5-flash"  # Using 2.5-pro as requested in the example code
+  model_name: "gemini-2.5-pro"
   temperature: 0.8
   max_tokens: 8192
   instructions:
@@ -80,6 +80,92 @@ prompt:
           - The DOK 1 complexity should be age-appropriate for the grade level
       
       14) KEY TAKEAWAY: Every question MUST include a "key_takeaway" field containing a concise, one-sentence statement summarizing the core learning point assessed by the item.
+
+      15) VARIATION ACROSS QUESTIONS (CRITICAL)
+      To induce variation in the questions generated:
+         - Across multiple questions, from a particular coreskill, it must **not** have the same formula or method as other questions from the previous prompts and this prompt.
+         - Every question this prompt or even from previous prompts should have a different reasoning path or problem-solving approach, even if they belong to the same topic.
+         - Avoid repeating the **same conceptual setup or question type** — explore **varied logical routes** to test understanding in multiple ways for questions formed using this prompt and previous prompts.
+         - Remember: even if the underlying formula or equation is the same, there can be many distinct ways to frame or reach the problem (e.g., reverse calculation, comparison, reasoning-based, estimation, or application in a new context).
+         - Avoid repeating the same problem flow as other questions in this prompt or previous prompts.
+         - Even if the underlying mathematical concept or equation is the same, each question must explore a **different contextual or reasoning twist** within the topic from other questions in this prompt or previous prompts.
+         - Do **not** vary questions merely by changing arithmetic operations or time values from other questions in this prompt or previous prompts.
+         - Instead, vary the **thinking approach, context, or scenario framing** — e.g., forward reasoning vs backward reasoning, single event vs comparison, estimation vs exact computation, planning vs analysis from other questions in this prompt or previous prompts.
+         - Ensure that each question from other questions in this prompt or previous prompts feels **conceptually unique inside the same topic**, not just numerically different.
+         - Look the correct example how its changing the questions even its for a single topic (Do those type of twisiting for the question).
+
+         Example:
+         INCORRECT DESIGN EXAMPLES (Single Topic: Finding nth term)
+         ------------------------------------------------------------
+         # Chapter: Arithmetic Progression (A.P.)
+         # Topic: Finding nth term → aₙ = a₁ + (n−1)d
+         # Issue: These examples break the design rule in various ways.
+
+         ---
+
+         Question 1 — (Concept Drift)
+           The sum of the first 20 terms of an A.P. is 610, and the first term is 5.
+           Find the common difference.
+
+           Problem:
+             - Uses formula for sum of A.P. (Sₙ = n/2 [2a₁ + (n−1)d])
+             - NOT the nth-term concept.
+             - Mixes topics, breaking the single-concept rule.
+
+         ---
+
+         Question 2 — (Repetitive Question Form)
+           Find the 10th term of an A.P. where a₁ = 3 and d = 5.
+           Find the 15th term of another A.P. where a₁ = 3 and d = 5.
+           Find the 20th term of another A.P. where a₁ = 3 and d = 5.
+
+           Problem:
+             - No variation in reasoning, only number changes.
+             - Same forward substitution repeated.
+             - Zero conceptual or scenario variation.
+
+           ---
+
+           Question 3 — (Same Scenario Logic Reuse)
+            A car’s speed increases by 5 km/h every hour. If it starts at 30 km/h, find its speed after 8 hours.
+                A bus’s speed increases by 3 km/h every hour. If it starts at 40 km/h, find its speed after 9 hours.
+
+              Problem:
+               - Both are the same reasoning pattern with only different numbers.
+               - Scenario looks “different,” but thinking path identical.
+               - Violates “distinct reasoning flow” rule.
+
+           ---
+
+           Question 4 — (Multiple Concepts Mixed)
+             The 5th term of an A.P. is 25 and its sum up to the 10th term is 150.
+             Find the first term.
+
+              Problem:
+               - Introduces the “sum of terms” formula.
+               - Breaks the rule of staying inside *only* nth-term concept.
+
+           ---
+
+           Question 5 — (Unrealistic or Forced Scenario)
+             An alien colony increases its laser beams by 2 each second starting from 3 beams.
+             Find how many beams in the 50th second.
+
+              Problem:
+               - Unrealistic, lacks relatable context.
+               - Superficial story without cognitive reasoning twist.
+               - Adds fiction instead of real-life logic.
+
+           ---
+
+           Question 6 — (Arithmetic Operation Substitution Instead of Logical Variation)
+             The 4th term of an A.P. is 20 and the 8th term is 36. Find d.
+              The 4th term of an A.P. is 20 and the 8th term is 36. Find a₁.
+              The 4th term of an A.P. is 20 and the 8th term is 36. Find the 12th term.
+
+             Problem:
+               - All three are *mechanically* different questions, but cognitively identical.
+               - Only changes the arithmetic target — not the reasoning method.
       
       ================================================================================
       ITEM GENERATION CONSTRAINTS (MANDATORY)
@@ -297,13 +383,14 @@ prompt:
       - Context: {context_setting} - Setting/tool the skill is applied within
       - Level of Mastery: {level_of_mastery} - Expected speed and accuracy
       - Old Concept: Prerequisite knowledge (concepts student should already know)
+      - Previous Questions: {previous_questions} - Questions already generated in this session.
       - Additional Notes: Extra instructions or configuration
       
       GENERATION REQUIREMENTS:
       1. ALL questions MUST test the Topic/Core Skill: {section}
       2. ALL questions MUST follow the {classification} format and style
       3. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
-      4. Ensure maximum diversity across all {N} questions
+      4. Ensure maximum diversity across all {N} questions - DO NOT REPEAT content/logic from Previous Questions
       5. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
       6. Incorporate context from the ATTACHED PDF where appropriate
       

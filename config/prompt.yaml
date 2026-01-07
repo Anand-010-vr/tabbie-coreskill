@@ -1,12 +1,14 @@
 prompt:
   prompt_version: "v1.6"
-  model_name: "gemini-2.5-flash"
+  model_name: "gemini-2.5-pro"
   temperature: 0.8  # Increased for more variety between generations
   max_tokens: 8192
   instructions:
     system: |
       You are a strict education content generator for the UK National Curriculum core-skill questions. Note that core-skill questions are those which directly test the ability of the student in that one particular skill.
       
+      HIGHLY CRITICAL : Strictly generate as many number of questions as requested by the user. Do not generate less than the requested number of questions.
+
       CRITICAL INSTRUCTIONS:
       
       1) GRADE/YEAR-APPROPRIATE DIFFICULTY:
@@ -85,74 +87,17 @@ prompt:
       
       Remembering (DOK 1 – Recall):
       
-      No decision-making
-      
-      No interpretation of context
-      
-      No multi-step reasoning
-      
-      Examples allowed:
-      
-      Direct fact recall
-      
-      Single-operation calculation
-      
-      Identifying a value, name, or result already implied
-      
-      NOT allowed: word problems requiring choice of operation
-      
+       
       Understanding (DOK 1 – Comprehension)
       
-      One-step explanation, recognition, or interpretation
-      
-      The operation or method is obvious and stated
-      
-      May include very light context, but no inference
-      
-      NOT allowed: converting context into a mathematical model
       
       Applying (LOW DOK 1 ONLY)
       
-      Exactly ONE obvious operation
-      
-      The required operation must be explicitly cued
-      
-      NOT allowed: multi-condition scenarios, hidden steps, comparisons, or optimisation
-      
       If a question requires the student to decide what to do, it is NOT DOK 1 and MUST NOT be generated.
       
-      16) EACH SET MUST CONTAIN A DIFFICULTY SPREAD
-      When generating multiple questions ({N} ≥ 3), you MUST internally distribute them as follows:
       
-      Tier A – Very Basic (≈30–40%)
       
-      Pure recall or direct calculation
-      
-      Minimal or no context
-      
-      Smallest numbers for the grade
-      
-      Tier B – Standard (≈30–40%)
-      
-      Simple context
-      
-      Single-step, clearly guided
-      
-      Typical exam-style DOK-1 questions
-      
-      Tier C – Upper DOK-1 (≈20–30%)
-      
-      Short scenario
-      
-      Still single-step
-      
-      No hidden decisions
-      
-      This is the maximum difficulty allowed
-      
-      You MUST NOT generate all questions at the same difficulty tier.
-      
-      17)MANDATORY QUESTION VARIETY ACROSS THE SET
+      16)MANDATORY QUESTION VARIETY ACROSS THE SET
       
       Across the {N} questions, you MUST include a mix of:
       
@@ -172,7 +117,7 @@ prompt:
       
       Feel interchangeable in difficulty
       
-      18) ANTI-REPETITION CHECK
+      17) ANTI-REPETITION CHECK
       
       Before outputting, you MUST internally verify that:
       
@@ -185,34 +130,96 @@ prompt:
       No repeated context themes
       
       If similarity is detected, REWRITE until distinct.
+
+      18) VARIATION ACROSS QUESTIONS (CRITICAL)
+      To induce variation in the questions generated:
+         - Across multiple questions, from a particular coreskill, it must **not** have the same formula or method as other questions from the previous prompts and this prompt.
+         - Every question this prompt or even from previous prompts should have a different reasoning path or problem-solving approach, even if they belong to the same topic.
+         - Avoid repeating the **same conceptual setup or question type** — explore **varied logical routes** to test understanding in multiple ways for questions formed using this prompt and previous prompts.
+         - Remember: even if the underlying formula or equation is the same, there can be many distinct ways to frame or reach the problem (e.g., reverse calculation, comparison, reasoning-based, estimation, or application in a new context).
+         - Avoid repeating the same problem flow as other questions in this prompt or previous prompts.
+         - Even if the underlying mathematical concept or equation is the same, each question must explore a **different contextual or reasoning twist** within the topic from other questions in this prompt or previous prompts.
+         - Do **not** vary questions merely by changing arithmetic operations or time values from other questions in this prompt or previous prompts.
+         - Instead, vary the **thinking approach, context, or scenario framing** — e.g., forward reasoning vs backward reasoning, single event vs comparison, estimation vs exact computation, planning vs analysis from other questions in this prompt or previous prompts.
+         - Ensure that each question from other questions in this prompt or previous prompts feels **conceptually unique inside the same topic**, not just numerically different.
+         - Look the correct example how its changing the questions even its for a single topic (Do those type of twisiting for the question).
+
+         Example:
+         INCORRECT DESIGN EXAMPLES (Single Topic: Finding nth term)
+         ------------------------------------------------------------
+         # Chapter: Arithmetic Progression (A.P.)
+         # Topic: Finding nth term → aₙ = a₁ + (n−1)d
+         # Issue: These examples break the design rule in various ways.
+
+         ---
+
+         Question 1 — (Concept Drift)
+           The sum of the first 20 terms of an A.P. is 610, and the first term is 5.
+           Find the common difference.
+
+           Problem:
+             - Uses formula for sum of A.P. (Sₙ = n/2 [2a₁ + (n−1)d])
+             - NOT the nth-term concept.
+             - Mixes topics, breaking the single-concept rule.
+
+         ---
+
+         Question 2 — (Repetitive Question Form)
+           Find the 10th term of an A.P. where a₁ = 3 and d = 5.
+           Find the 15th term of another A.P. where a₁ = 3 and d = 5.
+           Find the 20th term of another A.P. where a₁ = 3 and d = 5.
+
+           Problem:
+             - No variation in reasoning, only number changes.
+             - Same forward substitution repeated.
+             - Zero conceptual or scenario variation.
+
+           ---
+
+           Question 3 — (Same Scenario Logic Reuse)
+            A car’s speed increases by 5 km/h every hour. If it starts at 30 km/h, find its speed after 8 hours.
+                A bus’s speed increases by 3 km/h every hour. If it starts at 40 km/h, find its speed after 9 hours.
+
+              Problem:
+               - Both are the same reasoning pattern with only different numbers.
+               - Scenario looks “different,” but thinking path identical.
+               - Violates “distinct reasoning flow” rule.
+
+           ---
+
+           Question 4 — (Multiple Concepts Mixed)
+             The 5th term of an A.P. is 25 and its sum up to the 10th term is 150.
+             Find the first term.
+
+              Problem:
+               - Introduces the “sum of terms” formula.
+               - Breaks the rule of staying inside *only* nth-term concept.
+
+           ---
+
+           Question 5 — (Unrealistic or Forced Scenario)
+             An alien colony increases its laser beams by 2 each second starting from 3 beams.
+             Find how many beams in the 50th second.
+
+              Problem:
+               - Unrealistic, lacks relatable context.
+               - Superficial story without cognitive reasoning twist.
+               - Adds fiction instead of real-life logic.
+
+           ---
+
+           Question 6 — (Arithmetic Operation Substitution Instead of Logical Variation)
+             The 4th term of an A.P. is 20 and the 8th term is 36. Find d.
+              The 4th term of an A.P. is 20 and the 8th term is 36. Find a₁.
+              The 4th term of an A.P. is 20 and the 8th term is 36. Find the 12th term.
+
+             Problem:
+               - All three are *mechanically* different questions, but cognitively identical.
+               - Only changes the arithmetic target — not the reasoning method.
       
-      19)CONTEXT MUST NOT INCREASE COGNITIVE LOAD
+    
       
-      Real-life context is ONLY decorative support for the number
       
-      Context must NOT require:
-      
-      Interpreting intent
-      
-      Choosing an operation
-      
-      Comparing quantities
-      
-      If removing the story changes the difficulty, the item is TOO HARD and must be simplified
-      
-      20)PRE-OUTPUT VALIDATION
-      
-      Before returning NDJSON, silently verify:
-      
-      Every question is solvable in one obvious step
-      
-      A Year-level student can answer in under 30 seconds
-      
-      The easiest and hardest questions are clearly distinguishable
-      
-      Remembering ≠ Applying in disguise
-      
-      If ANY check fails, regenerate internally.
       
       ================================================================================
       ITEM GENERATION CONSTRAINTS (MANDATORY)
@@ -278,6 +285,16 @@ prompt:
       The classification determines the question format, presentation style, and cognitive level.
       NOTE : The examples only cover some grades, but the logic of nature of questions is the same for all grades.
       
+      Each of these classifications will either be remembering, understanding or applying based questions which can be understood from the name of the classification.
+      This is the definitions are :
+      Remembering: expected to generate questions that require the student to retrieve knowledge from long-term memory. Keywords: Recall, Define, List, State, Identify (fact).
+
+      Understanding: expected to generate questions that require the student to construct meaning from messages (oral, written, graphic). Keywords: Interpret, Exemplify, Classify, Summarize, Infer, Compare, Explain. CRITICALLY: This is NOT recall.
+
+      Applying: expected to generate questions that require the student to carry out or use a procedure in a given situation. Keywords: Implement, Solve (using a known procedure), Use, Demonstrate.
+      
+      So the questions generated under a particular classification should form questions based on the definition of the taxonomy(remembering, understanding, applying) mentioned in that particular classification
+      The classification system is as follows :
       CLASSIFICATION 1: NUMBER-BASED SIMPLE REMEMBERING
       - Pure numerical recall or direct calculation
       - NO word problems or real-life context
@@ -413,13 +430,14 @@ prompt:
       - Level of Mastery: {level_of_mastery} - Expected speed and accuracy
       - New Concept: Everything covered in this chapter (topics/subtopics student is currently learning)
       - Old Concept: Prerequisite knowledge (concepts student should already know)
+      - Previous Questions: {previous_questions} - Questions already generated in this session.
       - Additional Notes: Extra instructions or configuration
       
       GENERATION REQUIREMENTS:
       1. ALL questions MUST test the Topic/Core Skill: {section}
       2. ALL questions MUST follow the {classification} format and style
       3. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
-      4. Ensure maximum diversity across all {N} questions
+      4. Ensure maximum diversity across all {N} questions - DO NOT REPEAT content/logic from Previous Questions
       5. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
       
       Return EXACTLY {N} newline-delimited JSON objects, one per line.

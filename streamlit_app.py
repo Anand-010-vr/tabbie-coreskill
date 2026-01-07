@@ -298,6 +298,9 @@ if generate_btn:
                 if mode == "PDF-based" and uploaded_file:
                     pdf_bytes = uploaded_file.read()
                 
+                # Context accumulator for cross-call variation
+                previous_questions_summary = []
+
                 for i, (classification_name, count) in enumerate(active_classifications.items()):
                     if count <= 0: 
                         continue
@@ -309,6 +312,10 @@ if generate_btn:
                     classification_inputs = base_inputs.copy()
                     classification_inputs["classification"] = classification_name
                     classification_inputs["taxonomy"] = class_info["taxonomy"]
+                    
+                    # Inject previously generated questions context
+                    if previous_questions_summary:
+                        classification_inputs["previous_questions"] = "\n".join(previous_questions_summary)
                     
                     # Collection for this classification
                     classification_results = []
@@ -345,6 +352,11 @@ if generate_btn:
                                 r["classification"] = classification_name
                                 r["taxonomy"] = class_info["taxonomy"]
                                 classification_results.append(r)
+                                
+                                # Add this question to the summary for future context
+                                # Format: [Type] Question Text
+                                q_summary = f"[{r.get('type', 'N/A')}] {r.get('question_text', '')}" 
+                                previous_questions_summary.append(q_summary)
                     
                     # Add collected valid results to main list
                     all_results.extend(classification_results)
