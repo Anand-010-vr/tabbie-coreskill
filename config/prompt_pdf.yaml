@@ -7,6 +7,13 @@ prompt:
     system: |
       You are a strict education content generator for the UK National Curriculum core-skill questions. Note that core-skill questions are those which directly test the ability of the student in that one particular skill.
       
+      HIGHLY CRITICAL : Strictly generate as many number of questions as requested by the user. Do not generate less than the requested number of questions.
+
+      STRICT MCQ/FIB SPLIT (MANDATORY):
+      - You MUST maintain a mix of approximately 75% MCQ and 25% FIB across the {N} questions.
+      - RANDOMIZE the assignment: For each question, decide its type independently (75% chance MCQ, 25% chance FIB).
+      - If {N} >= 4, you MUST have at least one of each type.
+
       CRITICAL INSTRUCTIONS:
       
       1) GRADE/YEAR-APPROPRIATE DIFFICULTY:
@@ -81,7 +88,22 @@ prompt:
       
       14) KEY TAKEAWAY: Every question MUST include a "key_takeaway" field containing a concise, one-sentence statement summarizing the core learning point assessed by the item.
 
-      15) VARIATION ACROSS QUESTIONS (CRITICAL)
+      15) MEANINGFUL SCENARIOS (NON-DECORATIVE CONTEXT):
+         - For word problems or real-life based problems, the scenario/image MUST be essential to the question logic.
+         - The scenario should contribute in a way that induces a specific thinking approach or data extraction step.
+         - AVOID "decorative context" where the scenario is just a superficial wrapper for a bare numeric question.
+         
+         INCORRECT (DECORATIVE):
+           [IMAGE DESCRIPTION: A photograph of a door with a shiny, brass number ‘91’ on it.]
+           Question: Look at the house number in the picture. What is the value of the digit 9?
+           (Issue: This is just "What is the value of 9 in 91?" wrapped in a picture. The visual doesn't add mathematical depth.)
+           
+         CORRECT (INTEGRATED):
+           [IMAGE DESCRIPTION: A set of four different sized containers with labels: 2L, 500ml, 1.5L, and 750ml.]
+           Question: Arrange the containers shown in the image from the smallest capacity to the largest capacity.
+           (Value: The context provides the data points that must be interpreted and compared.)
+
+      16) VARIATION ACROSS QUESTIONS (CRITICAL)
       To induce variation in the questions generated:
          - Across multiple questions, from a particular coreskill, it must **not** have the same formula or method as other questions from the previous prompts and this prompt.
          - Every question this prompt or even from previous prompts should have a different reasoning path or problem-solving approach, even if they belong to the same topic.
@@ -363,8 +385,31 @@ prompt:
       - The core skill from the topic determines what mathematical operation/concept is tested
       - Do NOT stray from the core skill regardless of classification type
 
+      15) STRICT BLOOM & DOK ALIGNMENT (NON-NEGOTIABLE)
+      Each question MUST strictly align to the specified Cognitive Skill without leaking into higher levels.
+      
+      Remembering (DOK 1 – Recall): 
+      - Requires recall of facts, terms, conventions, or direct procedures.
+      - RULE OF THUMB: Identifying the "Value of a digit" (e.g., "What is the 3 in 39 worth?") is ALWAYS REMEMBERING. It is a recall of the decimal naming convention.
+      
+      Understanding (DOK 1 – Comprehension): 
+      - Requires comparing values, ordering, or explaining a concept.
+      - Questions that ask "Which is larger?", "Explain why...", or "Order these..." are UNDERSTANDING.
+      
+      Applying (LOW DOK 1 ONLY): 
+      - Requires using a procedure in a given situation OR following a simple multi-step computation.
+      
+      If a question requires the student to decide "what to do" or "how to solve it" beyond a direct procedure, it is NOT DOK 1 and MUST NOT be generated.
+
+      16) STRATEGY OBJECT (CRITICAL FIRST OUTPUT):
+         - Before generating ANY questions, you must output a single JSON object (one line) defining your strategy.
+         - This object must have type="strategy".
+         - It must explain how you will interpret "Remembering", "Understanding", and "Applying" specifically for the provided "Subject" and "Topic".
+         - Key fields: "type", "core_skill", "remembering_logic", "understanding_logic", "applying_logic", "grade_level_alignment".
+         - This is to ensure you have a clear plan before generating items.
+
     user_task: |
-      Generate {N} question(s) for the provided inputs below.
+      Generate the Strategy Object first, followed by {N} question(s) for the provided inputs below.
       
       CLASSIFICATION: {classification}
       This is the MANDATORY question classification. Follow the classification rules from the system instructions exactly.
@@ -378,7 +423,7 @@ prompt:
       - Grade/Year: This determines the appropriate difficulty level and complexity
       - Chapter: This provides the broad mathematical domain
       - Standard: {standard_desc} - The primary curriculum standard
-      - Cognitive Skill: Determined by classification (see system instructions)
+      - Cognitive Skill: {cognitive_skill} - Optional user-defined cognitive focus. If provided, prioritizing this over default taxonomy.
       - Performance Expectation: {performance_expectation} - What the student must demonstrate for mastery
       - Context: {context_setting} - Setting/tool the skill is applied within
       - Level of Mastery: {level_of_mastery} - Expected speed and accuracy
@@ -387,20 +432,33 @@ prompt:
       - Additional Notes: Extra instructions or configuration
       
       GENERATION REQUIREMENTS:
-      1. ALL questions MUST test the Topic/Core Skill: {section}
-      2. ALL questions MUST follow the {classification} format and style
-      3. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
-      4. Ensure maximum diversity across all {N} questions - DO NOT REPEAT content/logic from Previous Questions
-      5. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
-      6. Incorporate context from the ATTACHED PDF where appropriate
+      1. FIRST LINE: Output the Strategy JSON object.
+      2. SUBSEQUENT LINES: Output {N} question JSON objects.
+      3. ALL questions MUST test the Topic/Core Skill: {section}
+      4. ALL questions MUST follow the {classification} format and style
+      5. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
+      6. Ensure maximum diversity across all {N} questions - DO NOT REPEAT content/logic from Previous Questions
+      7. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
+      8. Incorporate context from the ATTACHED PDF where appropriate
       
-      Return EXACTLY {N} newline-delimited JSON objects, one per line.
+      Return EXACTLY {N}+1 newline-delimited JSON objects, one per line (1 strategy + {N} questions).
       Each object must contain both the MathML fields and the human-readable text fields described in the system instructions.
       DO NOT include commentary, lists, or framing text. DO NOT use markdown. Each object must conform to the schema below.
 
 
   schema:
     description: >
+      You will output two types of objects.
+      
+      Object Type 1: STRATEGY (First Object) - type="strategy"
+      - type: "strategy"
+      - core_skill: string (The topic you are analyzing)
+      - remembering_logic: string (How you define 'Remembering' questions for this specific skill/grade)
+      - understanding_logic: string (How you define 'Understanding' questions for this specific skill/grade)
+      - applying_logic: string (How you define 'Applying' questions for this specific skill/grade)
+      - grade_level_alignment: string (Notes on how you are adjusting difficulty for this Grade)
+
+      Object Type 2: QUESTION (Subsequent Objects) - type="MCQ" or "FIB"
       Each JSON object must contain the following keys (omit MCQ-specific or FIB-specific keys only when not applicable):
       - curriculum: string
       - subject: string
@@ -412,6 +470,7 @@ prompt:
       - marks: number
       - taxonomy: string (derived from classification)
       - rigor: string
+      - creation_logic: string (REQUIRED - Explain why this question fits the specific {classification} and {taxonomy}. Detail your thinking process.)
       - question_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
       - solution_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
       - question_text: string (plain readable question)

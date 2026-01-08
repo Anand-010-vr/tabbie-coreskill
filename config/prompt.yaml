@@ -9,6 +9,11 @@ prompt:
       
       HIGHLY CRITICAL : Strictly generate as many number of questions as requested by the user. Do not generate less than the requested number of questions.
 
+      STRICT MCQ/FIB SPLIT (MANDATORY):
+      - You MUST maintain a mix of approximately 75% MCQ and 25% FIB across the {N} questions.
+      - RANDOMIZE the assignment: For each question, decide its type independently (75% chance MCQ, 25% chance FIB).
+      - If {N} >= 4, you MUST have at least one of each type.
+
       CRITICAL INSTRUCTIONS:
       
       1) GRADE/YEAR-APPROPRIATE DIFFICULTY:
@@ -82,56 +87,22 @@ prompt:
       
       14) KEY TAKEAWAY: Every question MUST include a "key_takeaway" field containing a concise, one-sentence statement summarizing the core learning point assessed by the item.
       
-      15) STRICT BLOOM & DOK ALIGNMENT (NON-NEGOTIABLE)
-      Each question MUST strictly align to the specified Cognitive Skill without leaking into higher levels.
-      
-      Remembering (DOK 1 – Recall):
-      
-       
-      Understanding (DOK 1 – Comprehension)
-      
-      
-      Applying (LOW DOK 1 ONLY)
-      
-      If a question requires the student to decide what to do, it is NOT DOK 1 and MUST NOT be generated.
-      
-      
-      
-      16)MANDATORY QUESTION VARIETY ACROSS THE SET
-      
-      Across the {N} questions, you MUST include a mix of:
-      
-      Bare numeric calculation
-      
-      Light real-life context
-      
-      Short scenario-based (still one-step)
-      
-      Both MCQ and FIB (unless explicitly restricted)
-      
-      It is FORBIDDEN for all questions to:
-      
-      Use the same structure
-      
-      Use the same context type
-      
-      Feel interchangeable in difficulty
-      
-      17) ANTI-REPETITION CHECK
-      
-      Before outputting, you MUST internally verify that:
-      
-      No two questions use the same structure
-      
-      No two questions differ only by numbers
-      
-      No repeated sentence patterns
-      
-      No repeated context themes
-      
-      If similarity is detected, REWRITE until distinct.
+      15) MEANINGFUL SCENARIOS (NON-DECORATIVE CONTEXT):
+         - For word problems or real-life based problems, the scenario/image MUST be essential to the question logic.
+         - The scenario should contribute in a way that induces a specific thinking approach or data extraction step.
+         - AVOID "decorative context" where the scenario is just a superficial wrapper for a bare numeric question.
+         
+         INCORRECT (DECORATIVE):
+           [IMAGE DESCRIPTION: A photograph of a door with a shiny, brass number ‘91’ on it.]
+           Question: Look at the house number in the picture. What is the value of the digit 9?
+           (Issue: This is just "What is the value of 9 in 91?" wrapped in a picture. The visual doesn't add mathematical depth.)
+           
+         CORRECT (INTEGRATED):
+           [IMAGE DESCRIPTION: A set of four different sized containers with labels: 2L, 500ml, 1.5L, and 750ml.]
+           Question: Arrange the containers shown in the image from the smallest capacity to the largest capacity.
+           (Value: The context provides the data points that must be interpreted and compared.)
 
-      18) VARIATION ACROSS QUESTIONS (CRITICAL)
+      16) VARIATION ACROSS QUESTIONS (CRITICAL)
       To induce variation in the questions generated:
          - Across multiple questions, from a particular coreskill, it must **not** have the same formula or method as other questions from the previous prompts and this prompt.
          - Every question this prompt or even from previous prompts should have a different reasoning path or problem-solving approach, even if they belong to the same topic.
@@ -144,82 +115,78 @@ prompt:
          - Ensure that each question from other questions in this prompt or previous prompts feels **conceptually unique inside the same topic**, not just numerically different.
          - Look the correct example how its changing the questions even its for a single topic (Do those type of twisiting for the question).
 
-         Example:
-         INCORRECT DESIGN EXAMPLES (Single Topic: Finding nth term)
-         ------------------------------------------------------------
-         # Chapter: Arithmetic Progression (A.P.)
-         # Topic: Finding nth term → aₙ = a₁ + (n−1)d
-         # Issue: These examples break the design rule in various ways.
+          Example:
+          INCORRECT DESIGN EXAMPLES (Single Topic: Finding nth term)
+          ------------------------------------------------------------
+          # Chapter: Arithmetic Progression (A.P.)
+          # Topic: Finding nth term → aₙ = a₁ + (n−1)d
+          # Issue: These examples break the design rule in various ways.
 
-         ---
+          ---
 
-         Question 1 — (Concept Drift)
-           The sum of the first 20 terms of an A.P. is 610, and the first term is 5.
-           Find the common difference.
+          Question 1 — (Concept Drift)
+            The sum of the first 20 terms of an A.P. is 610, and the first term is 5.
+            Find the common difference.
 
-           Problem:
-             - Uses formula for sum of A.P. (Sₙ = n/2 [2a₁ + (n−1)d])
-             - NOT the nth-term concept.
-             - Mixes topics, breaking the single-concept rule.
+            Problem:
+              - Uses formula for sum of A.P. (Sₙ = n/2 [2a₁ + (n−1)d])
+              - NOT the nth-term concept.
+              - Mixes topics, breaking the single-concept rule.
 
-         ---
+          ---
 
-         Question 2 — (Repetitive Question Form)
-           Find the 10th term of an A.P. where a₁ = 3 and d = 5.
-           Find the 15th term of another A.P. where a₁ = 3 and d = 5.
-           Find the 20th term of another A.P. where a₁ = 3 and d = 5.
+          Question 2 — (Repetitive Question Form)
+            Find the 10th term of an A.P. where a₁ = 3 and d = 5.
+            Find the 15th term of another A.P. where a₁ = 3 and d = 5.
+            Find the 20th term of another A.P. where a₁ = 3 and d = 5.
 
-           Problem:
-             - No variation in reasoning, only number changes.
-             - Same forward substitution repeated.
-             - Zero conceptual or scenario variation.
+            Problem:
+              - No variation in reasoning, only number changes.
+              - Same forward substitution repeated.
+              - Zero conceptual or scenario variation.
 
-           ---
+            ---
 
-           Question 3 — (Same Scenario Logic Reuse)
-            A car’s speed increases by 5 km/h every hour. If it starts at 30 km/h, find its speed after 8 hours.
-                A bus’s speed increases by 3 km/h every hour. If it starts at 40 km/h, find its speed after 9 hours.
+            Question 3 — (Same Scenario Logic Reuse)
+             A car’s speed increases by 5 km/h every hour. If it starts at 30 km/h, find its speed after 8 hours.
+                 A bus’s speed increases by 3 km/h every hour. If it starts at 40 km/h, find its speed after 9 hours.
+
+               Problem:
+                - Both are the same reasoning pattern with only different numbers.
+                - Scenario looks “different,” but thinking path identical.
+                - Violates “distinct reasoning flow” rule.
+
+            ---
+
+            Question 4 — (Multiple Concepts Mixed)
+              The 5th term of an A.P. is 25 and its sum up to the 10th term is 150.
+              Find the first term.
+
+               Problem:
+                - Introduces the “sum of terms” formula.
+                - Breaks the rule of staying inside *only* nth-term concept.
+
+            ---
+
+            Question 5 — (Unrealistic or Forced Scenario)
+              An alien colony increases its laser beams by 2 each second starting from 3 beams.
+              Find how many beams in the 50th second.
+
+               Problem:
+                - Unrealistic, lacks relatable context.
+                - Superficial story without cognitive reasoning twist.
+                - Adds fiction instead of real-life logic.
+
+            ---
+
+            Question 6 — (Arithmetic Operation Substitution Instead of Logical Variation)
+              The 4th term of an A.P. is 20 and the 8th term is 36. Find d.
+               The 4th term of an A.P. is 20 and the 8th term is 36. Find a₁.
+               The 4th term of an A.P. is 20 and the 8th term is 36. Find the 12th term.
 
               Problem:
-               - Both are the same reasoning pattern with only different numbers.
-               - Scenario looks “different,” but thinking path identical.
-               - Violates “distinct reasoning flow” rule.
-
-           ---
-
-           Question 4 — (Multiple Concepts Mixed)
-             The 5th term of an A.P. is 25 and its sum up to the 10th term is 150.
-             Find the first term.
-
-              Problem:
-               - Introduces the “sum of terms” formula.
-               - Breaks the rule of staying inside *only* nth-term concept.
-
-           ---
-
-           Question 5 — (Unrealistic or Forced Scenario)
-             An alien colony increases its laser beams by 2 each second starting from 3 beams.
-             Find how many beams in the 50th second.
-
-              Problem:
-               - Unrealistic, lacks relatable context.
-               - Superficial story without cognitive reasoning twist.
-               - Adds fiction instead of real-life logic.
-
-           ---
-
-           Question 6 — (Arithmetic Operation Substitution Instead of Logical Variation)
-             The 4th term of an A.P. is 20 and the 8th term is 36. Find d.
-              The 4th term of an A.P. is 20 and the 8th term is 36. Find a₁.
-              The 4th term of an A.P. is 20 and the 8th term is 36. Find the 12th term.
-
-             Problem:
-               - All three are *mechanically* different questions, but cognitively identical.
-               - Only changes the arithmetic target — not the reasoning method.
-      
-    
-      
-      
+                - All three are *mechanically* different questions, but cognitively identical.
+                - Only changes the arithmetic target — not the reasoning method.
       
       ================================================================================
       ITEM GENERATION CONSTRAINTS (MANDATORY)
@@ -258,24 +225,39 @@ prompt:
       
       DISTRACTOR 1 - CONCEPTUAL ERROR:
       Demonstrates a failure to grasp the core concept or misuse of fundamental convention.
-      Examples:
-      * Confusing the value of a digit (80 vs 8), misunderstanding "equal parts"
-      * Confusing perimeter and area, misunderstanding fraction equivalence
-      * Misusing 'and'/'hyphens'
+      Examples by year:
+      * Year 3: Confusing the value of a digit (80 vs 8), misunderstanding "equal parts"
+      * Year 4: Confusing perimeter and area, misunderstanding fraction equivalence
+      * Year 5: Confusing factors and multiples, misusing order of operations
+      * Year 6: Confusing ratio and fraction, misunderstanding percentage as "per 100"
+      * Year 7: Confusing positive and negative operations, misunderstanding algebraic terms
+      * Year 8: Confusing area and volume formulas, misinterpreting graph scales
+      * Year 9: Confusing correlation and causation, misunderstanding probability concepts
+      * Year 10: Confusing exponential and linear growth, misinterpreting statistical measures
       
       DISTRACTOR 2 - COMPUTATIONAL/PLACE VALUE ERROR:
       Errors in calculation, transposition of digits, incorrect operation, or zero placeholder errors.
-      Examples:
-      * Writing 471 as 417, forgetting to carry in addition.
-      * Incorrect application of an operation.
-      * Incorrect use of a zero placeholder (eg: 506 to 560)
-      
+      Examples by year:
+      * Year 3: Writing 471 as 417, forgetting to carry in addition
+      * Year 4: Misaligning decimal points, errors in multiplication tables
+      * Year 5: Errors in long division, decimal place errors
+      * Year 6: Percentage calculation errors, fraction arithmetic mistakes
+      * Year 7: Sign errors with integers, simplification errors
+      * Year 8: Algebraic manipulation errors, rounding errors
+      * Year 9: Formula substitution errors, unit conversion mistakes
+      * Year 10: Significant figure errors, complex calculation mistakes
       
       DISTRACTOR 3 - READING/COMPREHENSION ERROR:
       Misinterpreting the question, context, or confusing similar terms.
-      Examples:
-      * Confusing "sixty" and "sixteen". 
-      * Selecting wrong number near target
+      Examples by year:
+      * Year 3: Confusing "sixty" and "sixteen", selecting wrong number near target
+      * Year 4: Misreading "more than" as "less than", confusing "altogether" with "difference"
+      * Year 5: Misinterpreting "each" vs "in total", confusing "increase" with "decrease"
+      * Year 6: Misreading scales on graphs, confusing "of" in percentage problems
+      * Year 7: Misinterpreting algebraic word problems, confusing variable meanings
+      * Year 8: Misreading compound measure units, confusing similar geometric terms
+      * Year 9: Misinterpreting statistical terminology, confusing hypothesis wording
+      * Year 10: Misreading complex problem structures, confusing domain-specific vocabulary
 
       ================================================================================
       QUESTION CLASSIFICATION SYSTEM (MANDATORY)
@@ -283,18 +265,9 @@ prompt:
       
       Each question MUST belong to exactly ONE of the following 8 classifications.
       The classification determines the question format, presentation style, and cognitive level.
-      NOTE : The examples only cover some grades, but the logic of nature of questions is the same for all grades.
-      
-      Each of these classifications will either be remembering, understanding or applying based questions which can be understood from the name of the classification.
-      This is the definitions are :
-      Remembering: expected to generate questions that require the student to retrieve knowledge from long-term memory. Keywords: Recall, Define, List, State, Identify (fact).
 
-      Understanding: expected to generate questions that require the student to construct meaning from messages (oral, written, graphic). Keywords: Interpret, Exemplify, Classify, Summarize, Infer, Compare, Explain. CRITICALLY: This is NOT recall.
-
-      Applying: expected to generate questions that require the student to carry out or use a procedure in a given situation. Keywords: Implement, Solve (using a known procedure), Use, Demonstrate.
+      NOTE: The examples only cover some grades, but the logic of nature of questions is the same for all grades.
       
-      So the questions generated under a particular classification should form questions based on the definition of the taxonomy(remembering, understanding, applying) mentioned in that particular classification
-      The classification system is as follows :
       CLASSIFICATION 1: NUMBER-BASED SIMPLE REMEMBERING
       - Pure numerical recall or direct calculation
       - NO word problems or real-life context
@@ -387,7 +360,6 @@ prompt:
       - DO NOT just make the first 75% MCQ and the last 25% FIB.
       - DO NOT force a specific split for each individual classification count if N is small.
       - Instead, treat the question type assignment as a random draw with 75% probability for MCQ and 25% for FIB for EACH question.
-      - For very small N (e.g., N=1 or N=2), you may generate all MCQ or mixed, but over many generations it should average out.
       - Ensure a mix of types if N >= 4.
       
       ================================================================================
@@ -411,8 +383,39 @@ prompt:
       - The core skill from the topic determines what mathematical operation/concept is tested
       - Do NOT stray from the core skill regardless of classification type
 
+      17) STRICT BLOOM & DOK ALIGNMENT (NON-NEGOTIABLE)
+      Each question MUST strictly align to the specified Cognitive Skill without leaking into higher levels.
+      
+      Remembering (DOK 1 – Recall): 
+      - Requires recall of facts, terms, conventions, or direct procedures.
+      - RULE OF THUMB: Identifying the "Value of a digit" (e.g., "What is the 3 in 39 worth?") is ALWAYS REMEMBERING. It is a recall of the decimal naming convention.
+      
+      Understanding (DOK 1 – Comprehension): 
+      - Requires comparing values, ordering, or explaining a concept.
+      - Questions that ask "Which is larger?", "Explain why...", or "Order these..." are UNDERSTANDING.
+      
+      Applying (LOW DOK 1 ONLY): 
+      - Requires using a procedure in a given situation OR following a simple multi-step computation.
+      
+      If a question requires the student to decide "what to do" or "how to solve it" beyond a direct procedure, it is NOT DOK 1 and MUST NOT be generated.
+
+      18) ANTI-REPETITION CHECK
+      Before outputting, you MUST internally verify that:
+      - No two questions use the same structure
+      - No two questions differ only by numbers
+      - No repeated sentence patterns
+      - No repeated context themes
+      - If similarity is detected, REWRITE until distinct.
+
+      19) STRATEGY OBJECT (CRITICAL FIRST OUTPUT):
+         - Before generating ANY questions, you must output a single JSON object (one line) defining your strategy.
+         - This object must have type="strategy".
+         - It must explain how you will interpret "Remembering", "Understanding", and "Applying" specifically for the provided "Subject" and "Topic".
+         - Key fields: "type", "core_skill", "remembering_logic", "understanding_logic", "applying_logic", "grade_level_alignment".
+         - This is to ensure you have a clear plan before generating items.
+
     user_task: |
-      Generate {N} question(s) for the provided inputs below.
+      Generate the Strategy Object first, followed by {N} question(s) for the provided inputs below.
       
       CLASSIFICATION: {classification}
       This is the MANDATORY question classification. Follow the classification rules from the system instructions exactly.
@@ -424,7 +427,7 @@ prompt:
       - Grade/Year: This determines the appropriate difficulty level and complexity
       - Chapter: This provides the broad mathematical domain
       - Standard: {standard_desc} - The primary curriculum standard
-      - Cognitive Skill: Determined by classification (see system instructions)
+      - Cognitive Skill: {cognitive_skill} - Optional user-defined cognitive focus. If provided, prioritizing this over default taxonomy.
       - Performance Expectation: {performance_expectation} - What the student must demonstrate for mastery
       - Context: {context_setting} - Setting/tool the skill is applied within
       - Level of Mastery: {level_of_mastery} - Expected speed and accuracy
@@ -434,18 +437,31 @@ prompt:
       - Additional Notes: Extra instructions or configuration
       
       GENERATION REQUIREMENTS:
-      1. ALL questions MUST test the Topic/Core Skill: {section}
-      2. ALL questions MUST follow the {classification} format and style
-      3. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
-      4. Ensure maximum diversity across all {N} questions - DO NOT REPEAT content/logic from Previous Questions
-      5. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
+      1. FIRST LINE: Output the Strategy JSON object.
+      2. SUBSEQUENT LINES: Output {N} question JSON objects.
+      3. ALL questions MUST test the Topic/Core Skill: {section}
+      4. ALL questions MUST follow the {classification} format and style
+      5. Follow the 75% MCQ / 25% FIB global randomization rule (see system instructions)
+      6. Ensure maximum diversity across all {N} questions - DO NOT REPEAT content/logic from Previous Questions
+      7. Questions for image-based classifications MUST include [IMAGE DESCRIPTION: ...] markers
       
-      Return EXACTLY {N} newline-delimited JSON objects, one per line.
+      Return EXACTLY {N}+1 newline-delimited JSON objects, one per line (1 strategy + {N} questions).
       Each object must contain both the MathML fields and the human-readable text fields described in the system instructions.
       DO NOT include commentary, lists, or framing text. DO NOT use markdown. Each object must conform to the schema below.
 
   schema:
     description: >
+      You will output two types of objects.
+      
+      Object Type 1: STRATEGY (First Object) - type="strategy"
+      - type: "strategy"
+      - core_skill: string (The topic you are analyzing)
+      - remembering_logic: string (How you define 'Remembering' questions for this specific skill/grade)
+      - understanding_logic: string (How you define 'Understanding' questions for this specific skill/grade)
+      - applying_logic: string (How you define 'Applying' questions for this specific skill/grade)
+      - grade_level_alignment: string (Notes on how you are adjusting difficulty for this Grade)
+
+      Object Type 2: QUESTION (Subsequent Objects) - type="MCQ" or "FIB"
       Each JSON object must contain the following keys (omit MCQ-specific or FIB-specific keys only when not applicable):
       - curriculum: string
       - subject: string
@@ -457,6 +473,7 @@ prompt:
       - marks: number
       - taxonomy: string (derived from classification)
       - rigor: string
+      - creation_logic: string (REQUIRED - Explain why this question fits the specific {classification} and {taxonomy}. Detail your thinking process.)
       - question_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
       - solution_mathml: string (presentation MathML wrapped in <p> tags, format: <p><math xmlns="http://www.w3.org/1998/Math/MathML">...</math></p>)
       - question_text: string (plain readable question)
@@ -481,8 +498,8 @@ prompt:
   few_shot_examples:
     - name: "MCQ example (Year 4 addition) - demonstrates grade-appropriate complexity"
       json: |
-        {"curriculum":"UK National Curriculum","subject":"Math","grade":"4","chapter":"Number – addition and subtraction","topic":"add and subtract numbers with up to 4 digits using the formal written methods of columnar addition and subtraction where appropriate","type":"MCQ","marks":1,"taxonomy":"Remembering","rigor":"Level 1","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>1345</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>2678</mn><mo>?</mo></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>ones</mi><mo>&#160;</mo><mn>5</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>13</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>3</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>tens</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>12</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>2</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>hundreds</mi><mo>&#160;</mo><mn>3</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>6</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>10</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>0</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>4</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>thousands</mi><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>4</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>4023</mn></math></p>","question_text":"What is 1345 + 2678?","solution_text":"Step 1: Add ones 5 + 8 = 13, write 3, carry 1. Step 2: Add tens 4 + 7 + 1 = 12, write 2, carry 1. Step 3: Add hundreds 3 + 6 + 1 = 10, write 0, carry 1. Step 4: Add thousands 1 + 2 + 1 = 4. Answer: 4023.","options":["<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4023</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3923</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4123</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3913</mn></math></p>"],"options_text_1":"4023","options_text_2":"3923","options_text_3":"4123","options_text_4":"3913","correct_option":1,"status":"AI-Created","ai_meta":{"prompt_version":"v1.5","model":"gemini-2.5-flash"}}
-
+        {"curriculum":"UK National Curriculum","subject":"Math","grade":"4","chapter":"Number – addition and subtraction","topic":"add and subtract numbers with up to 4 digits using the formal written methods of columnar addition and subtraction where appropriate","type":"MCQ","marks":1,"taxonomy":"Remembering","rigor":"Level 1","creation_logic":"This question tests direct recall and application of the column addition procedure for 4-digit numbers, which is a core skill for Grade 4. It fits 'Number-Based Simple Remembering' as it focuses on the numeric operation without context.","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>What</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mn>1345</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>2678</mn><mo>?</mo></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>ones</mi><mo>&#160;</mo><mn>5</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>13</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>3</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>tens</mi><mo>&#160;</mo><mn>4</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>7</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>12</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>2</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>3</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>hundreds</mi><mo>&#160;</mo><mn>3</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>6</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>10</mn><mo>,</mo><mo>&#160;</mo><mi>write</mi><mo>&#160;</mo><mn>0</mn><mo>,</mo><mo>&#160;</mo><mi>carry</mi><mo>&#160;</mo><mn>1</mn><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>4</mn><mo>:</mo><mo>&#160;</mo><mi>Add</mi><mo>&#160;</mo><mi>thousands</mi><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>2</mn><mo>&#160;</mo><mo>+</mo><mo>&#160;</mo><mn>1</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>4</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>4023</mn></math></p>","question_text":"What is 1345 + 2678?","solution_text":"Step 1: Add ones 5 + 8 = 13, write 3, carry 1. Step 2: Add tens 4 + 7 + 1 = 12, write 2, carry 1. Step 3: Add hundreds 3 + 6 + 1 = 10, write 0, carry 1. Step 4: Add thousands 1 + 2 + 1 = 4. Answer: 4023.","options":["<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4023</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3923</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>4123</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>3913</mn></math></p>"],"options_text_1":"4023","options_text_2":"3923","options_text_3":"4123","options_text_4":"3913","correct_option":1,"status":"AI-Created","ai_meta":{"prompt_version":"v1.6","model":"gemini-2.5-pro"}}
+    
     - name: "MCQ example (Year 3 place value) - simpler than Year 4"
       json: |
         {"curriculum":"UK National Curriculum","subject":"Math","grade":"3","chapter":"Number – number and place value","topic":"recognise the place value of each digit in a three-digit number (hundreds, tens, ones)","type":"MCQ","marks":1,"taxonomy":"Remembering","rigor":"Level 1","question_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>In</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>number</mi><mo>&#160;</mo><mn>385</mn><mo>,</mo><mo>&#160;</mo><mi>what</mi><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>value</mi><mo>&#160;</mo><mi>of</mi><mo>&#160;</mo><mi>the</mi><mo>&#160;</mo><mi>digit</mi><mo>&#160;</mo><mn>8</mn><mo>?</mo></math></p>","solution_mathml":"<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Step</mi><mo>&#160;</mo><mn>1</mn><mo>:</mo><mo>&#160;</mo><mi>Identify</mi><mo>&#160;</mo><mi>position</mi><mo>&#160;</mo><mo>-</mo><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mi>is</mi><mo>&#160;</mo><mi>in</mi><mo>&#160;</mo><mi>tens</mi><mo>&#160;</mo><mi>place</mi><mspace linebreak=\"newline\"></mspace><mi>Step</mi><mo>&#160;</mo><mn>2</mn><mo>:</mo><mo>&#160;</mo><mi>Tens</mi><mo>&#160;</mo><mi>place</mi><mo>&#160;</mo><mi>means</mi><mo>&#160;</mo><mn>8</mn><mo>&#160;</mo><mo>&#215;</mo><mo>&#160;</mo><mn>10</mn><mo>&#160;</mo><mo>=</mo><mo>&#160;</mo><mn>80</mn><mspace linebreak=\"newline\"></mspace><mi>Answer</mi><mo>:</mo><mo>&#160;</mo><mn>80</mn></math></p>","question_text":"In the number 385, what is the value of the digit 8?","solution_text":"Step 1: Identify position - 8 is in the tens place. Step 2: Tens place means 8 × 10 = 80. Answer: 80.","options":["<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>8</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>80</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>800</mn></math></p>","<p><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mn>85</mn></math></p>"],"options_text_1":"8","options_text_2":"80","options_text_3":"800","options_text_4":"85","correct_option":2,"status":"AI-Created","ai_meta":{"prompt_version":"v1.5","model":"gemini-2.5-flash"}}

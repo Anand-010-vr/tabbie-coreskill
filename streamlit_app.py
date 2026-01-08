@@ -103,6 +103,15 @@ def display_question_card(result: Dict[str, Any], idx: int, include_mathml: bool
     q_type = result.get("type", "MCQ")
     st.markdown(f"### Question {idx}: {classification} ({q_type} - {taxonomy})")
     
+    if result.get("creation_logic") or result.get("validation_reasoning"):
+        with st.expander("🔍 AI Reasoning & Validation", expanded=False):
+            if result.get("creation_logic"):
+                st.info(f"**Creation Logic:** {result.get('creation_logic')}")
+            if result.get("validation_reasoning"):
+                status = result.get("validation_status", "CHECKED")
+                color = "green" if status == "APPROVED" else "orange"
+                st.markdown(f":{color}[**Validation ({status}):**] {result.get('validation_reasoning')}")
+    
     col1, col2 = st.columns([2, 1])
     
     with col1:
@@ -240,8 +249,10 @@ with st.sidebar:
     
     st.divider()
     
+
     # Context fields (showing directly now)
     st.subheader("Advanced Context")
+    cognitive_skill = st.text_input("Cognitive Skill")
     old_concept = st.text_area("Old Concept (Prerequisite Knowledge)")
     standard_desc = st.text_area("Standard")
     performance_expectation = st.text_area("Performance Expectation")
@@ -252,7 +263,16 @@ with st.sidebar:
     generate_btn = st.button("Generate Questions", type="primary", use_container_width=True)
 
 # Main Area
+if "all_results" not in st.session_state:
+    st.session_state.all_results = []
+if "strategy_logic" not in st.session_state:
+    st.session_state.strategy_logic = {}
+if "final_prompt" not in st.session_state:
+    st.session_state.final_prompt = ""
+
 if generate_btn:
+    # Gets triggered only on button click
+    
     # Get classifications with count > 0
     active_classifications = get_classification_distribution(classification_counts)
     total_questions = sum(active_classifications.values())
@@ -268,7 +288,10 @@ if generate_btn:
             if st.session_state.get("api_key"):
                 call_app_cfg['gemini_api_key'] = st.session_state.api_key
 
-            all_results = []
+            # Clear previous results
+            st.session_state.all_results = []
+            st.session_state.strategy_logic = {}
+            st.session_state.final_prompt = ""
             
             # Base inputs (without classification-specific fields)
             base_inputs = {
@@ -281,6 +304,7 @@ if generate_btn:
                 "rigor": rigor,
                 "new_concept": new_concept if mode == "Standard" else None,
                 "old_concept": old_concept,
+                "cognitive_skill": cognitive_skill,
                 "additional_notes": additional_notes,
                 "standard_desc": standard_desc,
                 "performance_expectation": performance_expectation,
@@ -300,6 +324,9 @@ if generate_btn:
                 
                 # Context accumulator for cross-call variation
                 previous_questions_summary = []
+                
+                # Store the last prompt used for display
+                last_prompt_used = ""
 
                 for i, (classification_name, count) in enumerate(active_classifications.items()):
                     if count <= 0: 
@@ -330,7 +357,7 @@ if generate_btn:
                             placeholder.text(f"Retry {attempts-1}: Generating {needed} more questions for {classification_name}...")
                         
                         if mode == "Standard":
-                            results, raw = generate_and_validate(
+                            results, strategy, raw, prompt_text = generate_and_validate(
                                 str(PROMPT_CFG_PATH),
                                 call_app_cfg,
                                 classification_inputs,
@@ -338,13 +365,19 @@ if generate_btn:
                             )
                         else:
                             classification_inputs["new_concept"] = "See attached PDF content"
-                            results, raw = generate_and_validate_with_pdf(
+                            results, strategy, raw, prompt_text = generate_and_validate_with_pdf(
                                 str(PROMPT_CFG_PATH_PDF),
                                 call_app_cfg,
                                 classification_inputs,
                                 needed,
                                 pdf_bytes
                             )
+                        
+                        # Capture prompt and strategy
+                        last_prompt_used = prompt_text
+                        if strategy and not st.session_state.strategy_logic:
+                            # Only capture the first strategy object found (or merge if needed, but first is usually best)
+                            st.session_state.strategy_logic = strategy
                         
                         # Filter valid results and add to collection
                         for r in results:
@@ -359,7 +392,7 @@ if generate_btn:
                                 previous_questions_summary.append(q_summary)
                     
                     # Add collected valid results to main list
-                    all_results.extend(classification_results)
+                    st.session_state.all_results.extend(classification_results)
                     
                     if len(classification_results) < count:
                         st.warning(f"Could only generate {len(classification_results)}/{count} valid questions for {classification_name} after {attempts} attempts.")
@@ -368,31 +401,60 @@ if generate_btn:
                 
                 placeholder.empty()
                 progress_bar.empty()
-
-                if not all_results:
-                    st.error("Failed to generate any valid questions. Please check the logs or try different parameters.")
-                else:
-                    st.success(f"Generated {len(all_results)} questions successfully!")
-                    
-                    # Download button
-                    json_str = json.dumps(all_results, indent=2)
-                    st.download_button(
-                        label="Download Results (JSON)",
-                        data=json_str,
-                        file_name="generated_questions.json",
-                        mime="application/json"
-                    )
-
-                    st.divider()
-                    
-                    # Display results
-                    for idx, res in enumerate(all_results, 1):
-                        display_question_card(res, idx, include_mathml)
-                        st.divider()
+                
+                st.session_state.final_prompt = last_prompt_used
 
             except Exception as e:
                 st.exception(e)
                 logger.exception(f"Error in Streamlit app: {e}")
+
+# Display Logic (Outside the button check so it persists)
+if st.session_state.all_results:
+    st.success(f"Generated {len(st.session_state.all_results)} questions successfully!")
+    
+    # Stratgey Logic Display
+    if st.session_state.strategy_logic:
+        st.markdown("### 🧠 Generation Logic")
+        st.markdown("How the model applied Bloom's Taxonomy for this specific core skill:")
+        
+        sl = st.session_state.strategy_logic
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            st.info("**Remembering Strategy**")
+            st.write(sl.get("remembering_logic", "N/A"))
+        with c2:
+            st.warning("**Understanding Strategy**")
+            st.write(sl.get("understanding_logic", "N/A"))
+        with c3:
+            st.error("**Applying Strategy**")
+            st.write(sl.get("applying_logic", "N/A"))
+        st.divider()
+
+    # Download button
+    json_str = json.dumps(st.session_state.all_results, indent=2)
+    st.download_button(
+        label="Download Results (JSON)",
+        data=json_str,
+        file_name="generated_questions.json",
+        mime="application/json"
+    )
+
+    st.divider()
+    
+    # Display results
+    for idx, res in enumerate(st.session_state.all_results, 1):
+        display_question_card(res, idx, include_mathml)
+        st.divider()
+        
+    # Final Prompt Display
+    if st.session_state.final_prompt:
+        with st.expander("🔌 View Final Prompt (Debug)", expanded=False):
+            st.code(st.session_state.final_prompt, language="markdown")
+elif generate_btn and not st.session_state.all_results: 
+     # Only show failure if button was clicked and no results were found (and exception didn't stop execution)
+     # This assumes the try/except block handles critical failures, this handles logical empty results
+     st.error("Failed to generate any valid questions. Please check the logs or try different parameters.")
+
 
 else:
     st.info("Configure the parameters in the sidebar and click 'Generate Questions' to start.")

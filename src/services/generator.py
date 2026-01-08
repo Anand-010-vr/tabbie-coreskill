@@ -46,6 +46,75 @@ def build_prompt(prompt_cfg: Dict[str, Any], inputs: Dict[str, Any], n: int) -> 
     return prompt
 
 
+def _validate_questions(questions: List[Dict[str, Any]], app_cfg: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Step 2: Use the validator prompt to verify and correct generated questions."""
+    if not questions:
+        return []
+    
+    try:
+        validator_cfg_path = os.path.join("config", "validator_prompt.yaml")
+        if not os.path.exists(validator_cfg_path):
+            return questions
+            
+        validator_cfg = load_prompt_config(validator_cfg_path)
+        system = validator_cfg["prompt"]["instructions"]["system"]
+        user_task = validator_cfg["prompt"]["instructions"]["user_task"].replace("{N}", str(len(questions)))
+        
+        # Prepare questions for validation (only valid AI-Created ones)
+        questions_to_check = []
+        for i, q in enumerate(questions):
+            if q.get("status") == "AI-Created":
+                # Add temporary ID for matching since text might be rewritten
+                q["_temp_id"] = i
+                questions_to_check.append(q)
+                
+        if not questions_to_check:
+            return questions
+            
+        questions_json = "\n".join([json.dumps(q) for q in questions_to_check])
+        prompt = f"{system}\n\n{user_task}\n\n## QUESTIONS TO VALIDATE\n{questions_json}"
+        
+        raw_validated = call_gemini(prompt, {**validator_cfg, **{"app": app_cfg}}, len(questions_to_check))
+        _append_prompt_log("=== VALIDATOR PROMPT ===\n" + prompt, raw_validated)
+        
+        validated_objs, _ = extract_json_objects(raw_validated)
+        
+        if not validated_objs:
+            # Cleanup temp IDs if validator failed
+            for q in questions:
+                q.pop("_temp_id", None)
+            return questions
+            
+        # Map validated objects back to results using the temp ID
+        final_results = []
+        for orig in questions:
+            if orig.get("status") != "AI-Created":
+                final_results.append(orig)
+                continue
+                
+            orig_id = orig.get("_temp_id")
+            matched_obj = None
+            for v_obj in validated_objs:
+                if v_obj.get("_temp_id") == orig_id:
+                    matched_obj = v_obj
+                    validated_objs.remove(v_obj)
+                    break
+            
+            if matched_obj:
+                # Cleanup temp ID
+                matched_obj.pop("_temp_id", None)
+                final_results.append(matched_obj)
+            else:
+                # Cleanup temp ID and use original if match failed
+                orig.pop("_temp_id", None)
+                final_results.append(orig)
+                
+        return final_results
+    except Exception as e:
+        _append_prompt_log("Validator Error", str(e))
+        return questions
+
+
 # --- Robust JSON extractor to handle fences and multi-line output ---
 def extract_json_objects(raw_text: str) -> Tuple[List[Dict[str, Any]], List[str]]:
     """
@@ -132,8 +201,11 @@ def extract_json_objects(raw_text: str) -> Tuple[List[Dict[str, Any]], List[str]
     return objs, errors
 
 
-def generate_and_validate(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs: Dict[str, Any], n: int) -> Tuple[List[Dict[str, Any]], str]:
-    """Generate questions using the LLM and validate the responses."""
+
+def generate_and_validate(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs: Dict[str, Any], n: int) -> Tuple[List[Dict[str, Any]], Dict[str, Any], str, str]:
+    """Generate questions using the LLM and validate the responses.
+    Returns: (valid_questions, strategy_object, raw_response, prompt_used)
+    """
     try:
         prompt_cfg = load_prompt_config(prompt_cfg_path)
         prompt = build_prompt(prompt_cfg, inputs, n)
@@ -144,13 +216,13 @@ def generate_and_validate(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs:
         except Exception as e:
             error_msg = f"LLM call failed: {str(e)}"
             _append_prompt_log(prompt, f"Exception: {error_msg}")
-            return [{"_error": error_msg}], ""
+            return [{"_error": error_msg}], {}, "", prompt
 
         # Validate the response is a string
         if not isinstance(raw, str):
             error_msg = f"LLM returned non-string response (type={type(raw)}). Check logs for details."
             _append_prompt_log(prompt, f"Non-string response: {str(raw)[:500]}...")
-            return [{"_error": error_msg}], ""
+            return [{"_error": error_msg}], {}, "", prompt
 
         # Save prompt and response for debugging
         _append_prompt_log(prompt, raw)
@@ -179,18 +251,22 @@ def generate_and_validate(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs:
         # Handle any other exceptions
         error_msg = f"Unexpected error during question generation: {str(e)}"
         _append_prompt_log("", f"Unexpected error: {error_msg}")
-        return [{"_error": error_msg}], ""
+        return [{"_error": error_msg}], {}, "", ""
 
     results: List[Dict[str, Any]] = []
+    strategy_obj: Dict[str, Any] = {}
 
     # Validate each parsed object
-    results: List[Dict[str, Any]] = []
-    
     for obj in parsed_objs:
         if not isinstance(obj, dict):
             results.append({"_validation_error": f"Expected a dictionary, got {type(obj).__name__}"})
             continue
             
+        # Check if this is the strategy object
+        if obj.get("type") == "strategy" or "remembering_logic" in obj:
+            strategy_obj = obj
+            continue
+
         # Fill in default values from inputs if they're missing
         for k in ["syllabus", "standard", "subject", "topic", "section", "marks", "taxonomy", "rigor"]:
             if k not in obj:
@@ -294,6 +370,10 @@ def generate_and_validate(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs:
     # If we have no valid results but have parsed objects, include them for debugging
     if not any(r.get("status") == "AI-Created" for r in results) and parsed_objs:
         for i, obj in enumerate(parsed_objs):
+            # Don't include the strategy object in partial results if identified
+            if obj.get("type") == "strategy" or "remembering_logic" in obj:
+                continue
+
             if isinstance(obj, dict) and "_validation_error" not in obj:
                 results.append({
                     "_partial_result": f"Partially parsed object {i+1}",
@@ -301,7 +381,10 @@ def generate_and_validate(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs:
                     "data": {k: v for k, v in obj.items() if not k.startswith('_')}
                 })
 
-    return results, raw
+    # --- STEP 2: MANDATORY VALIDATION ---
+    results = _validate_questions(results, app_cfg)
+
+    return results, strategy_obj, raw, prompt
 
 
 def save_results_to_file(results: List[Dict[str, Any]], outputs_dir: str) -> str:
@@ -313,7 +396,7 @@ def save_results_to_file(results: List[Dict[str, Any]], outputs_dir: str) -> str
     return path
 
 
-def generate_and_validate_with_pdf(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs: Dict[str, Any], n: int, pdf_bytes: bytes) -> Tuple[List[Dict[str, Any]], str]:
+def generate_and_validate_with_pdf(prompt_cfg_path: str, app_cfg: Dict[str, Any], inputs: Dict[str, Any], n: int, pdf_bytes: bytes) -> Tuple[List[Dict[str, Any]], Dict[str, Any], str, str]:
     """Generate questions using the LLM with PDF context and validate the responses."""
     try:
         prompt_cfg = load_prompt_config(prompt_cfg_path)
@@ -325,13 +408,13 @@ def generate_and_validate_with_pdf(prompt_cfg_path: str, app_cfg: Dict[str, Any]
         except Exception as e:
             error_msg = f"LLM call (PDF) failed: {str(e)}"
             _append_prompt_log(prompt, f"Exception: {error_msg}")
-            return [{"_error": error_msg}], ""
+            return [{"_error": error_msg}], {}, "", prompt
 
         # Validate the response is a string
         if not isinstance(raw, str):
             error_msg = f"LLM returned non-string response (type={type(raw)}). Check logs for details."
             _append_prompt_log(prompt, f"Non-string response: {str(raw)[:500]}...")
-            return [{"_error": error_msg}], ""
+            return [{"_error": error_msg}], {}, "", prompt
 
         # Save prompt and response for debugging
         _append_prompt_log(prompt + "\n[PDF CONTENT WAS ATTACHED]", raw)
@@ -360,18 +443,20 @@ def generate_and_validate_with_pdf(prompt_cfg_path: str, app_cfg: Dict[str, Any]
         # Handle any other exceptions
         error_msg = f"Unexpected error during question generation: {str(e)}"
         _append_prompt_log("", f"Unexpected error: {error_msg}")
-        return [{"_error": error_msg}], ""
+        return [{"_error": error_msg}], {}, "", ""
 
     # Reuse validation logic - essentially similar to generate_and_validate
-    # We can refactor validation Logic out, but for robustness let's just copy the validation part for now
-    # or reuse the logic by calling a helper?
-    # For now, I will just duplicate the validation logic below to ensure it works exactly the same
-    
     results: List[Dict[str, Any]] = []
-    
+    strategy_obj: Dict[str, Any] = {}
+
     for obj in parsed_objs:
         if not isinstance(obj, dict):
             results.append({"_validation_error": f"Expected a dictionary, got {type(obj).__name__}"})
+            continue
+            
+        # Check if this is the strategy object
+        if obj.get("type") == "strategy" or "remembering_logic" in obj:
+            strategy_obj = obj
             continue
             
         # Fill in default values from inputs if they're missing
@@ -477,6 +562,10 @@ def generate_and_validate_with_pdf(prompt_cfg_path: str, app_cfg: Dict[str, Any]
     # If we have no valid results but have parsed objects, include them for debugging
     if not any(r.get("status") == "AI-Created" for r in results) and parsed_objs:
         for i, obj in enumerate(parsed_objs):
+            # Don't include the strategy object in partial results if identified
+            if obj.get("type") == "strategy" or "remembering_logic" in obj:
+                continue
+
             if isinstance(obj, dict) and "_validation_error" not in obj:
                 results.append({
                     "_partial_result": f"Partially parsed object {i+1}",
@@ -484,4 +573,7 @@ def generate_and_validate_with_pdf(prompt_cfg_path: str, app_cfg: Dict[str, Any]
                     "data": {k: v for k, v in obj.items() if not k.startswith('_')}
                 })
 
-    return results, raw
+    # --- STEP 2: MANDATORY VALIDATION ---
+    results = _validate_questions(results, app_cfg)
+
+    return results, strategy_obj, raw, prompt
