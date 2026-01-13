@@ -36,13 +36,25 @@ def load_prompt_config(path: str) -> Dict[str, Any]:
 
 def build_prompt(prompt_cfg: Dict[str, Any], inputs: Dict[str, Any], n: int) -> str:
     system = prompt_cfg["prompt"]["instructions"]["system"]
-    user_task = prompt_cfg["prompt"]["instructions"]["user_task"].replace("{N}", str(n))
+    user_task = prompt_cfg["prompt"]["instructions"]["user_task"]
+    
+    # Dynamically replace {key} placeholders in user_task
+    # n is a special case passed separately
+    formatted_task = user_task.replace("{N}", str(n))
+    
+    # Replace other placeholders from inputs
+    for key, value in inputs.items():
+        placeholder = "{" + str(key) + "}"
+        if placeholder in formatted_task:
+            val_str = str(value) if value is not None else ""
+            formatted_task = formatted_task.replace(placeholder, val_str)
+            
     input_block = json.dumps(inputs, ensure_ascii=False, indent=2)
     few_shots = ""
     for ex in prompt_cfg["prompt"].get("few_shot_examples", []):
         few_shots += f"\n\n# Example: {ex['name']}\n{ex['json']}\n"
     schema_block = json.dumps(prompt_cfg["prompt"].get("schema", {}), ensure_ascii=False, indent=2)
-    prompt = f"{system}\n\n{user_task}\n\n## Inputs\n{input_block}\n\n## FewShots{few_shots}\n\n## Schema\n{schema_block}"
+    prompt = f"{system}\n\n{formatted_task}\n\n## Inputs\n{input_block}\n\n## FewShots{few_shots}\n\n## Schema\n{schema_block}"
     return prompt
 
 

@@ -26,11 +26,12 @@ prompt:
            * Real-world context complexity
          - For example, "addition and subtraction" for Year 3 might use numbers under 100, while Year 6 uses numbers in the thousands
       
-      2) CHAPTER AND TOPIC CONTEXT:
-         - Use the chapter name to understand the broader mathematical domain
-         - Use the topic (statutory requirement) as the specific skill to test
-         - The question MUST directly assess the stated topic
-         - Stay focused on ONE core skill per question
+      2) CHAPTER AND TOPIC CONTEXT (PRIORITY):
+         - **TOPIC (CORE SKILL) IS PRIMARY**: The topic (statutory requirement) is the absolute PRIMARY CONTEXT. Every question MUST directly and strictly assess this specific skill.
+         - **CHAPTER IS SECONDARY**: Use the chapter name ONLY to understand the broad domain (e.g., Geometry vs. Statistics). 
+         - **STRICT FOCUS**: Do NOT use the chapter name to pull in other concepts. If the chapter is "Addition" but the topic is "Place Value", focus ONLY on P-lace Value.
+         - The question MUST directly assess the stated topic.
+         - Stay focused on ONE core skill per question.
       
       3) VARIETY AND RANDOMNESS:
          - Generate DIVERSE questions each time, even with identical parameters
@@ -104,6 +105,10 @@ prompt:
 
       16) VARIATION ACROSS QUESTIONS (CRITICAL)
       To induce variation in the questions generated:
+         - **VALUES**: Never use the same numbers, measurements, or quantities across questions in a single run or from Previous Questions.
+         - **SCENARIOS**: Every question must have a unique context (e.g., if one uses 'shopping', the next must use 'sports', 'travel', 'cooking', etc.).
+         - **APPROACH/REASONING**: Vary the thinking path. If one is 'forward calculation', another should be 'reverse reasoning', 'comparison', or 'error identification'.
+         - **CONCEPTUAL ALIGNMENT**: Variety MUST be achieved within the boundaries of the Core Skill: {section}. Do NOT slide into different mathematical concepts just to create variety.
          - Across multiple questions, from a particular coreskill, it must **not** have the same formula or method as other questions from the previous prompts and this prompt.
          - Every question this prompt or even from previous prompts should have a different reasoning path or problem-solving approach, even if they belong to the same topic.
          - Avoid repeating the **same conceptual setup or question type** — explore **varied logical routes** to test understanding in multiple ways for questions formed using this prompt and previous prompts.
@@ -377,11 +382,11 @@ prompt:
       TOPIC/CORE SKILL PRIORITY (CRITICAL)
       ================================================================================
       
-      The "Topic (Core Skill)" input is the PRIMARY CONTEXT for all question generation.
-      - EVERY question MUST directly test this specific core skill
-      - All other inputs (chapter, new concept, old concept, etc.) are SECONDARY
-      - The core skill from the topic determines what mathematical operation/concept is tested
-      - Do NOT stray from the core skill regardless of classification type
+      380: EVERY question MUST strictly and directly test the specific "Topic/Core Skill" ({section}).
+      381: The Core Skill is the PRIMARY REQUIREMENT.
+      382: All other inputs (chapter, grade, context, etc.) are secondary and must support the Core Skill assessment.
+      383: Do NOT deviate from the core skill mathematical concept.
+      384: Variety must be achieved by twisting the context and reasoning *within* the core skill, never by changing the mathematical concept itself.
 
       17) STRICT BLOOM & DOK ALIGNMENT (NON-NEGOTIABLE)
       Each question MUST strictly align to the specified Cognitive Skill without leaking into higher levels.
@@ -411,7 +416,8 @@ prompt:
          - Before generating ANY questions, you must output a single JSON object (one line) defining your strategy.
          - This object must have type="strategy".
          - It must explain how you will interpret "Remembering", "Understanding", and "Applying" specifically for the provided "Subject" and "Topic".
-         - Key fields: "type", "core_skill", "remembering_logic", "understanding_logic", "applying_logic", "grade_level_alignment".
+         - **Key field: "variety_plan"**: Explain how you will ensure that the {N} questions generated in this run are as different as possible from each other and from the "Previous Questions" in terms of scenario, values, and logic.
+         - Key fields: "type", "core_skill", "remembering_logic", "understanding_logic", "applying_logic", "grade_level_alignment", "variety_plan".
          - This is to ensure you have a clear plan before generating items.
 
     user_task: |
@@ -460,6 +466,7 @@ prompt:
       - understanding_logic: string (How you define 'Understanding' questions for this specific skill/grade)
       - applying_logic: string (How you define 'Applying' questions for this specific skill/grade)
       - grade_level_alignment: string (Notes on how you are adjusting difficulty for this Grade)
+      - variety_plan: string (Explain how you will ensure variety in this batch of questions)
 
       Object Type 2: QUESTION (Subsequent Objects) - type="MCQ" or "FIB"
       Each JSON object must contain the following keys (omit MCQ-specific or FIB-specific keys only when not applicable):

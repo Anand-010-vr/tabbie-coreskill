@@ -205,27 +205,30 @@ with st.sidebar:
     
     st.divider()
     
-    mode = st.radio("Generation Mode", ["Standard", "PDF-based"])
+    # Core Metadata
+    curriculum = st.text_input("Curriculum", "UK National Curriculum")
+    grade = st.selectbox("Grade", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], index=3)
+    subject = st.text_input("Subject", "Maths")
+    domain = st.text_input("Domain", "Number")
+    chapter = st.text_input("Chapter(Learning Outcome)", "Number – number and place value")
+    topic = st.text_input("Topic/Core Skill", "count from 0 in multiples of 4, 8, 50 and 100")
     
-    if mode == "Standard":
-        # Standard input fields
-        new_concept = st.text_area("New Concept (Current Topic)")
-        curriculum = st.text_input("Curriculum", "UK National Curriculum")
-        grade = st.selectbox("Grade", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], index=3)
-        subject = st.text_input("Subject", "Maths")
-        chapter = st.text_input("Chapter", "Number – number and place value")
-        topic = st.text_input("Topic/Core Skill", "count from 0 in multiples of 4, 8, 50 and 100")
-        domain = st.text_input("Domain", "Number")
-    else:
-        # PDF upload
-        uploaded_file = st.file_uploader("Upload PDF Reference", type="pdf")
-        curriculum = st.text_input("Curriculum", "UK National Curriculum")
-        grade = st.selectbox("Grade", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], index=3)
-        subject = st.text_input("Subject", "Maths")
-        chapter = st.text_input("Chapter", "Custom Chapter")
-        topic = st.text_input("Topic", "Custom Topic")
-        domain = st.text_input("Domain", "Custom Domain")
+    st.divider()
 
+    # Advanced Context
+    standard_desc = st.text_area("Standard")
+    cognitive_skill = st.text_input("Cognitive Skill")
+    performance_expectation = st.text_area("Performance Expectation")
+    context_setting = st.text_input("Context Setting")
+    level_of_mastery = st.text_input("Level of Mastery")
+    
+    st.divider()
+
+    # Question Parameters
+    marks = st.number_input("Marks (per question)", 1, 10, 1)
+    rigor = st.selectbox("Rigor Level", ["Level 1", "Level 2", "Level 3"])
+    include_mathml = st.checkbox("Enable MathML Output (Raw Display)", value=True)
+    
     st.divider()
     
     # Question Classifications - users select how many of each type
@@ -242,22 +245,19 @@ with st.sidebar:
         )
     
     st.divider()
-    
-    marks = st.number_input("Marks (per question)", 1, 10, 1)
-    rigor = st.selectbox("Rigor Level", ["Level 1", "Level 2", "Level 3"])
-    include_mathml = st.checkbox("Enable MathML Output (Raw Display)", value=True)
-    
-    st.divider()
-    
 
-    # Context fields (showing directly now)
-    st.subheader("Advanced Context")
-    cognitive_skill = st.text_input("Cognitive Skill")
+    # Generation Mode and Conditional Inputs
+    mode = st.radio("Generation Mode", ["Standard", "PDF-based"])
+    
+    uploaded_file = None
+    new_concept = ""
+    
+    if mode == "Standard":
+        new_concept = st.text_area("New Concept (Current Topic)")
+    else:
+        uploaded_file = st.file_uploader("Upload PDF Reference", type="pdf")
+    
     old_concept = st.text_area("Old Concept (Prerequisite Knowledge)")
-    standard_desc = st.text_area("Standard")
-    performance_expectation = st.text_area("Performance Expectation")
-    context_setting = st.text_input("Context Setting")
-    level_of_mastery = st.text_input("Level of Mastery")
     additional_notes = st.text_area("Additional Notes")
 
     generate_btn = st.button("Generate Questions", type="primary", use_container_width=True)
@@ -390,6 +390,9 @@ if generate_btn:
                                 # Format: [Type] Question Text
                                 q_summary = f"[{r.get('type', 'N/A')}] {r.get('question_text', '')}" 
                                 previous_questions_summary.append(q_summary)
+                                
+                        # Update context for next iteration within the loop
+                        classification_inputs["previous_questions"] = "\n".join(previous_questions_summary) if previous_questions_summary else "None"
                     
                     # Add collected valid results to main list
                     st.session_state.all_results.extend(classification_results)

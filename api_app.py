@@ -351,6 +351,7 @@ async def generate_questions(request: QuestionGenerationRequest):
                     "context_setting": request.context_setting,
                     "level_of_mastery": request.level_of_mastery,
                     "actionable_skill_description": request.actionable_skill_description,
+                    "previous_questions": "\n".join([f"[{q.get('type')}] {q.get('question_text')}" for q in all_valid_results]) if all_valid_results else "None",
                 }
                 
                 logger.info(f"Calling generator service for {remaining_count} {request.question_type} question(s) at {taxonomy_level} level")
@@ -640,6 +641,7 @@ async def generate_questions_pdf(
                     "context_setting": context_setting,
                     "level_of_mastery": level_of_mastery,
                     "actionable_skill_description": actionable_skill_description,
+                    "previous_questions": "\n".join([f"[{q.get('type')}] {q.get('question_text')}" for q in all_valid_results]) if all_valid_results else "None",
                 }
                 
                 logger.info(f"Calling PDF generator service for {remaining_count} {question_type} question(s) at {taxonomy_level} level")

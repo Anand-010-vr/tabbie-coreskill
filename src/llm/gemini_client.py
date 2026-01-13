@@ -10,6 +10,49 @@ from google.genai import types
 _MAX_RETRIES = 3
 _BACKOFF_BASE = 1.2
 
+# Pricing per 1M tokens (USD) - rough estimates for Gemini 1.5/2.0
+# Flash: $0.10 input / $0.40 output
+# Pro: $1.25 input / $5.00 output
+_PRICING = {
+    "flash": {"input": 0.10 / 1_000_000, "output": 0.40 / 1_000_000},
+    "pro": {"input": 1.25 / 1_000_000, "output": 10.00 / 1_000_000},
+}
+
+def _log_cost(model_name: str, usage: Any):
+    """Calculate and log estimated cost to stdout."""
+    if not usage:
+        return
+    
+    # Identify price tier
+    tier = "flash"
+    if "pro" in model_name.lower():
+        tier = "pro"
+    
+    price = _PRICING.get(tier, _PRICING["flash"])
+    
+    prompt_tokens = getattr(usage, "prompt_token_count", 0) or getattr(usage, "promptTokenCount", 0)
+    candidates_tokens = getattr(usage, "candidates_token_count", 0) or getattr(usage, "candidatesTokenCount", 0)
+    
+    # Check for plural/singular and case variations for thought tokens
+    thought_tokens = (
+        getattr(usage, "thought_token_count", 0) or 
+        getattr(usage, "thoughts_token_count", 0) or 
+        getattr(usage, "thoughtTokenCount", 0) or 
+        getattr(usage, "thoughtsTokenCount", 0)
+    )
+    
+    total_tokens = getattr(usage, "total_token_count", 0) or getattr(usage, "totalTokenCount", 0)
+    
+    # Thoughts are billed as output tokens
+    cost = (prompt_tokens * price["input"]) + ((candidates_tokens + thought_tokens) * price["output"])
+    
+    print("\n" + "="*40)
+    print(f"GEMINI COST LOG [{time.strftime('%Y-%m-%d %H:%M:%S')}]")
+    print(f"Model: {model_name}")
+    print(f"Tokens: Prompt={prompt_tokens}, Completion={candidates_tokens}, Thoughts={thought_tokens}, Total={total_tokens}")
+    print(f"Estimated Cost: ${cost:.6f}")
+    print("="*40 + "\n")
+
 def call_gemini(prompt: str, cfg: Dict[str, Any], n: int) -> str:
     """
     Use google-genai SDK to call Gemini. Returns the model text output (string).
@@ -41,6 +84,10 @@ def call_gemini(prompt: str, cfg: Dict[str, Any], n: int) -> str:
                 max_output_tokens=max_output_tokens
             )
         )
+            # Log usage and cost
+            if hasattr(response, "usage_metadata"):
+                _log_cost(model_name, response.usage_metadata)
+
             # response may provide a callable .text() or .text attribute
             if hasattr(response, "text") and callable(response.text):
                 return response.text()
@@ -174,6 +221,10 @@ def call_gemini_with_pdf(prompt: str, pdf_bytes: bytes, cfg: Dict[str, Any], n: 
                         max_output_tokens=max_tokens
                     )
                 )
+
+            # Log usage and cost
+            if hasattr(response, "usage_metadata"):
+                _log_cost(model_name, response.usage_metadata)
 
             if hasattr(response, "text") and callable(response.text):
                 return response.text()
